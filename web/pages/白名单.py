@@ -7,8 +7,9 @@ import numpy as np
 
 
 st.sidebar.write('配置')
-st.sidebar.button()
 
+
+st.button("启动扫描", on_click=API.scan)
 dic = {'白名单文件路径': API.white_list}
 df = pd.DataFrame(dic)
 st.dataframe(df, width=700)  # Same as st.write(df)

@@ -10,3 +10,6 @@ def add_Dir(dir: str):
 def del_Dir(dir: str):
     white_list.remove(dir)
     print('del_Dir:', white_list)
+
+def scan():
+    pass
