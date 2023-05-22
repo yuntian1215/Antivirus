@@ -6,7 +6,9 @@
 OpenEuler环境
 >1. 在虚拟机中克隆项目地址：git clone https://github.com/riacd/Security_Project.git
 >2. 更新pip版本：python -m pip install --upgrade pip
->3. 安装所需Python包：pip3 install -r requirements.txt  
+>3. 安装所需Python包：pip3 install streamlit
+
+[comment]: <> (>3. 安装所需Python包：pip3 install -r requirements.txt  )
 
 windows环境：
 前端运行所需的python环境保存在虚拟环境VirEnv里面，运行时只需进入虚拟环境即可
