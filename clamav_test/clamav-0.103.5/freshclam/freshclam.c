@@ -24,6 +24,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <openssl/md5.h>
+#include <dirent.h>
+
 #ifdef HAVE_UNISTD_H
 #include <unistd.h>
 #endif
@@ -1566,6 +1569,90 @@ int main(int argc, char **argv)
     uint32_t nUrlDatabases = 0;
 
     int bPrune = 1;
+
+    // 在这里插入代码
+    MD5_CTX md5_ctx;
+    unsigned char outmd[16];
+    char *res;
+    char buffer[1024];
+    char filename[256];
+    int len = 0;
+    FILE *fp_read = NULL;
+    FILE *fp_save = NULL;
+    char read_path[] = "/home/user1/桌面/clamav_test/virus";
+    char save_path[] = "/home/user1/桌面/clamav_test/virus_signature.txt";
+    DIR *dir;
+    struct dirent *ptr;
+
+    memset(outmd,0,sizeof(outmd));
+    memset(buffer,0,sizeof(buffer));
+    memset(filename,0,sizeof(filename));
+
+    if ((dir=opendir(read_path))==NULL)
+    {
+        printf("Can't open dir\n");
+        return 1;
+    }
+    
+    fp_save = fopen(save_path, "w");
+    if (fp_save == NULL)
+    {
+        printf("Can't open file\n");
+        return 0;
+    }
+    fclose(fp_save);
+    
+    
+    while ((ptr=readdir(dir))!=NULL)
+    {
+        if (ptr->d_type == 8) //file
+        {
+            strcpy(filename, read_path);
+            strcat(filename, "/");
+            strcat(filename, ptr->d_name);
+
+            //printf(filename);
+            //printf("\n");
+            
+            fp_read = fopen(filename, "rb");
+            if (fp_read == NULL)
+            {
+                printf("Can't open file\n");
+                return 0;
+            }
+            
+            MD5_Init(&md5_ctx);
+            while ((len=fread(buffer, 1, 1024, fp_read))>0)
+            {
+                MD5_Update(&md5_ctx, buffer, len);
+                memset(buffer,0,sizeof(buffer));
+            }
+            MD5_Final(outmd, &md5_ctx);
+
+            fclose(fp_read);
+
+            //for (int i = 0; i < 16; i++)
+            //{
+            //    printf("%02x", outmd[i]);
+            //}
+            //printf("\n");
+
+            fp_save = fopen(save_path, "a");
+
+            //for (int i = 0; i < 16; i++)
+            //{
+                //fprintf(fp_save, "\\x");
+            //    fprintf(fp_save, "%02x", outmd[i]);
+            //}
+            res = (char*)outmd;
+            fprintf(fp_save, "%s",res);
+            fprintf(fp_save, "\n");
+            
+            fclose(fp_save);
+        }
+    }
+    closedir(dir);
+    // 结束插入
 
 #ifdef HAVE_PWD_H
     const struct optstruct *logFileOpt = NULL;
