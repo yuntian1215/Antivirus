@@ -1,0 +1,452 @@
+Delivered-To: rayguo17@gmail.com
+Received: by 2002:a19:6717:0:0:0:0:0 with SMTP id b23csp1608355lfc;
+        Thu, 31 Mar 2022 02:50:58 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJxLQWCAJ33gguDS+czcKi4Hzfj6OOqLo7hF8yhHGU0R8BYWBtG/YRD9l37R0sCWQ7D9A8+D
+X-Received: by 2002:a5d:526d:0:b0:203:d69f:3a66 with SMTP id l13-20020a5d526d000000b00203d69f3a66mr3499368wrc.74.1648720258568;
+        Thu, 31 Mar 2022 02:50:58 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648720258; cv=none;
+        d=google.com; s=arc-20160816;
+        b=0f6fd/3mzGog1UGF97lvrOfK6ZfSJlAhaMRnJzbAmo3jBS3t8TXyzhg7aNIO/xvY8x
+         z7+kDrJTLQX0Za6qTuKKyFs6LqbJ9Kd4Bk2und2hPU460SME6zn7l9QUSecUe4eLvRfR
+         GaslnQeYoGLczP7LGMxZQz1IEiUxlX1JoCO1DduoebDzfZX7NJk/VQhRCjvUoUFsBxKi
+         J0u1cM8xcyeCvjfS42JZRaNNT+ZXDVdNfE7BhQtv2cNRsfZC/LbS/eT7vNqP1LKAg8/H
+         xQCA+373OTzvYKNH8G7WdpPMgkibQU4IhlYqU8Ooax6WdHr4JilbRLdDwmZXbS6nKCVF
+         Iq+A==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:mime-version:subject:message-id:to:reply-to:from:date
+         :dkim-signature:dkim-signature;
+        bh=nifExY1wIKsFQjjlyBD4fiK68p6KsOwepmr9oy7q1xE=;
+        b=qVeJOe03g8uXTnOgFYZ1g5tPgLI1PFeG+jxydUKVK8CcwxOcBVgDA9e3210q7b5UVV
+         7yhb6GnEt+xXLJcy5k8/SEwYifh/BsO7W5t08NW+35V2PFUDNh9MV5/PsoTbgDxkJvbR
+         KXkiACBrdm2hMiUlrAtAw/bK+4PVmi42VgwRom+/RnJ5s1ZTN6/WhjZIvtAI1ntAFbtG
+         uaxlI/ORMiCHveexu3AttS/Akb9Ch+9uBtZ2Xzz3/rPjyo26SnNvkeF5JP1cVhMfSa9t
+         mykxLB3/B5ZmVa1vOWtbGJfkk0zF9t0ebC2tzf1/EXgNNtWUi6ByuwTonQLDGIBNLBjJ
+         XbMw==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@amazonses.com header.s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn header.b=06gxmjEn;
+       dkim=fail header.i=@app.octopuscards.com header.s=selector header.b=EKt6fv+M;
+       spf=pass (google.com: domain of 0102017fdf62a3ae-d959b117-22df-4ba0-ad4a-f297ede88d35-000000@eu-west-1.amazonses.com designates 54.240.6.24 as permitted sender) smtp.mailfrom=0102017fdf62a3ae-d959b117-22df-4ba0-ad4a-f297ede88d35-000000@eu-west-1.amazonses.com
+Return-Path: <0102017fdf62a3ae-d959b117-22df-4ba0-ad4a-f297ede88d35-000000@eu-west-1.amazonses.com>
+Received: from a6-24.smtp-out.eu-west-1.amazonses.com (a6-24.smtp-out.eu-west-1.amazonses.com. [54.240.6.24])
+        by mx.google.com with ESMTPS id c10-20020adfc04a000000b00203e90193bfsi24544824wrf.323.2022.03.31.02.50.58
+        for <rayguo17@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Thu, 31 Mar 2022 02:50:58 -0700 (PDT)
+Received-SPF: pass (google.com: domain of 0102017fdf62a3ae-d959b117-22df-4ba0-ad4a-f297ede88d35-000000@eu-west-1.amazonses.com designates 54.240.6.24 as permitted sender) client-ip=54.240.6.24;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@amazonses.com header.s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn header.b=06gxmjEn;
+       dkim=fail header.i=@app.octopuscards.com header.s=selector header.b=EKt6fv+M;
+       spf=pass (google.com: domain of 0102017fdf62a3ae-d959b117-22df-4ba0-ad4a-f297ede88d35-000000@eu-west-1.amazonses.com designates 54.240.6.24 as permitted sender) smtp.mailfrom=0102017fdf62a3ae-d959b117-22df-4ba0-ad4a-f297ede88d35-000000@eu-west-1.amazonses.com
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/simple;
+	s=ihchhvubuqgjsxyuhssfvqohv7z3u4hn; d=amazonses.com; t=1648720258;
+	h=Date:From:Reply-To:To:Message-ID:Subject:MIME-Version:Content-Type:Feedback-ID;
+	bh=bYA04IkOmiDlzmwVNftqzJ78XAcAi0NZ0jGgnZzvYsA=;
+	b=06gxmjEnACrpFyy6YByd1Q0fKOKqkpPqVZe8kn6pO5QejOMCq/XhcYrB/XZItDX/
+	RsQqZl6UDuerQeQsZ5BwLtYW4t8F4u6xFbYawPpcve9sj1EZe4SA0423l+9i0LuhIfd
+	WPaJEhiUb3+slgY6xZK1eJuBepBaFn7KC77gzgXI=
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+  d=app.octopuscards.com; i=@app.octopuscards.com;
+  q=dns/txt; s=selector; t=1648720257; x=1680256257;
+  h=date:from:reply-to:to:message-id:subject:mime-version;
+  bh=bYA04IkOmiDlzmwVNftqzJ78XAcAi0NZ0jGgnZzvYsA=;
+  b=EKt6fv+MAJy7rd/mSLtnCv6bKnVKUW/JC1is9RqkXtjIe52LvpD9cy1I
+   fYKUa86+5LnOtoI/ac9N41dQ2AVg6qfO/LgOka7492febdzEk6KAsHJlY
+   qo/rY0Un3bw4Abfq6V5/t/0f28otd8Wjb6UiBxkTOGS1B62L0jajo8ZM4
+   I=;
+Date: Thu, 31 Mar 2022 09:50:57 +0000
+From: Octopus Cards Limited <noreply@app.octopuscards.com>
+Reply-To: noreply@app.octopuscards.com
+To: rayguo17@gmail.com
+Message-ID: <0102017fdf62a3ae-d959b117-22df-4ba0-ad4a-f297ede88d35-000000@eu-west-1.amazonses.com>
+Subject: Verify your email address to complete sign up
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_767_2070220790.1648720245032"
+Feedback-ID: 1.eu-west-1.6et/yKJmAz6Y7CRjZZQLYSro+ZBvKSDwcvgK1HfCu2E=:AmazonSES
+X-SES-Outgoing: 2022.03.31-54.240.6.24
+MIME-Version: 1.0
+
+------=_Part_767_2070220790.1648720245032
+Content-Type: text/html;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!doctype html><html xmlns=3D"http://www.w3.org/1999/xhtml" xmlns:v=3D"urn:=
+schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com:office:offi=
+ce">
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"></=
+head>
+<html>
+
+<head>
+   =20
+    <meta id=3D"viewport" name=3D"viewport" content=3D"width=3Ddevice-width=
+, initial-scale=3D1.0, user-scalable=3Dno">
+    <meta http-equiv=3D"X-UA-Compatible" content=3D"IE=3Dedge">
+
+    <title>=E7=A2=BA=E8=AA=8D=E9=9B=BB=E9=83=B5=E5=9C=B0=E5=9D=80=E4=BB=A5=
+=E5=AE=8C=E6=88=90=E7=99=BB=E8=A8=98 | Verify your email address to complet=
+e sign up</title>
+
+    <style type=3D"text/css">
+        html,
+        body {
+            margin: 0 !important;
+            padding: 0 !important;
+            height: 100% !important;
+            width: 100% !important;
+            font-family: "Microsoft JhengHei", =E5=BE=AE=E8=BB=9F=E6=AD=A3=
+=E9=BB=91=E9=AB=94, Microsoft YaHei, Heiti, Verdana, Arial, sans-serif;
+        }
+
+        * {
+            -ms-text-size-adjust: 100%;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        table,
+        td {
+            mso-table-lspace: 0pt !important;
+            mso-table-rspace: 0pt !important;
+        }
+
+        table {
+            border-spacing: 0 !important;
+            border-collapse: collapse !important;
+
+            margin: 0 auto !important;
+        }
+
+        table table table {
+            table-layout: auto;
+        }
+
+        img {
+            -ms-interpolation-mode: bicubic;
+            max-width: 100%;
+        }
+
+        a[x-apple-data-detectors] {
+            color: inherit !important;
+        }
+
+        .mobile-only {
+            display: none;
+        }
+
+        div.preheader {=20
+			display: none !important;=20
+			opacity: 0;
+			overflow:hidden;
+			height:0px;
+			mso-hide:all;
+		}
+    </style>	=09
+    <style type=3D"text/css">
+
+        @media screen and (max-width: 767px) {
+            table {
+                width: 100% !important;
+            }
+
+            .email-container {
+                width: 100% !important;
+            }
+
+            .stack-column,
+            .stack-column-center {
+                display: block !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+
+            .stack-column-center.stack-column-padding {
+                padding: 0 0 20px !important;
+            }
+
+            .stack-column-center.stack-column-padding2 {
+                padding: 20px !important;
+            }
+
+            .mobile-width-60 {
+                width: 60% !important;
+            }
+
+            .mobile-width-100 {
+                width: 100% !important;
+                display: block;
+            }
+
+            .mobile-width-60 img {
+                width: 100% !important;
+            }
+
+            td.autoWidth {
+                width: auto !important;
+            }
+
+            td.autoWidth img {
+                width: auto !important;
+            }
+
+            .mobile-section-title {
+                width: 100% !important;
+            }
+            .mobile-section-title2 {
+                width: 70% !important;
+            }
+            .mobile-section-title3 {
+                width: 50% !important;
+            }
+
+            .mobile-section-title h3 {
+                font-size: 20px !important;
+            }
+
+            .mobile-padding-0 {
+                padding: 0 !important;
+            }
+
+            .footer-info-container {
+                padding: 0 5px !important;
+            }
+
+            .mobile-only {
+                display: block;
+            }
+
+            .footer-info-container tr td table tr td {
+                display: inline-block;
+                width: 25% !important;
+            }
+		=09
+            .appIcon {
+                font-size: 13px !important;
+            }
+        }
+    </style>
+
+    <!--[if (mso)|(mso 16)]>
+    <style type=3D"text/css">
+        a {text-decoration: none !important;}
+        .mso-nospace { padding:0 !important; margin:0 !important; vertical-=
+align: top !important; }
+    </style>
+    <![endif]-->
+	<!--[if gte mso 9]><xml>
+ <o:OfficeDocumentSettings>
+  <o:AllowPNG/>
+  <o:PixelsPerInch>96</o:PixelsPerInch>
+ </o:OfficeDocumentSettings>
+</xml><![endif]-->
+
+</head>
+
+<body width=3D"100%" style=3D"margin: 0; background-color: #fbfbfb;">
+    <table cellpadding=3D"0" cellspacing=3D"0" border=3D"0" height=3D"100%"=
+ width=3D"100%" style=3D"border-collapse:collapse;">
+        <tr>
+            <td>
+                <table align=3D"center" bgcolor=3D"#fbfbfb" cellpadding=3D"=
+0" cellspacing=3D"0" border=3D"0" class=3D"email-container" style=3D"width:=
+ 640px; height: 100%;">
+                    <tr>
+                        <td style=3D"padding: 20px;">
+                            <table align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" class=3D"email-container" style=3D"width: 600px;"=
+>
+                                <tr>
+                                    <td align=3D"center" bgcolor=3D"#ffffff=
+" style=3D"border-bottom: 4px solid #fbfbfb; padding: 10px 0">
+                                        <table align=3D"center" border=3D"0=
+" cellpadding=3D"0" cellspacing=3D"0" class=3D"email-container" style=3D"wi=
+dth: 600px;">
+                                            <tr>
+                                                <td align=3D"left" style=3D=
+"vertical-align: top; padding: 0 20px;">
+                                                </td>
+                                                <td align=3D"right" style=
+=3D"vertical-align: top; padding: 0 20px;">
+                                                    <img src=3D"http://www.=
+octopus.com.hk/external/email/logo_octopus.jpg" alt=3D"=E5=85=AB=E9=81=94=
+=E9=80=9A Octopus" style=3D"display: block;">
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+           =20
+                            <table align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" class=3D"email-container" style=3D"width: 600px;"=
+>
+                                <tr>
+                                    <td>
+                                        <table cellspacing=3D"0" cellpaddin=
+g=3D"0" border=3D"0" align=3D"center" bgcolor=3D"#ffffff" class=3D"email-co=
+ntainer" style=3D"font-size: 0; width: 100%;">
+                                            <tr>
+                                                <td style=3D"font-size: 0; =
+height: 100%; padding: 0; margin: 0;">
+                                                    <table style=3D"width: =
+100%; padding: 0; margin: 0;" cellspacing=3D"0" cellpadding=3D"0" border=3D=
+"0">
+                                                        <tr>
+                                                            <td height=3D"2=
+0"></td>
+                                                        </tr>
+           =20
+                                                        <tr>
+                                                            <td align=3D"ce=
+nter" style=3D"padding: 0 20px;">
+                                                                <table styl=
+e=3D"width: 100%; padding: 0; margin: 0;" cellspacing=3D"0" cellpadding=3D"=
+0" border=3D"0" align=3D"center">
+                                                                    <tr>
+                                                                        <td=
+ align=3D"right" valign=3D"middle" style=3D"padding: 0; margin: 0; border: =
+0; text-align: left;" class=3D"stack-column-center">
+                                                                           =
+ <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" style=3D"width: 10=
+0%;">
+                                                                           =
+     <tr>
+                                                                           =
+         <td style=3D"padding: 15px 0 20px;font-size:14px;">
+																						<p>=E8=A6=AA=E6=84=9B=E7=9A=84=E5=AE=A2=E6=88=B6=EF=
+=BC=9A</p>
+																						<p>=E4=BD=A0=E5=85=AB=E9=81=94=E9=80=9AApp=E5=85=A7=
+=E7=9A=84=E5=B8=B3=E6=88=B6=E7=99=BB=E8=A8=98=E5=8F=AA=E5=B7=AE=E4=B8=80=E6=
+=AD=A5=E4=BE=BF=E5=8F=AF=E5=AE=8C=E6=88=90=EF=BC=8C=E5=8F=AA=E9=9C=80=E9=BB=
+=9E=E6=93=8A=E4=BB=A5=E4=B8=8B=E9=80=A3=E7=B5=90=E6=88=96=E8=A4=87=E8=A3=BD=
+=E9=80=A3=E7=B5=90=E5=88=B0=E7=80=8F=E8=A6=BD=E5=99=A8=E4=B8=8A=EF=BC=8C=E4=
+=BE=BF=E5=8F=AF=E7=AB=8B=E5=8D=B3=E9=96=8B=E9=80=9A=E5=B8=B3=E6=88=B6=EF=BC=
+=9A</p>
+																						<p><a href=3D"https://app.oepay.octopus-cards.com/ow_=
+owallet_ws/rest/authenticate/validateCustomerEmail?key=3DXfe3AH1g%2B5l7jJva=
+QpUH510VKcEzaoEm8B7yf74yyZNDtid36iPClQIgNpK1%2B2aQ&amp;resVersion=3D001" st=
+yle=3D"color: #F4901E; text-decoration: underline;">https://app.oepay.octop=
+us-cards.com/ow_owallet_ws/rest/authenticate/validateCustomerEmail?key=3DXf=
+e3AH1g%2B5l7jJvaQpUH510VKcEzaoEm8B7yf74yyZNDtid36iPClQIgNpK1%2B2aQ&amp;resV=
+ersion=3D001</a></p>
+																						<p>=E5=A6=82=E6=9C=89=E4=BB=BB=E4=BD=95=E6=9F=A5=E8=
+=A9=A2=EF=BC=8C=E8=AB=8B<a href=3D"https://www.octopus.com.hk/tc/consumer/c=
+ustomer-service/contact-us/index.html">=E8=81=AF=E7=B5=A1=E6=88=91=E5=80=91=
+</a>=E3=80=82</p>
+																						<p>=E5=85=AB=E9=81=94=E9=80=9A=E5=8D=A1=E6=9C=89=E9=
+=99=90=E5=85=AC=E5=8F=B8</p>
+																						<hr>
+																						<p>Dear Customer,</p>
+																						<p>Your account registration in Octopus App  is just =
+one step away. Please click or copy the following link into the browser to =
+open your account instantly:</p>
+																						<p><a href=3D"https://app.oepay.octopus-cards.com/ow_=
+owallet_ws/rest/authenticate/validateCustomerEmail?key=3DXfe3AH1g%2B5l7jJva=
+QpUH510VKcEzaoEm8B7yf74yyZNDtid36iPClQIgNpK1%2B2aQ&amp;resVersion=3D001" st=
+yle=3D"color: #F4901E; text-decoration: underline;">https://app.oepay.octop=
+us-cards.com/ow_owallet_ws/rest/authenticate/validateCustomerEmail?key=3DXf=
+e3AH1g%2B5l7jJvaQpUH510VKcEzaoEm8B7yf74yyZNDtid36iPClQIgNpK1%2B2aQ&amp;resV=
+ersion=3D001</a></p>
+																						<p>If you have any queries, please feel free to <a hr=
+ef=3D"https://www.octopus.com.hk/en/consumer/customer-service/contact-us/in=
+dex.html">contact us</a>.</p>
+																						<p>Octopus Cards Limited</p>
+                                                                           =
+         </td>
+                                                                           =
+     </tr>
+                                                                           =
+ </table>
+                                                                        </t=
+d>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+           =20
+                                                        <tr>
+                                                            <td align=3D"ce=
+nter" bgcolor=3D"#ffffff">
+                                                                <table cell=
+spacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" class=3D"emai=
+l-container" style=3D"font-size: 0; width: 100%;">
+                                                                    <tr>
+                                                                        <td=
+ style=3D"padding: 15px 0;" bgcolor=3D"#ffffff"></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+           =20
+                                                        <tr style=3D"border=
+-top: 4px solid #fbfbfb;">
+                                                            <td height=3D"2=
+0" style=3D"padding: 0 20px;"></td>
+                                                        </tr>
+           =20
+           =20
+                                                        <tr>
+                                                            <td align=3D"le=
+ft" style=3D"padding: 0 20px;">
+                                                                <h3 style=
+=3D"font-size: 15px; font-weight: bold; margin: 0;">Octopus Cards Limited |=
+ <br class=3D"mobile-only">=E5=85=AB=E9=81=94=E9=80=9A=E5=8D=A1=E6=9C=89=E9=
+=99=90=E5=85=AC=E5=8F=B8</h3>
+                                                                <p style=3D=
+"font-size: 14px; margin: 5px 0;">Mailing address: 46/F Manhattan Place, 23=
+ Wang Tai Road, Kowloon Bay,
+                                                                    Kowloon=
+. | <br class=3D"mobile-only">Telephone: 2266 2222</p>
+                                                                <p style=3D=
+"font-size: 14px; margin: 5px 0;">=E9=83=B5=E5=AF=84=E5=9C=B0=E5=9D=80=EF=
+=BC=9A=E4=B9=9D=E9=BE=8D=E4=B9=9D=E9=BE=8D=E7=81=A3=E5=AE=8F=E6=B3=B0=E9=81=
+=93 23 =E8=99=9F 46 =E6=A8=93 | <br class=3D"mobile-only">=E9=9B=BB=E8=A9=
+=B1=EF=BC=9A2266 2222</p>
+																<p style=3D"font-size: 14px; margin: 5px 0;">Licence Number=
+ =E7=89=8C=E7=85=A7=E8=99=9F=E7=A2=BC=EF=BC=9ASVF0001</p>
+                                                            </td>
+                                                        </tr>
+           =20
+           =20
+                                                        <tr>
+                                                            <td align=3D"ce=
+nter" bgcolor=3D"#ffffff">
+                                                                <table cell=
+spacing=3D"0" cellpadding=3D"0" border=3D"0" align=3D"center" class=3D"emai=
+l-container" style=3D"font-size: 0; width: 100%;">
+                                                                    <tr>
+                                                                        <td=
+ height=3D"20" bgcolor=3D"#ffffff"></td>
+                                                                    </tr>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+           =20
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+           =20
+                            <table align=3D"center" border=3D"0" cellpaddin=
+g=3D"0" cellspacing=3D"0" class=3D"email-container" style=3D"width: 600px;"=
+>
+                                <tr>
+                                    <td bgcolor=3D"#ffffff">
+                                        <img src=3D"http://www.octopus.com.=
+hk/external/email/bgBottom.jpg" style=3D"width: 100%;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>=
+
+------=_Part_767_2070220790.1648720245032--

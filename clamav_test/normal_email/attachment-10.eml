@@ -1,0 +1,84 @@
+Return-Path: <public@openeuler.io>
+Received: from 10.118.0.96 (LHLO mta96.sjtu.edu.cn) (10.118.0.96) by
+ mstore111.sjtu.edu.cn with LMTP; Fri, 8 Jul 2022 22:13:31 +0800 (CST)
+Received: from mx01.sjtu.edu.cn (mx01.sjtu.edu.cn [202.120.0.7])
+	by mta96.sjtu.edu.cn (Postfix) with ESMTP id D0F4F2FD09B
+	for <zyuxin719@sjtu.edu.cn>; Fri,  8 Jul 2022 22:13:31 +0800 (CST)
+Received: from localhost (localhost [127.0.0.1])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id C4C082A23D6
+	for <zyuxin719@sjtu.edu.cn>; Fri,  8 Jul 2022 22:13:31 +0800 (CST)
+X-Virus-Scanned: Debian amavisd-new at sjtu.edu.cn
+X-Spam-Flag: NO
+X-Spam-Score: 1.991
+X-Spam-Level: *
+X-Spam-Status: No, score=1.991 tagged_above=-10 required=10
+	tests=[DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+	RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+	T_SCC_BODY_TEXT_LINE=-0.01, URIBL_BLOCKED=2] autolearn=disabled
+Received: from mx01.sjtu.edu.cn ([127.0.0.1])
+	by localhost (mx01.sjtu.edu.cn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id p0tow3AFEXbr for <zyuxin719@sjtu.edu.cn>;
+	Fri,  8 Jul 2022 22:13:31 +0800 (CST)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=209.85.208.46; helo=mail-ed1-f46.google.com; envelope-from=public@openeuler.io; receiver=<UNKNOWN> 
+Received: from mail-ed1-f46.google.com (mail-ed1-f46.google.com [209.85.208.46])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id 1354B2A23CE
+	for <zyuxin719@sjtu.edu.cn>; Fri,  8 Jul 2022 22:13:30 +0800 (CST)
+Received: by mail-ed1-f46.google.com with SMTP id r18so27006128edb.9
+        for <zyuxin719@sjtu.edu.cn>; Fri, 08 Jul 2022 07:13:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=openeuler-io.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to
+         :content-transfer-encoding;
+        bh=eBOcRwcdFZ8m2tWr7Ss4pvwY0jjRjdpTm5JQBzAAgzI=;
+        b=TUzzcLl9EsYqfLx1eOWHHMPIxHw7gAApnKRTEXrYGgQ+cChxHquanQmOKjcsA/cFW7
+         d610/OAi5IgNIFY6J/mIYbzqZe3M0a7PxTKChJmV7cNQC67WU4cJzYVG4YWf8rI7yRVO
+         qwOkDEd1BWjzs7UwL8jYk6fnPIT7onIpqBTOlua5Xhx4LyPEGSSWRe//Lt9MrnzWwTa3
+         nvZyb8pc5nsKa6VRBc2ziL04Apu2tCVqvJ459T6ONrO0lTvZIukl5iS9kM5NW1gqfil8
+         lUvndoplmLvsYh5+8Bm5oLmvGEA/ZHGhjXN3Hd2m7bZhE7xTcSh7r5v0fKWMAQGCvXGo
+         /CAA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to
+         :content-transfer-encoding;
+        bh=eBOcRwcdFZ8m2tWr7Ss4pvwY0jjRjdpTm5JQBzAAgzI=;
+        b=slS+UticTipe/Q2D8ExAhrD3AwfpEtdNcy1ZiP1aryhAftLn0hMVlGTqL5xL0E/NcR
+         iI0SEIYK9Oc0+us6Ac7dns23W6wHjXK+CAYX3MEfiGiTt3jUpNGT7cZxqKs2B0KjeGNA
+         ZYx9dTzvnfiTkj+TvnWtximtQN8id1HmIc87+Vu65g0dyQiCYfyzvwTvBnM+eLtqXfUT
+         eOYbOwmKkEL1jS8DgC9E++mR49q1EnI/DWp1Sl37iBrpWy5nuL3q0PgNLObgfE8EulB3
+         DTdcdAIkvcCQ1xeDQzp7zA2zXg9J7pCLcDPzmR0oWeo0rfx4rM/HgmYfgUOJOOYosEE/
+         kYvw==
+X-Gm-Message-State: AJIora+NePtRTnhRuHH9n0Wt/gI+0W1i1pFtljMn8kZxxK0801wJaKtS
+	3+ABnGR+6hz5Y6dMg6LU8Gq5aG5lHV//BMljLNTjmcrj3Nk=
+X-Google-Smtp-Source: AGRyM1sW3CoeIn17yg12Yq2ZX4KCJpXdNyzY6d0DRuyZrBIcY0ipwlsSJ+RkRp89V5HOwCJSQdKRROs/jYU6RQVJr14=
+MIME-Version: 1.0
+X-Received: by 2002:a05:6402:3314:b0:43a:47e6:3f1 with SMTP id
+ e20-20020a056402331400b0043a47e603f1mr5018730eda.270.1657289609106; Fri, 08
+ Jul 2022 07:13:29 -0700 (PDT)
+Received: from 642402344772 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 8 Jul 2022 07:13:28 -0700
+From: public@openeuler.io
+Date: Fri, 8 Jul 2022 07:13:28 -0700
+Message-ID: <CAJboJsRs_b48eTVkJfTc1AH9Nrn0vUL4rp9bYL3=QkO2Dst1EA@mail.gmail.com>
+Subject: Account on project of "openEuler"
+To: zyuxin719@sjtu.edu.cn
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+Dear =E7=AB=A0=E5=AE=87=E6=AC=A3,
+
+You are authorized by your company to manage the CLA signing of
+employees who will contribute to the project[1]. You will receive an
+email notification when an employee signs the CLA. Then you can login
+the CLA management system to accept or reject that CLA signing of
+employee.
+
+Your Account:
+  Username: zyuxin719@sjtu.edu.cn or zyuxin_sjtu.edu.cn
+  Password: 0t90ZOqr
+
+The CLA management system login URL is https://clasign.osinfra.cn/.
+
+Have questions or need help? Just reply to this email and the
+openEuler Community Support Team will help you sort it out.
+
+[1]. https://gitee.com/openeuler

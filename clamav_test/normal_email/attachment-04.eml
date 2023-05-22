@@ -1,0 +1,418 @@
+Return-Path: <bounce-mc.us13_57219141.1963114-8a716934dc@mail22.suw231.rsgsv.net>
+Received: from 10.118.0.96 (LHLO mta96.sjtu.edu.cn) (10.118.0.96) by
+ mstore111.sjtu.edu.cn with LMTP; Wed, 20 Jul 2022 21:01:29 +0800 (CST)
+Received: from mx01.sjtu.edu.cn (mx01.sjtu.edu.cn [202.120.0.7])
+	by mta96.sjtu.edu.cn (Postfix) with ESMTP id 121A42FD09D
+	for <zyuxin719@sjtu.edu.cn>; Wed, 20 Jul 2022 21:01:29 +0800 (CST)
+Received: from localhost (localhost [127.0.0.1])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id 080532ABCD7
+	for <zyuxin719@sjtu.edu.cn>; Wed, 20 Jul 2022 21:01:29 +0800 (CST)
+X-Virus-Scanned: Debian amavisd-new at sjtu.edu.cn
+X-Spam-Flag: NO
+X-Spam-Score: 1.367
+X-Spam-Level: *
+X-Spam-Status: No, score=1.367 tagged_above=-10 required=10
+	tests=[DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+	HEADER_FROM_DIFFERENT_DOMAINS=0.249, HTML_MESSAGE=0.001,
+	MIME_QP_LONG_LINE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+	RCVD_IN_IADB_DK=-0.223, RCVD_IN_IADB_LISTED=-0.38,
+	RCVD_IN_IADB_RDNS=-0.167, RCVD_IN_IADB_SENDERID=-0.001,
+	RCVD_IN_IADB_SPF=-0.001, SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+	T_SCC_BODY_TEXT_LINE=-0.01, URIBL_BLOCKED=2] autolearn=disabled
+Received: from mx01.sjtu.edu.cn ([127.0.0.1])
+	by localhost (mx01.sjtu.edu.cn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id mawj9O9RZg3O for <zyuxin719@sjtu.edu.cn>;
+	Wed, 20 Jul 2022 21:01:28 +0800 (CST)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.2.174.22; helo=mail22.suw231.rsgsv.net; envelope-from=bounce-mc.us13_57219141.1963114-8a716934dc@mail22.suw231.rsgsv.net; receiver=<UNKNOWN> 
+Received: from mail22.suw231.rsgsv.net (mail22.suw231.rsgsv.net [198.2.174.22])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id CD86832DBC4
+	for <zyuxin719@sjtu.edu.cn>; Wed, 20 Jul 2022 21:01:27 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=flourish.studio;
+	s=k1; t=1658322086; x=1658624486; i=hello@flourish.studio;
+	bh=y/OB2+2MMAWPgk5g8ctBflXHCq4C+ZToPtUahztE67Y=;
+	h=Subject:From:Reply-To:To:Date:Message-ID:X-MC-User:Feedback-ID:
+	 List-ID:List-Unsubscribe:List-Unsubscribe-Post:Content-Type:
+	 MIME-Version:CC:Date:Subject:From;
+	b=wk/27rDfknHgwok0V1t3MjPdWqT+2g4tacANCV2SfLYqM0hMtqeg3JQpBGlfEgGMz
+	 O1B1UNe8sHlJxrhmHv5gd84o2Gz+sym5TGNiymJpx/EtnoB3zq9h+wIA9uUEMSgdkF
+	 E/S+oD6TxXu86LDvQh1+TH/oum27eX9yXkrjBclc=
+Received: from localhost (localhost [127.0.0.1])
+	by mail22.suw231.rsgsv.net (Mailchimp) with ESMTP id 4LnwnL3bGvzB6JJF7
+	for <zyuxin719@sjtu.edu.cn>; Wed, 20 Jul 2022 13:01:26 +0000 (GMT)
+Subject: =?utf-8?Q?Interactive=20timelines=2C=20Wimbledon=20and=20data=20magic=20=F0=9F=AA=84?=
+From: =?utf-8?Q?Luisa=20Bider?= <hello@flourish.studio>
+Reply-To: =?utf-8?Q?Luisa=20Bider?= <hello@flourish.studio>
+To: <zyuxin719@sjtu.edu.cn>
+Date: Wed, 20 Jul 2022 13:01:21 +0000
+Message-ID: <a41ac2fe0fc0d1ab52f5df1b9.8a716934dc.20220720130111.816c2249a4.7c6ff240@mail22.suw231.rsgsv.net>
+X-Mailer: Mailchimp Mailer - **CID816c2249a48a716934dc**
+X-Campaign: mailchimpa41ac2fe0fc0d1ab52f5df1b9.816c2249a4
+X-campaignid: mailchimpa41ac2fe0fc0d1ab52f5df1b9.816c2249a4
+X-Report-Abuse: Please report abuse for this campaign here: https://mailchimp.com/contact/abuse/?u=a41ac2fe0fc0d1ab52f5df1b9&id=816c2249a4&e=8a716934dc
+X-MC-User: a41ac2fe0fc0d1ab52f5df1b9
+Feedback-ID: 57219141:57219141.1963114:us13:mc
+List-ID: a41ac2fe0fc0d1ab52f5df1b9mc list <a41ac2fe0fc0d1ab52f5df1b9.150389.list-id.mcsv.net>
+X-Accounttype: pd
+List-Unsubscribe: <https://studio.us13.list-manage.com/unsubscribe?u=a41ac2fe0fc0d1ab52f5df1b9&id=190848d56d&e=8a716934dc&c=816c2249a4>, <mailto:unsubscribe-mc.us13_a41ac2fe0fc0d1ab52f5df1b9.816c2249a4-8a716934dc@unsubscribe.mailchimpapp.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_1944272043"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_1944272043
+Content-Type: text/plain; charset="utf-8"; format="fixed"
+Content-Transfer-Encoding: quoted-printable
+
+#[1]Flourish
+
+Hi everyone=2C
+
+Amid record temperatures in London this week=2C we=E2=80=99ve been busy ad=
+ding new features to Flourish and are excited to share the following updat=
+es=E2=80=A6
+
+Chartmaking just got easier with automatic column selection
+Our new data identification feature =E2=80=93 which we like to call data m=
+agic =E2=80=93 makes the visualization process quicker and more intuitive=
+ by mapping columns of data to different aspects of a visualization automa=
+tically. This marks a major milestone in our goal to make the data visuali=
+zation process easier for everyone.
+
+=E2=80=A2 Check out our blog post to learn more (https://flourish.studio/b=
+log/announcing-data-typing/?utm_source=3DFlourish&utm_campaign=3D816c2249a=
+4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_=
+190848d56d-816c2249a4-231011582)
+
+https://flourish.studio/blog/announcing-data-typing/?utm_source=3DFlourish=
+&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm_med=
+ium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582
+
+It=E2=80=99s about time: introducing interactive timelines
+Anything good is worth waiting for and boy=2C is our new premium =E2=80=9C=
+Timeline=E2=80=9D template good! It allows you to visualize chronological=
+ events interactively=2C add images and links=2C change the layout for des=
+ktop and mobile and much more.
+
+=E2=80=A2 Learn more in our blog post (https://flourish.studio/blog/respon=
+sive-interactive-timeline/?utm_source=3DFlourish&utm_campaign=3D816c2249a4=
+-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_1=
+90848d56d-816c2249a4-231011582)
+
+https://flourish.studio/blog/responsive-interactive-timeline/?utm_source=
+=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY=
+_01&utm_medium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582
+
+Wimbledon in eight charts =E2=80=93 from tie breaks to ticket costs
+The Wimbledon championships took place this month and we took a deep-dive=
+ into historic data to find out how many players are left-handed=2C which=
+ country has the most winners for the single=E2=80=99s event=2C how ticket=
+s prices have developed over time and whether ranking scores can predict t=
+he winner. (Spoiler: They can if you=E2=80=99re Novak Djokovic (https://ww=
+w.atptour.com/en/news/djokovic-wimbledon-2022-big-titles?utm_source=3DFlou=
+rish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm=
+_medium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582) ).
+
+=E2=80=A2 Read the full story on our blog (https://flourish.studio/blog/vi=
+sualizing-wimbledon-2022/?utm_source=3DFlourish&utm_campaign=3D816c2249a4-=
+EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_19=
+0848d56d-816c2249a4-231011582)
+
+https://flourish.studio/blog/visualizing-wimbledon-2022/?utm_source=3DFlou=
+rish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm=
+_medium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582
+
+AdKaora used Flourish to dynamically power their live marketing platform
+We chatted to the team at AdKaora=2C a proximity marketing agency based in=
+ Milan=2C to learn how they used the Flourish API (https://developers.flou=
+rish.studio/api/introduction/?utm_source=3DFlourish&utm_campaign=3D816c224=
+9a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D=
+0_190848d56d-816c2249a4-231011582) to automate their reports and to=
+ show real-time data to their customers.
+
+=E2=80=A2 Read more on our blog (https://flourish.studio/blog/adkaora-cust=
+omer-story/?utm_source=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN=
+_2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_190848d56d-816c2=
+249a4-231011582)
+
+https://flourish.studio/blog/adkaora-customer-story/?utm_source=3DFlourish=
+&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm_med=
+ium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582
+
+More updates
+=E2=80=A2 You can now count up to a specified date in our =E2=80=9CCountdo=
+wn=E2=80=9D template (https://help.flourish.studio/article/277-countdown-a=
+n-overview?utm_source=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_=
+2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_190848d56d-816c22=
+49a4-231011582)
+=E2=80=A2 You can now order groups in surveys (https://app.flourish.studio=
+/templates?utm_source=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_=
+2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_190848d56d-816c22=
+49a4-231011582#template-survey) in ascending or descending order
+https://app.flourish.studio/templates?utm_source=3DFlourish&utm_campaign=
+=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm_medium=3Demail&u=
+tm_term=3D0_190848d56d-816c2249a4-231011582#template-survey
+=E2=80=A2 The story editor (https://help.flourish.studio/article/13-creati=
+ng-a-story?utm_source=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_=
+2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_190848d56d-816c22=
+49a4-231011582) has a new search bar for you to find your visualizat=
+ions more quickly
+=E2=80=A2 Learn how to create custom bins using a VLOOKUP formula in our h=
+elp doc (https://help.flourish.studio/article/521-how-to-create-a-fake-num=
+eric-legend-for-your-map-points?utm_source=3DFlourish&utm_campaign=3D816c2=
+249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=
+=3D0_190848d56d-816c2249a4-231011582) =E2=80=93 this can be useful t=
+o color points in your projection maps (https://app.flourish.studio/templa=
+tes?utm_source=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07=
+_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582#template-projection-map) numerically.
+=E2=80=A2 Did you know you can create flippable cards with our =E2=80=9CCa=
+rds=E2=80=9D template (https://app.flourish.studio/templates?utm_source=3D=
+Flourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01=
+&utm_medium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582#tem=
+plate-cards) with some custom CSS? Check out our help doc (https://help.fl=
+ourish.studio/article/515-how-to-create-flip-cards-with-custom-html?utm_so=
+urce=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_=
+COPY_01&utm_medium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582) to learn how.
+https://help.flourish.studio/article/515-how-to-create-flip-cards-with-cus=
+tom-html?utm_source=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_20=
+18_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_190848d56d-816c2249=
+a4-231011582
+
+Check our changelog (https://flourish.studio/whats-new/?utm_source=3DFlour=
+ish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm_=
+medium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582) to see=
+ more updates on what=E2=80=99s new in Flourish!
+
+Come work with us!
+The Flourish and Canva teams (https://flourish.studio/company?utm_source=
+=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY=
+_01&utm_medium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582)=
+ are growing. We have great opportunities across several teams=2C includin=
+g senior backend and visualization engineers=2C to work in our London-base=
+d team.
+
+=E2=80=A2 Apply now or spread the word! (https://www.canva.com/careers/job=
+s/?location=3DLondon%2C%20England%2C%20United%20Kingdom&utm_source=3DFlour=
+ish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_01&utm_=
+medium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582)
+
+https://www.canva.com/careers/jobs/?location=3DLondon%2C%20England%2C%20Un=
+ited%20Kingdom&utm_source=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPA=
+IGN_2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_190848d56d-81=
+6c2249a4-231011582
+
+We=E2=80=99ll be back in a few weeks with more updates. Until then=2C as a=
+lways=2C just hit reply with any ideas=2C questions or feedback =E2=80=93=
+ and keep an eye on the changelog (https://flourish.studio/whats-new/?utm_=
+source=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_CAMPAIGN_2018_07_25_03_4=
+9_COPY_01&utm_medium=3Demail&utm_term=3D0_190848d56d-816c2249a4-231011582) for more updates!
+
+Best wishes=2C
+Luisa and the Flourish team
+
+Did someone forward this message to you? Join the list! (https://flourish.=
+studio/newsletter/?utm_source=3DFlourish&utm_campaign=3D816c2249a4-EMAIL_C=
+AMPAIGN_2018_07_25_03_49_COPY_01&utm_medium=3Demail&utm_term=3D0_190848d56=
+d-816c2249a4-231011582)
+
+Flourish=2C part of the Canva family
+
+300 Curtain House=2C 134=E2=80=93146 Curtain Rd
+
+London EC2A 3AR
+
+Unsubscribe (https://studio.us13.list-manage.com/unsubscribe?u=3Da41ac2fe0=
+fc0d1ab52f5df1b9&id=3D190848d56d&e=3D8a716934dc&c=3D816c2249a4)
+
+References
+
+1. file://localhost/atom.xml
+--_----------=_MCPart_1944272043
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www=
+=2Ew3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+<head><meta name=3D"twitter:image:src" content=3D"https://flourish.studio/=
+images/newsletters/projection-map-labels.png"><meta name=3D"twitter:descri=
+ption" content=3D"Flourish newsletter #36"><meta name=3D"twitter:title" co=
+ntent=3D"Map labels=2C charting air pollution and how to visualize survey=
+ data"><meta name=3D"twitter:card" content=3D"summary_large_image"><meta p=
+roperty=3D"og:type" content=3D"article"><meta property=3D"og:description"=
+ content=3D"Flourish newsletter #36"><meta property=3D"og:image" content=
+=3D"https://flourish.studio/images/newsletters/projection-map-labels.png">=
+<meta property=3D"og:title" content=3D"Map labels=2C charting air pollutio=
+n and how to visualize survey data"><meta property=3D"og:url" content=3D"h=
+ttp://eepurl.com/h630-r">
+=09<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+=09<meta http-equiv=3D"x-ua-compatible" content=3D"IE=3Dedge">
+=09<meta http-equiv=3D"content-type" content=3D"text/html; charset=3DUTF-8=
+">
+=09<title>Interactive timelines=2C Wimbledon and data magic =F0=9F=AA=84</=
+title>
+=09<style type=3D"text/css">
+=09=09body { font-family: sans-serif; }
+=09=09p { margin: 0 0 1em; }
+=09=09p img { width: 100%; }
+=09=09img { max-width: 500px; margin: 0.25em 0 0.75em; box-shadow: 0 0 4px=
+ rgba(0=2C0=2C0=2C0.2); }
+=09=09.small { color: #aaa; font-size: 0.8em; margin: 0;}
+=09=09.no-shadow { box-shadow: none !important;}
+=09</style>
+<meta name=3D"generator" content=3D"Hexo 4.2.0"><link rel=3D"alternate" hr=
+ef=3D"/atom.xml" title=3D"Flourish" type=3D"application/atom+xml">
+<base href=3D"https://flourish.studio/newsletters/39/"></head>
+<body style=3D"font-family: sans-serif;"><div itemscope=3D"" itemtype=3D"h=
+ttp://schema.org/EmailMessage"><div itemprop=3D"publisher" itemscope=3D""=
+ itemtype=3D"http://schema.org/Organization"><meta itemprop=3D"name" conte=
+nt=3D"Flourish"><link itemprop=3D"url" content=3D"https://flourish.studio/=
+"></div><div itemprop=3D"about" itemscope=3D"" itemtype=3D"http://schema.o=
+rg/Offer"><link itemprop=3D"image" href=3D"https://flourish.studio/images/=
+newsletters/projection-map-labels.png"></div></div>
+=09<p style=3D"margin: 0 0 1em;">Hi everyone=2C</p>
+<p style=3D"margin: 0 0 1em;">Amid record temperatures in London this week=
+=2C we=E2=80=99ve been busy adding new features to Flourish and are excite=
+d to share the following updates=E2=80=A6</p>
+<p style=3D"margin: 0 0 1em;"><strong>Chartmaking just got easier with aut=
+omatic column selection</strong><br>
+Our new data identification feature =E2=80=93 which we like to call data m=
+agic =E2=80=93 makes the visualization process quicker and more intuitive=
+ by mapping columns of data to different aspects of a visualization automa=
+tically. This marks a major milestone in our goal to make the data visuali=
+zation process easier for everyone.</p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3De345113563&e=
+=3D8a716934dc">Check out our blog post to learn more</a></p>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D7496e8008e&e=3D8a716934dc"><img src=3D"https://flourish.studio/images/blog/data-typing-banner.png=
+" alt=3D"Data typing post" style=3D"max-width: 500px;margin: 0.25em 0 0.75=
+em;box-shadow: 0 0 4px rgba(0=2C0=2C0=2C0.2);width: 100%;"></a></p>
+<p style=3D"margin: 0 0 1em;"><strong>It=E2=80=99s about time: introducing=
+ interactive timelines</strong><br>
+Anything good is worth waiting for and boy=2C is our new premium =E2=80=9C=
+Timeline=E2=80=9D template good! It allows you to visualize chronological=
+ events interactively=2C add images and links=2C change the layout for des=
+ktop and mobile and much more.</p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Da3e739208a&e=
+=3D8a716934dc">Learn more in our blog post</a></p>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D3ffbeb3f8e&e=3D8a716934dc"><img src=3D"https://flourish.studio/images/newsletters/timeline-2.gif"=
+ alt=3D"Timeline blog" style=3D"max-width: 500px;margin: 0.25em 0 0.75em;b=
+ox-shadow: 0 0 4px rgba(0=2C0=2C0=2C0.2);width: 100%;"></a></p>
+<p style=3D"margin: 0 0 1em;"><strong>Wimbledon in eight charts =E2=80=93=
+ from tie breaks to ticket costs</strong><br>
+The Wimbledon championships took place this month and we took a deep-dive=
+ into historic data to find out how many players are left-handed=2C which=
+ country has the most winners for the single=E2=80=99s event=2C how ticket=
+s prices have developed over time and whether ranking scores can predict t=
+he winner. (Spoiler: They can if you=E2=80=99re <a href=3D"https://studio.=
+us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D09dacc=
+b80e&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener">Novak Djokovic</a=
+>).</p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D927b0a74f1&e=
+=3D8a716934dc">Read the full story on our blog</a></p>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D30bea98325&e=3D8a716934dc"><img src=3D"https://flourish.studio/images/blog/wimbledon-banner.png"=
+ alt=3D"Wimbledon blog" style=3D"max-width: 500px;margin: 0.25em 0 0.75em;=
+box-shadow: 0 0 4px rgba(0=2C0=2C0=2C0.2);width: 100%;"></a></p>
+<p style=3D"margin: 0 0 1em;"><strong>AdKaora used Flourish to dynamically=
+ power their live marketing platform</strong><br>
+We chatted to the team at AdKaora=2C a proximity marketing agency based in=
+ Milan=2C to learn how they used the <a href=3D"https://studio.us13.list-m=
+anage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D78d8c6b3f3&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener">Flourish API</a> to automate=
+ their reports and to show real-time data to their customers.</p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Dcf246fb2e7&e=
+=3D8a716934dc">Read more on our blog</a></p>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D969199eab3&e=3D8a716934dc"><img src=3D"https://flourish.studio/images/blog/adkaora-banner.png" al=
+t=3D"AdKaora customer story" style=3D"max-width: 500px;margin: 0.25em 0 0.=
+75em;box-shadow: 0 0 4px rgba(0=2C0=2C0=2C0.2);width: 100%;"></a></p>
+<p style=3D"margin: 0 0 1em;"><strong>More updates</strong><br>
+=E2=80=A2 You can now count <em>up</em> to a specified date in our <a href=
+=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52=
+f5df1b9&id=3De137c32681&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener=
+">=E2=80=9CCountdown=E2=80=9D template</a><br>
+=E2=80=A2 You can now order groups in <a href=3D"https://studio.us13.list-=
+manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D332698fc54&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener">surveys</a> in ascending or=
+ descending order<br>
+<a href=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc=
+0d1ab52f5df1b9&id=3Da5e56b0c90&e=3D8a716934dc" target=3D"_blank" rel=3D"n=
+oopener"><img src=3D"https://flourish.studio/images/newsletters/grouping-s=
+urvey.gif" alt=3D"Ascending and descending groups in Survey" style=3D"max-=
+width: 500px;margin: 0.25em 0 0.75em;box-shadow: 0 0 4px rgba(0=2C0=2C0=2C=
+0.2);width: 100%;"></a><br>
+=E2=80=A2 The <a href=3D"https://studio.us13.list-manage.com/track/click?u=
+=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D4ce5de1bd0&e=3D8a716934dc" target=3D"_b=
+lank" rel=3D"noopener">story editor</a> has a new search bar for you to fi=
+nd your visualizations more quickly<br>
+=E2=80=A2 Learn how to create custom bins using a VLOOKUP formula in <a hr=
+ef=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab=
+52f5df1b9&id=3D27328935ee&e=3D8a716934dc" target=3D"_blank" rel=3D"noopen=
+er">our help doc</a> =E2=80=93 this can be useful to color points in your=
+ <a href=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0f=
+c0d1ab52f5df1b9&id=3Db207f63d30&e=3D8a716934dc" target=3D"_blank" rel=3D"=
+noopener">projection maps</a> numerically.<br>
+=E2=80=A2 Did you know you can create flippable cards with our <a href=3D"=
+https://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df=
+1b9&id=3D0dd1cc4358&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener">=
+=E2=80=9CCards=E2=80=9D template</a> with some custom CSS? <a href=3D"http=
+s://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&=
+id=3D1912038c7e&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener">Check=
+ out our help doc</a> to learn how.<br>
+<a href=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc=
+0d1ab52f5df1b9&id=3D003bc1888a&e=3D8a716934dc" target=3D"_blank" rel=3D"n=
+oopener"><img src=3D"https://flourish.studio/images/newsletters/flippable-=
+cards.gif" alt=3D"Flippable cards on hover" style=3D"max-width: 500px;marg=
+in: 0.25em 0 0.75em;box-shadow: 0 0 4px rgba(0=2C0=2C0=2C0.2);width: 100%;=
+"></a><br></p>
+<p style=3D"margin: 0 0 1em;"><em>Check our <a href=3D"https://studio.us13=
+=2Elist-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D994e635305=
+&e=3D8a716934dc">changelog</a> to see more updates on what=E2=80=99s new=
+ in Flourish!</em></p>
+<p style=3D"margin: 0 0 1em;"><strong>Come work with us!</strong><br>
+The <a href=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac2f=
+e0fc0d1ab52f5df1b9&id=3D141559baf6&e=3D8a716934dc">Flourish and Canva tea=
+ms</a> are growing. We have great opportunities across several teams=2C in=
+cluding senior backend and visualization engineers=2C to work in our Londo=
+n-based team.</p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D1812cd0e39&e=
+=3D8a716934dc" target=3D"_blank" rel=3D"noopener">Apply now or spread the=
+ word!</a></p>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D444632c529&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener"><img src=3D"https://flourish.studio=
+/images/flourish-office-montage.jpg" alt=3D"Join the Flourish team" style=
+=3D"max-width: 500px;margin: 0.25em 0 0.75em;box-shadow: 0 0 4px rgba(0=2C=
+0=2C0=2C0.2);width: 100%;"></a></p>
+<p style=3D"margin: 0 0 1em;">We=E2=80=99ll be back in a few weeks with mo=
+re updates. Until then=2C as always=2C just hit reply with any ideas=2C qu=
+estions or feedback =E2=80=93 and keep an eye on the <a href=3D"https://st=
+udio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Dc=
+575a8a456&e=3D8a716934dc">changelog</a> for more updates!</p>
+<p style=3D"margin: 0 0 1em;">Best wishes=2C<br>
+Luisa and the Flourish team<br></p>
+<p style=3D"margin: 0 0 1em;"><em>Did someone forward this message to you?=
+ <a href=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0f=
+c0d1ab52f5df1b9&id=3Dff84803ae9&e=3D8a716934dc">Join the list!</a></em></=
+p>
+<!-- Update webinar image with upcoming webinars -->
+
+=09<p class=3D"small" style=3D"margin: 0;color: #aaa;font-size: 0.8em;">Fl=
+ourish=2C part of the Canva family
+=09</p><p class=3D"small" style=3D"margin: 0;color: #aaa;font-size: 0.8em;=
+">300 Curtain House=2C 134=E2=80=93146 Curtain Rd
+=09</p><p class=3D"small" style=3D"margin: 0;color: #aaa;font-size: 0.8em;=
+">London EC2A 3AR
+=09</p><p class=3D"small" style=3D"margin: 0;color: #aaa;font-size: 0.8em;=
+"><a id=3D"unsub" href=3D"https://studio.us13.list-manage.com/unsubscribe?=
+u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D190848d56d&e=3D8a716934dc&c=3D816c2249a4"=
+>Unsubscribe</a>
+</p><img src=3D"https://studio.us13.list-manage.com/track/open.php?u=3Da41=
+ac2fe0fc0d1ab52f5df1b9&id=3D816c2249a4&e=3D8a716934dc" height=3D"1" width=
+=3D"1" alt=3D""></body>
+</html>
+--_----------=_MCPart_1944272043--

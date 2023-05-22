@@ -1,0 +1,91 @@
+Return-Path: <1213200160@qq.com>
+Received: from 10.118.0.96 (LHLO mta96.sjtu.edu.cn) (10.118.0.96) by
+ mstore111.sjtu.edu.cn with LMTP; Thu, 30 Jun 2022 12:09:19 +0800 (CST)
+Received: from mx01.sjtu.edu.cn (mx01.sjtu.edu.cn [202.120.0.7])
+	by mta96.sjtu.edu.cn (Postfix) with ESMTP id 25E6A2FD011
+	for <zyuxin719@sjtu.edu.cn>; Thu, 30 Jun 2022 12:09:19 +0800 (CST)
+Received: from localhost (localhost [127.0.0.1])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id 1D5611C3E3
+	for <zyuxin719@sjtu.edu.cn>; Thu, 30 Jun 2022 12:09:19 +0800 (CST)
+X-Virus-Scanned: Debian amavisd-new at sjtu.edu.cn
+X-Spam-Flag: NO
+X-Spam-Score: -8.071
+X-Spam-Level:
+X-Spam-Status: No, score=-8.071 tagged_above=-10 required=10
+	tests=[DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+	DKIM_VALID_EF=-0.1, EN_FROM_QQ=-10, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+	FREEMAIL_FROM=0.001, FROM_EXCESS_BASE64=0.001, HTML_MESSAGE=0.001,
+	HTML_OBFUSCATE_10_20=1.162, MPART_ALT_DIFF=0.724,
+	RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+	T_SCC_BODY_TEXT_LINE=-0.01] autolearn=disabled
+Received: from mx01.sjtu.edu.cn ([127.0.0.1])
+	by localhost (mx01.sjtu.edu.cn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id iGafYvDNFni6 for <zyuxin719@sjtu.edu.cn>;
+	Thu, 30 Jun 2022 12:09:18 +0800 (CST)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=101.226.139.69; helo=xmbg7.mail.qq.com; envelope-from=1213200160@qq.com; receiver=<UNKNOWN> 
+Received: from xmbg7.mail.qq.com (xmbg7.mail.qq.com [101.226.139.69])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id 794F81C3EB
+	for <zyuxin719@sjtu.edu.cn>; Thu, 30 Jun 2022 12:09:18 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qq.com; s=s201512;
+	t=1656562158; bh=orNdRo1LXY2AlSU/ROFXybzCr6TfBFA6oAcK7d492xU=;
+	h=From:To:Subject:Date;
+	b=HswJhS5GQYWnuqMAIebBar2S3uVTq3HVfHFYlpltM6svLeMB49RCLfKD/+rYlG1f9
+	 KuZGLOTkU3v+1qLsNPgJscYqc8vgutJPAMJraeSPvLeDDMXaQK+4mJHUkrAGI+Cu1D
+	 aE0I6VzKvNtrQgh6W5ZR9q0ZbMGxYKP908CgnIRk=
+X-QQ-FEAT: +BBVktQ4OjYcdcGHPe2wgYR0NOhGNzyd
+X-QQ-SSF: 0000000000000040000000000000
+X-QQ-XMAILINFO: NAlL88lOMvEhh1f8idxi1bIVzcJFwvoVmWNaKE3174WqASLGc66YIVAo2XB+3X
+	 OwCTKfJOYjgOtO2iMV0EU69X0fZEy0o9zZK0G2B8h+s/3p9CRoVpJXjHZsr4MjlzlBEtTkDc6nUGK
+	 4dxLGZxXW5tHT5KwcsDoEYIlI2+3ixr0IH3p6itZTbmM5DFgNxYaGho34/0gkkTko91snwFGxjmoT
+	 WZGlyOb1JtZEoZmjLEaDnzlUtoz8nJ+g3ZhmeNYq3tseq2X0TObltsQsrKc8fyNAwVYn0KCKzoilo
+	 oL4ZZiPqi3ySBUrtT8DLjmElVzZwXYL0Q/BpTLnivlcWD8NodOpf8HBW9GedOfPX0IeTboRCEK04k
+	 fuo0cW+dJ/8D75PTI/nfyyOfLD4ZTFZPW8gjeOhrlNwwA4OfGbPGZZh5SriW2fdA8b1umEkqUhhK8
+	 eILUXmwOtrjhgs5NmDK+kXz8w9VsGxMMf17THfqSUindHZ0v3VIpz6htFFwnXeBClkoZ3Mq98EYam
+	 XgBRvyQq+/bLgrsnjKvRQz/0ZWSC2j8dJscFUvKAfMSRrXUAavt5wakYoB/KwVj+b3TUzg22j0HjE
+	 pKtYgAtcU4gMo0bmJ38jDTijk1QoBN1oH4hC1pjnDfxbZnAUq3mAw2N6lUR+krAlMsbETGvxHOILv
+	 XJ8sq7HpdsElMpLrH4Lc1feWhHpQvi0VjjC0PN6pH0FOJaJJWzF5P3CgHLfP8Xnh2c60yFD0a81r4
+	 5rtLYp9gw44emgvPY3vKbWtvyzrI6Fwk0mGPhX18S9IFx3m4A5m484sjZRfgRDrJp+77T8SP/W7dl
+	 Z52mbQhdlBmx
+X-HAS-ATTACH: no
+X-QQ-BUSINESS-ORIGIN: 2
+X-Originating-IP: 218.6.189.60
+X-QQ-STYLE: 
+X-QQ-mid: webmail430t1656562157t958255
+From: "=?gb18030?B?MTIxMzIwMDE2MA==?=" <1213200160@qq.com>
+To: "=?gb18030?B?aGl0dG9fbw==?=" <hitto_o@sjtu.edu.cn>, "=?gb18030?B?S2FuZzEyODE5ODgwOTY=?=" <Kang1281988096@163.com>, "=?gb18030?B?bGlqaWFuMDgxMw==?=" <lijian0813@sjtu.edu.cn>, "=?gb18030?B?Wnl1eGluNzE5?=" <Zyuxin719@sjtu.edu.cn>, "=?gb18030?B?eWhjMTQyODU3?=" <yhc142857@163.com>
+Subject: 
+Mime-Version: 1.0
+Content-Type: multipart/alternative;
+	boundary="----=_NextPart_62BD21ED_116A8518_240B5983"
+Content-Transfer-Encoding: 8Bit
+Date: Thu, 30 Jun 2022 12:09:17 +0800
+X-Priority: 3
+Message-ID: <tencent_DF5A45F179D96626209EA0B0EA20983ED009@qq.com>
+X-QQ-MIME: TCMime 1.0 by Tencent
+X-Mailer: QQMail 2.x
+X-QQ-Mailer: QQMail 2.x
+
+This is a multi-part message in MIME format.
+
+------=_NextPart_62BD21ED_116A8518_240B5983
+Content-Type: text/plain;
+	charset="gb18030"
+Content-Transfer-Encoding: base64
+
+zazRp8TjusOjrNHMy+HGpLf0se3QzbLiytTQ6NKqytW8r7K5s+S7+bSh0MXPoqOswum3s8zu
+0rvPws7Kvu2jumh0dHBzOi8vd3d3LndqeC5jbi92bS9QcGxyaXBuLmFzcHiBNqQ5
+
+------=_NextPart_62BD21ED_116A8518_240B5983
+Content-Type: text/html;
+	charset="gb18030"
+Content-Transfer-Encoding: base64
+
+PG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNo
+YXJzZXQ9R0IxODAzMCI+PGRpdj7NrNGnxOO6w6Os0czL4cakt/Sx7dDNsuLK1NDo0qrK1byv
+srmz5Lv5tKHQxc+io6zC6bezzO7Su8/Czsq+7aO6aHR0cHM6Ly93d3cud2p4LmNuL3ZtL1Bw
+bHJpcG4uYXNweDxzcGFuIGlkPSJfZWRpdG9yX2Jvb2ttYXJrX3N0YXJ0XzEiIHN0eWxlPSJk
+aXNwbGF5OiBub25lOyBsaW5lLWhlaWdodDogMHB4OyI+gTakOTwvc3Bhbj48YnI+PC9kaXY+
+
+
+------=_NextPart_62BD21ED_116A8518_240B5983--
+

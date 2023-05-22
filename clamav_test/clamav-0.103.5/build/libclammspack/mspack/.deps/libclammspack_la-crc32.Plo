@@ -1,0 +1,8 @@
+../libclammspack/mspack/libclammspack_la-crc32.lo: \
+ ../../libclamav/../libclammspack/mspack/crc32.c \
+ /usr/include/stdc-predef.h \
+ ../../libclamav/../libclammspack/mspack/crc32.h
+
+/usr/include/stdc-predef.h:
+
+../../libclamav/../libclammspack/mspack/crc32.h:

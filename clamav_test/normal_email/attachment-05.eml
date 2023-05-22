@@ -1,0 +1,38 @@
+Return-Path: <PartnershipPlatform@shanghaidisneyresort.com>
+Received: from 10.118.0.96 (LHLO mta96.sjtu.edu.cn) (10.118.0.96) by
+ mstore111.sjtu.edu.cn with LMTP; Wed, 20 Jul 2022 20:31:26 +0800 (CST)
+Received: from mx01.sjtu.edu.cn (mx01.sjtu.edu.cn [202.120.0.7])
+	by mta96.sjtu.edu.cn (Postfix) with ESMTP id E66632FD065
+	for <Zyuxin719@sjtu.edu.cn>; Wed, 20 Jul 2022 20:31:26 +0800 (CST)
+Received: from localhost (localhost [127.0.0.1])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id DFF9F1C8443
+	for <Zyuxin719@sjtu.edu.cn>; Wed, 20 Jul 2022 20:31:26 +0800 (CST)
+X-Virus-Scanned: Debian amavisd-new at sjtu.edu.cn
+X-Spam-Flag: NO
+X-Spam-Score: 0
+X-Spam-Level:
+X-Spam-Status: No, score=x tagged_above=-10 required=10 WHITELISTED tests=[]
+	autolearn=unavailable
+Received: from mx01.sjtu.edu.cn ([127.0.0.1])
+	by localhost (mx01.sjtu.edu.cn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id Z0YcBNYqIAtD for <Zyuxin719@sjtu.edu.cn>;
+	Wed, 20 Jul 2022 20:31:26 +0800 (CST)
+X-Comment: SPF skipped for PTR whitelisted relay domain - client-ip=103.255.46.42; helo=mx.account.reservation.shanghaidisneyresort.com; envelope-from=partnershipplatform@shanghaidisneyresort.com; receiver=<UNKNOWN> 
+Received: from mx.account.reservation.shanghaidisneyresort.com (unknown [103.255.46.42])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id A7FFB1C8442
+	for <Zyuxin719@sjtu.edu.cn>; Wed, 20 Jul 2022 20:31:26 +0800 (CST)
+X-MessageId: 4463471-4890
+MIME-Version: 1.0
+From: PartnershipPlatform <PartnershipPlatform@shanghaidisneyresort.com>
+To: Zyuxin719@sjtu.edu.cn
+Date: 20 Jul 2022 20:30:51 +0800
+Subject: =?utf-8?B?44CQ5LiK5rW36L+q5aOr5bC85bqm5YGH5Yy644CR5ZCI5L2c5LyZ5Ly05rS75Yqo6aqM6K+B?=
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+Message-Id: <20220720123126.DFF9F1C8443@mx01.sjtu.edu.cn>
+
+5oKo55qE6aqM6K+B56CB5aaC5LiLIENTQ0c2OTVS77yM55So5LqO5a6M5oiQ5ZCI5L2c5LyZ
+5Ly05rS75Yqo6aqM6K+B44CC5aaC6Z2e5pys5Lq65pON5L2c77yM6K+35b+955Wl5pys6YKu
+5Lu244CCPGltZyBzcmM9J2h0dHA6Ly9pbWFnZS56eHptYWlsLmNvbS90L2E/YT00NDYzNDcx
+LTQ4OTAnIGhlaWdodD0nMScgd2lkdGg9JzEnIC8+
+

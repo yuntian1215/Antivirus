@@ -1,0 +1,221 @@
+Return-Path: <notify@mail.qingflow.com>
+Received: from 10.118.0.96 (LHLO mta96.sjtu.edu.cn) (10.118.0.96) by
+ mstore111.sjtu.edu.cn with LMTP; Sat, 18 Jun 2022 10:58:51 +0800 (CST)
+Received: from mx01.sjtu.edu.cn (mx01.sjtu.edu.cn [202.120.0.7])
+	by mta96.sjtu.edu.cn (Postfix) with ESMTP id EABAD2FD027
+	for <zyuxin719@sjtu.edu.cn>; Sat, 18 Jun 2022 10:58:50 +0800 (CST)
+Received: from localhost (localhost [127.0.0.1])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id E2B2F3499
+	for <zyuxin719@sjtu.edu.cn>; Sat, 18 Jun 2022 10:58:50 +0800 (CST)
+X-Virus-Scanned: Debian amavisd-new at sjtu.edu.cn
+X-Spam-Flag: NO
+X-Spam-Score: 2.092
+X-Spam-Level: **
+X-Spam-Status: No, score=2.092 tagged_above=-10 required=10
+	tests=[HTML_MESSAGE=0.001, MIME_HTML_ONLY=0.1,
+	RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+	T_SCC_BODY_TEXT_LINE=-0.01, UNPARSEABLE_RELAY=0.001, URIBL_BLOCKED=2]
+	autolearn=disabled
+Received: from mx01.sjtu.edu.cn ([127.0.0.1])
+	by localhost (mx01.sjtu.edu.cn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id EFujKQS6swuv for <zyuxin719@sjtu.edu.cn>;
+	Sat, 18 Jun 2022 10:58:50 +0800 (CST)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=140.205.208.30; helo=out208-30.dm.aliyun.com; envelope-from=notify@mail.qingflow.com; receiver=<UNKNOWN> 
+Received: from out208-30.dm.aliyun.com (out208-30.dm.aliyun.com [140.205.208.30])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id BC9D22CE0
+	for <zyuxin719@sjtu.edu.cn>; Sat, 18 Jun 2022 10:58:50 +0800 (CST)
+X-AliDM-RcptTo: enl1eGluNzE5QHNqdHUuZWR1LmNu
+Feedback-ID: default:notify@mail.qingflow.com:trigger:14646
+X-EnvId: 17870283571235508885
+Received: from 2-1(mailfrom:notify@mail.qingflow.com fp:SMTPD_DU--1cezR8I)
+          by smtpdm.aliyun.com(127.0.0.1);
+          Sat, 18 Jun 2022 10:58:50 +0800
+Date: Sat, 18 Jun 2022 10:58:50 +0800 (CST)
+From: =?utf-8?B?5a2m55Sf5pyN5Yqh5Lit5b+D?= <notify@mail.qingflow.com>
+To: zyuxin719@sjtu.edu.cn
+Message-ID: <900967840.38945.1655521130581.JavaMail.qingflow@2-1>
+Subject: =?utf-8?B?55Sz6K+35bey6YCa6L+H?=
+MIME-Version: 1.0
+Content-Type: multipart/mixed; 
+	boundary="----=_Part_38943_1114312681.1655521130496"
+
+------=_Part_38943_1114312681.1655521130496
+Content-Type: multipart/related; 
+	boundary="----=_Part_38944_842186436.1655521130496"
+
+------=_Part_38944_842186436.1655521130496
+Content-Type: text/html;charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<html lang=3D'CN'>
+<head>
+  <meta charset=3D'UTF-8'>
+  <title>=E4=BD=A0=E6=9C=89=E4=B8=80=E6=9D=A1=E7=94=B3=E8=AF=B7=E5=B7=B2=E7=
+=BB=8F=E9=80=9A=E8=BF=87</title>
+  <style>
+    a {
+      color: #F5BC21;
+      line-height: 1.3;
+      text-decoration: none;
+    }
+
+    a,
+    a:hover,
+    a:focus,
+    a:active {
+      text-decoration: none;
+    }
+
+    a:hover,
+    a:focus {
+      color: #F5BC21;
+    }
+    p {
+      line-height: 1.5;
+    }
+    .content {
+      padding: 90px 5%;
+      margin: auto;
+      width: 100%;
+      background-color: #f5f5f7;
+      box-shadow: 0 2px 3px 0 rgba(0,0,0,.1);
+      box-sizing: border-box;
+    }
+    .content > div {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .logo-container {
+      width: 100%;
+      height: 66px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .email-text-container {
+      box-sizing: border-box;
+      padding: 45px 50px;
+      margin: auto;
+      background-color: #fff;
+      border: solid 1px #eeeeee;
+    }
+    .email-text-container > div {
+      color: #adadb2;
+      font-size: 14px;
+      line-height: 0.8;
+      text-align: left;
+    }
+    .title {
+      margin: 0 auto 30px;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 25px;
+      color: #34313f;
+    }
+    .text-table {
+      margin: 0 auto;
+      width: 100%;
+      background-color: #fff;
+      border-collapse: collapse;
+      line-height: 1.8;
+      font-size: 14px;
+    }
+    .text-table td {
+      padding: 10px 15px;
+      border: 1px solid #e3e2e9;
+      text-align: left;
+    }
+    .tips {
+      margin: 0;
+      font-size: 14px;
+      color: #aaadb3;
+      line-height: 30px;
+    }
+    .result-url {
+      max-width: 410px;
+      text-decoration: none;
+      color: #aaadb3!important;
+      word-wrap: break-word;
+      word-break: break-all;
+    }
+    .footer {
+      margin: 30px auto 0;
+      width: 250px;
+      font-size: 14px;
+      line-height: 25px;
+      color: #aaadb3;
+    }
+    @media screen and (max-width: 768px) {
+      .email-text-container {
+        padding: 45px 20px;
+      }
+      tr > td:first-of-type {
+        width: 30%!important;
+      }
+    }
+  </style>
+</head>
+<body style=3D"width: 100%;margin: 0;font-family: 'Microsoft Yahei', sans-s=
+erif; text-align:center;padding: 20px 0;">
+<div class=3D"content">
+  <div class=3D"logo-container">
+    <img style=3D"width: 100px;"
+         src=3D"https://file.shenqingtong.com/uploads/file/ffd43548-2594-4f=
+b9-9165-c33db8937c0f_22989.jpeg?x-oss-process=3Dimage/resize,m_mfit,w_128,h=
+_32">
+  </div>
+  <div class=3D"email-text-container">
+    <div>
+      <p class=3D"title">=E4=BD=A0=E6=9C=89=E4=B8=80=E6=9D=A1=E7=94=B3=E8=
+=AF=B7=E5=B7=B2=E7=BB=8F=E9=80=9A=E8=BF=87</p>
+      <div style=3D"text-align:center;">
+        <table class=3D"text-table">
+          <tbody>
+          <tr>
+            <td style=3D"width: 120px; color:#adadb2;">=E5=BA=94=E7=94=A8=
+=E5=90=8D</td>
+            <td style=3D"color: #5d5a67; font-weight: 400;">=E5=AD=A6=E7=94=
+=9F=E8=BF=94=E4=B9=A1=E8=AF=81=E6=98=8E=E7=94=B3=E8=AF=B7</td>
+          </tr>
+          <tr>
+            <td style=3D"width: 120px; color:#adadb2;">=E7=94=B3=E8=AF=B7=
+=E7=8A=B6=E6=80=81</td>
+            <td style=3D"color: #2CD299; font-weight: 400;">=E5=B7=B2=E9=80=
+=9A=E8=BF=87</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style=3D"margin: 30px 0;">
+        <a href=3D"https://ssc.sjtu.edu.cn/tag/0/app/2ff26a97/list/3?applyI=
+d=3D8684178">
+          <button
+                  style=3D"background-color: #f5bc34;border: none;border-ra=
+dius: 3px;width: 145px;height: 44px;font-size: 14px;color: white; outline:n=
+one;cursor: pointer;">
+            =E6=9F=A5=E7=9C=8B=E7=BB=93=E6=9E=9C
+          </button>
+        </a>
+      </div>
+      <div class=3D"tips">
+        =E5=A6=82=E4=B8=8A=E6=96=B9=E6=8C=89=E9=92=AE=E5=A4=B1=E6=95=88=EF=
+=BC=8C=E8=AF=B7=E5=A4=8D=E5=88=B6=E6=AD=A4=E9=93=BE=E6=8E=A5=E5=90=8E=E4=BB=
+=8E=E6=B5=8F=E8=A7=88=E5=99=A8=E4=B8=AD=E6=89=93=E5=BC=80
+        <p style=3D"margin: 0;"><a class=3D"result-url" href=3D"https://ssc=
+.sjtu.edu.cn/tag/0/app/2ff26a97/list/3?applyId=3D8684178">https://ssc.sjtu.=
+edu.cn/tag/0/app/2ff26a97/list/3?applyId=3D8684178</a></p>
+      </div>
+    </div>
+    <div>
+      <p class=3D"tips">=E4=B8=BA=E4=BA=86=E9=98=B2=E6=AD=A2=E6=82=A8=E7=9A=
+=84=E6=95=8F=E6=84=9F=E4=BF=A1=E6=81=AF=E6=B3=84=E9=9C=B2=EF=BC=8C=E8=AF=B7=
+=E5=8B=BF=E5=B0=86=E6=AD=A4=E9=82=AE=E4=BB=B6=E8=BD=AC=E5=8F=91=E7=BB=99=E4=
+=BB=96=E4=BA=BA</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
+------=_Part_38944_842186436.1655521130496--
+
+------=_Part_38943_1114312681.1655521130496--

@@ -1,0 +1,77 @@
+Return-Path: <public@openeuler.io>
+Received: from 10.118.0.96 (LHLO mta96.sjtu.edu.cn) (10.118.0.96) by
+ mstore111.sjtu.edu.cn with LMTP; Sat, 9 Jul 2022 13:45:26 +0800 (CST)
+Received: from mx01.sjtu.edu.cn (mx01.sjtu.edu.cn [202.120.0.7])
+	by mta96.sjtu.edu.cn (Postfix) with ESMTP id 7F6A92FD243
+	for <zyuxin719@sjtu.edu.cn>; Sat,  9 Jul 2022 13:45:25 +0800 (CST)
+Received: from localhost (localhost [127.0.0.1])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id 76C8D42957C
+	for <zyuxin719@sjtu.edu.cn>; Sat,  9 Jul 2022 13:45:25 +0800 (CST)
+X-Virus-Scanned: Debian amavisd-new at sjtu.edu.cn
+X-Spam-Flag: NO
+X-Spam-Score: 1.994
+X-Spam-Level: *
+X-Spam-Status: No, score=1.994 tagged_above=-10 required=10
+	tests=[DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+	RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+	SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01, URIBL_BLOCKED=2]
+	autolearn=disabled
+Received: from mx01.sjtu.edu.cn ([127.0.0.1])
+	by localhost (mx01.sjtu.edu.cn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id 6Zeg8UQRkn67 for <zyuxin719@sjtu.edu.cn>;
+	Sat,  9 Jul 2022 13:45:24 +0800 (CST)
+Received-SPF: None (mailfrom) identity=mailfrom; client-ip=209.85.218.53; helo=mail-ej1-f53.google.com; envelope-from=public@openeuler.io; receiver=<UNKNOWN> 
+Received: from mail-ej1-f53.google.com (mail-ej1-f53.google.com [209.85.218.53])
+	by mx01.sjtu.edu.cn (Postfix) with ESMTP id C9152429D0B
+	for <zyuxin719@sjtu.edu.cn>; Sat,  9 Jul 2022 13:45:24 +0800 (CST)
+Received: by mail-ej1-f53.google.com with SMTP id sb34so844807ejc.11
+        for <zyuxin719@sjtu.edu.cn>; Fri, 08 Jul 2022 22:45:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=openeuler-io.20210112.gappssmtp.com; s=20210112;
+        h=mime-version:from:date:message-id:subject:to;
+        bh=fxQSl9mOzTPxwSU0bH0rVarc/tKm8kHWcBb8Rwc22H4=;
+        b=YbGixoPj5gqo12nVheXNBZf9xcJ1bWbh0EyR3rCvp4v/YBFfMc35DM6Lp06KRrejKQ
+         aZX1VB0ydybJIE/P2GubJO4e0c2jW7OcgPzi8JAP9vlpyI04QsxQEnLzxitW/mhsVIwB
+         xROOnbjYz4csM8jkgKt7mM5JSwXvkeTWJhagpDNq5ZmuWOgRBdcT95ZujkAFcqogXfM+
+         FWBOs7GB7HKMTkYDeJy7aE3VH7i/jpCGs2ogS/8guPytXE70GdEpYqrdniS5DQoxAF2L
+         xG6utLToQ30EcyuBFR7wRhHb6ejLvD9obDsiscjv91664i91DlQ2DohJsDPQSY9/MFqu
+         z19Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20210112;
+        h=x-gm-message-state:mime-version:from:date:message-id:subject:to;
+        bh=fxQSl9mOzTPxwSU0bH0rVarc/tKm8kHWcBb8Rwc22H4=;
+        b=BSUqpoMpJyNINP78OUhJz1c4iXGA7hjo0rQIHBC7TChUA8AqdH52UdIofjxi1mDGS0
+         09XXbJAk1F85/7r0cjoGFx5n5WtituifoWDObjngPUrhcnN1rGUgeb5j4HhfEUiL43A/
+         4vE1nG7AhO4ke783CXlAlpxWRo99zCgEvSjSMqEPxqm2HG6tlzoraoyRHg8mlnbvzwYa
+         Qkr+E3qhFwa1BksbM6qhGtifJ9oVD0dPx/jYUEBiU/P2hHlg8onEF8reaGrRdwPmeokT
+         2+FM4dSLxwGFIbB1VkVKauv7bWGc+ztt+AOy4tadGOhbaGiy5BVGZKHc08eS246nIjfU
+         zqGA==
+X-Gm-Message-State: AJIora/FGONtGE/7tz9e0zxU/08a29+sZGO6tmsDDA3qS8UxEfbMb/Tn
+	9BEFe7HBdz+T1VHE7FNmaFVFwTNcAp3gQxzF+zBMt1Aqce4=
+X-Google-Smtp-Source: AGRyM1vK5GKUDaz/TKNq1Iv+Fdw+SPBASMe44PFde1LY9Vm77bq29YOwdtFerPhRPGkK4L7b68EtQgs9PwgmaGhi4mY=
+MIME-Version: 1.0
+X-Received: by 2002:a17:907:7f05:b0:726:9770:77d6 with SMTP id
+ qf5-20020a1709077f0500b00726977077d6mr7176793ejc.464.1657345522458; Fri, 08
+ Jul 2022 22:45:22 -0700 (PDT)
+Received: from 642402344772 named unknown by gmailapi.google.com with
+ HTTPREST; Fri, 8 Jul 2022 22:45:21 -0700
+From: public@openeuler.io
+Date: Fri, 8 Jul 2022 22:45:21 -0700
+Message-ID: <CAJboJsQx3M6K4+oVE0uccd+x9oVdvqDUSrmmd2Ma-YdoN5_4eA@mail.gmail.com>
+Subject: An employee has signed CLA
+To: zyuxin719@sjtu.edu.cn
+Content-Type: text/plain; charset="UTF-8"
+
+Dear manager,
+
+An employee whose email is Zyuxin719@sjtu.edu.cn of your company has
+just signed the CLA to the project[1] of "openEuler". Please login to
+the CLA management system in time to activate the employee's
+contribution privileges.
+
+The CLA management system login URL is https://clasign.osinfra.cn/.
+
+Have questions or need help? Just reply to this email and the
+openEuler Community Support Team will help you sort it out.
+
+[1]. https://gitee.com/openeuler

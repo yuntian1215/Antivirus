@@ -1,0 +1,414 @@
+Delivered-To: rayguo17@gmail.com
+Received: by 2002:a19:6717:0:0:0:0:0 with SMTP id b23csp1886088lfc;
+        Sun, 3 Apr 2022 04:10:01 -0700 (PDT)
+X-Google-Smtp-Source: ABdhPJzi6OUtZ5MLOU8FdTPALxZFT8vF1Tiy2d8H4RnSkeeT6k6ctOrVBoV84Uxezh8wC/uBLgft
+X-Received: by 2002:a63:2352:0:b0:398:58f9:e8cb with SMTP id u18-20020a632352000000b0039858f9e8cbmr21884375pgm.417.1648984200909;
+        Sun, 03 Apr 2022 04:10:00 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1648984200; cv=none;
+        d=google.com; s=arc-20160816;
+        b=ylv0JnYcuIX2R97T3I8RH1EfVDL2Hz+48eBYQdvpGy1oVrMIKwTeiHfvsgAHjjF7nC
+         CO+6kqmYV4avPTT1e+e2dCjfrp5iRRJjaqhJQ528Nckr3TVk4I2Mbdm0ooTZ3199kpyA
+         qcCHs6Xe5OoEC8wgTgvcpSyPnzxlNuVL7gqnBjz+4WQ2h7yuKqTWy4it9r8Oz/vNeE4D
+         oWXezT7gCmrhoWpRqX3FCmbXtg30QcYzidVe6hRX6psTOCb59/vI0AjTM52lJH99w/+q
+         0OcN5tv6YjhafS+ezttz7rDk/YrZvKBfjHTFr84lLVKTDXQrNgLEor++VEzNk/oD7/hp
+         +4eQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=feedback-id:from:message-id:list-unsubscribe-post:reply-to:subject
+         :list-unsubscribe:preheader:mime-version:date:to:dkim-signature;
+        bh=HR/Epbm0pXIeBC2MksRMYoQ/2lZRZSXJ42MrbKYfduM=;
+        b=l7U4nYV+++P7tKMabRHZRMc74dd3rTyA12bnj0HI4z9wHC/62yUHO7xSkBBGkWgUEB
+         80qODn3ZZlCKRwGXrinOanZksscYATXXHaMr/Q+3NyXps7EAt1iXWSg9Q2l8VMZPu9Ay
+         c3IMGR2hZQ7dQd6oJcURBWWMct03u63aQuCXOlnVS6jax1E4VHCReBkzIB9+zAnC1uMo
+         zAaU/7XjXTSkyWstJHl3jGYuI16mjvZOCRA7/OJZ/Ft01sYMYVXh1V3OPuWuvAkBEDsp
+         YIBuk9cFfeee/ZdEaC0kx7V7aJOORtP8PLQ2wzyY2K2480Q/ZDWQOrHxHm8z7C7zjX/R
+         xitg==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@indeed.com header.s=scph1020 header.b=sV+cgnWe;
+       spf=pass (google.com: domain of msprvs1=19092pmiwalnw=bounces-294276@bounces.indeed.com designates 156.70.52.246 as permitted sender) smtp.mailfrom="msprvs1=19092pMIwaLnW=bounces-294276@bounces.indeed.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=indeed.com
+Return-Path: <msprvs1=19092pMIwaLnW=bounces-294276@bounces.indeed.com>
+Received: from mta-70-52-246.indeed.com.sparkpostmail.com (mta-70-52-246.indeed.com.sparkpostmail.com. [156.70.52.246])
+        by mx.google.com with ESMTPS id n12-20020a170902d2cc00b00153b2d16424si7512012plc.44.2022.04.03.04.10.00
+        for <rayguo17@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+        Sun, 03 Apr 2022 04:10:00 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msprvs1=19092pmiwalnw=bounces-294276@bounces.indeed.com designates 156.70.52.246 as permitted sender) client-ip=156.70.52.246;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@indeed.com header.s=scph1020 header.b=sV+cgnWe;
+       spf=pass (google.com: domain of msprvs1=19092pmiwalnw=bounces-294276@bounces.indeed.com designates 156.70.52.246 as permitted sender) smtp.mailfrom="msprvs1=19092pMIwaLnW=bounces-294276@bounces.indeed.com";
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=indeed.com
+X-MSFBL: NWfr0zJqsTbkHl0DbcUnSh9VgRWvpmc6MUmlK5cCoYQ=|eyJtZXNzYWdlX2lkIjo
+	iNjIzZTg4ODA0OTYyMGQ4ZWI5MmMiLCJ0ZW5hbnRfaWQiOiJzcGMiLCJjdXN0b21
+	lcl9pZCI6IjI5NDI3NiIsInN1YmFjY291bnRfaWQiOiIwIiwiciI6InJheWd1bzE
+	3QGdtYWlsLmNvbSJ9
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=indeed.com;
+	s=scph1020; t=1648984200; i=@indeed.com;
+	bh=HR/Epbm0pXIeBC2MksRMYoQ/2lZRZSXJ42MrbKYfduM=;
+	h=To:Date:Content-Type:Subject:Message-ID:From;
+	b=sV+cgnWeyYvv+Dm2ZmtlCX18ggjTTKhpbAvtZoZzoddx41LSNqGZUpjBkslmcsGZf
+	 n/ZaNvmitNb+VaUqj2O52509P5Xrq26x/e9Tg6RGTMgkK71A6/S9cBStwhRPjZr/BC
+	 mU0yto+AJE1Yne55CDOS4P6oHwdQNO5WbalgqWbk=
+To: <rayguo17@gmail.com>
+Date: Sun, 03 Apr 2022 11:10:00 +0000
+Content-Type: multipart/alternative; boundary="_----s1BhtH1R4apfR9u/NpAK2Q===_6B/C2-13434-88089426"
+Preheader: EY and Live Building Systems have opportunities for you!
+X-Indeed-FBL: 5f5332c727083b1a2dabc6f5:2:949723c299a6c90765737656631f8e3caf913a68ab01ae24
+List-Unsubscribe: <https://subscriptions.indeed.com/alerts/cancel?token=CkBPIzrMsldHm4NqUlXikn5YaN-OhAJFU1gRR9iPotDKKtIkNoDTsxs1NlBorJkj-I6f-WlD2tZyIX2cjBnTbsB_EiA2QH45259zRtcGGsA92-PK1ESak00fI1qrm6rXS9L1qRoQohsDZkBgVYhw2AetQA8dww%3D%3D&co=&hl=en&tmtk=1fvnhs1s520j6003&subId=5f5332c727083b1a2dabc6f5&rgtk=&from=listunsubpost>
+Subject: Live Building Systems is hiring for Junior Software Developer. 1 more Javascript Developer jobs in Mandalay, NJ.
+Reply-To: Indeed <do-not-reply@indeed.com>
+X-Indeed-Content-Type: JOBALERT
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Message-ID: <1fvnhs1s520j6003.1648984198174.Railgunner@notifications.railgun.railgunner-jobsearchrailclipservice-7m68n>
+From: "Indeed" <alert@indeed.com>
+X-Indeed-Client-App: RailgunnerDaemon
+X-Indeed-TK: 1fvnhs30un6um805
+x-campaign-id: JOBALERT
+Feedback-ID: JOBALERT:RailgunnerDaemon:Indeed
+MIME-Version: 1.0
+
+--_----s1BhtH1R4apfR9u/NpAK2Q===_6B/C2-13434-88089426
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="UTF-8"
+
+Indeed Job Alert=0A2 new Javascript Developer jobs in Mandalay, NJ=0A=0AJob=
+s 1-0 of 2 new jobs=0ASee matching results on Indeed: https://www.indeed.co=
+m/jobs=3Fq=3DJavascript+Developer&hl=3Den&from=3Dja&l=3DMandalay%2C+NJ&radi=
+us=3D25&alid=3D5f5332c727083b1a2dabc6f5&tmtk=3D1fvnhs1s520j6003&utm_campaig=
+n=3Djob_alerts&utm_medium=3Demail&utm_source=3Djobseeker_emails&of=3D1&fr=
+=3Dt=0A=0A=0AJunior Software Developer=0ALive Building Systems - United Sta=
+tes=0AResponsive employer=0AThis is an excellent opportunity for a motivate=
+d and inquisitive junior level developer or analyst who is looking to not j=
+ust maintain existing software, but=E2=80=A6=0AIndeed - 1 day ago=0Ahttps:/=
+/www.indeed.com/pagead/clk/dl=3Fmo=3Dr&ad=3D-6NYlbfkN0C3MHUb_2M1oHg4DmXCTYo=
+xTVDy7dMx7O_VacMhJt1hYD7j5FnHIWQAS-sRyYrNbaX_bfo5ZLpaJcoKlD1WsC_3pHSB-EV5ps=
+9j8R-XNsc0Yep8SO6LnErfcA0hDjJkpSTD2uwPAv22rNO3IqAVBbYv-Y8CxL6DgaBFdgC9zesrn=
+Uu2ZAIOzjZQRHkarAoGfYa8tcULw7LJY2BWFQ4jEVZSd84R8yNmK6IEUwRq7fGvYVGnhAKWnB8e=
+Jt4nNMu8Tlrrm66tTT1iys9lC2MJwM7tjgMCfqGVncVSsnjVCplNuRjcd9avnZR5Y_0TP79Ek-H=
+p7bX3vDxBzk-95090xTafKYNT3_uzp3wN2XExoeLlT0oGRP3eieZYj0JMsARgRrGPMPpY-BVhbG=
+fkYWG015eHem9r5jmPo64j3kGa3zDCspP1Z0sJi59LKaEiXDl0xDFeKDUDnxi3py3AeiFwMpnjZ=
+zXdI_r0ATzUBOvg8imUM-d_nxRN9YpghnxyUKyrfwUohsmS39HD8w%3D%3D&p=3D0&jsa=3D809=
+9&rjs=3D1&tmtk=3D1fvnhs1s520j6003&gdfvj=3D1&alid=3D5f5332c727083b1a2dabc6f5=
+&fvj=3D1=0A=0ADeveloper/Programmer Augmented Reality - Contractor=0AEY - Un=
+ited States=0ASupport team in development of AR experiences. Advise on tech=
+nical capabilities and solutions. Collaborate with designers and stakeholde=
+rs.=0AEY - 4 days ago=0Ahttps://www.indeed.com/pagead/clk/dl=3Fmo=3Dr&ad=3D=
+-6NYlbfkN0DY0o1vBkDF7ijZdphmN8ZpJjzNfoJ8hIIfocg_Q3_4rrU9MZaBYUA84jeQrwLirkg=
+mTDCf4FaV3gplpqsdqqVd8MoH_dUQAAmSBi6PxVf3n4D4NI-3Pz8rCoLfuB5ocg-j_-HN62eEj4=
+hqB_lklL78tadaOGx9XGBID7oDMFIpXJmbHWkOpjlVWjcz2-MrqED7-zVw0K8Di5ygFcMnu_kPJ=
+q-Z90wiVRoZzzNuah7LVuc5GHYezizUAjgXZ0jvG6ao44ojnbNR7pyB1japnO7DeJlDcdhUg7Yd=
+NnCQKWM1K77ujFSfrLPBO8A9LWBb0CmbtH0MSnsfguHzGCpgsCK4PhseaKsUR1pdA603Eug6nzi=
+_PPrSY9S9fTDvwBpJou8PqDSIwhYAlPdolTJ3JSxYk_S7MMTgegZahrcctMDQyKiSwypq-6HfHE=
+gBm6zEeQhhxiIYqRustiQazWbj-tazsQSuXYTOnbVs0m-cR0MgZ4khB0LXEqIFef1RbRIb73H7w=
+QwF7RulwZkCdbi2wXwbuemOmOB218kJzGp64jBnWFkwPmaImzyJ9s952nicRnO2lRdNq_FwxT1X=
+Ko45HcnB20tuHaBtP2h5n-OrPnYUPJQaTTAqnHfgGEXaDJsg681UPyHWiYC44ae1HlACDpoe&p=
+=3D0&jsa=3D8099&rjs=3D1&tmtk=3D1fvnhs1s520j6003&gdfvj=3D1&alid=3D5f5332c727=
+083b1a2dabc6f5&fvj=3D1=0A=0A=0ASalaries estimated if unavailable. When a jo=
+b posting doesn't include a salary, we estimate it by looking at similar jo=
+bs. Estimated salaries are not endorsed by the companies offering those pos=
+itions and may vary from actual salaries.=0A=0AEdit this Job Alert: https:/=
+/subscriptions.indeed.com/update/5f5332c727083b1a2dabc6f5=3Ftoken=3DCkBeuEg=
+AJ77T8Wvhistvc_B2jC9ScrRHim-drgQuNDrzO9gJDp--EFjJr50T9OwUZiyGUpjCnM5f3v-9zU=
+5uGxnbEiAcXrYwhBh_O8NDEEfCD2VGuUcifhKO6F_HwoqiDzDFDhoQ8KAiRaqbsH1o0RCxvwmEB=
+A%3D%3D&co=3DUS&hl=3Den&tmtk=3D1fvnhs1s520j6003&from=3DjaEditAlert=0A=0ACan=
+cel this Job Alert: https://subscriptions.indeed.com/alerts/cancel=3Ftoken=
+=3DCkBeuEgAJ77T8Wvhistvc_B2jC9ScrRHim-drgQuNDrzO9gJDp--EFjJr50T9OwUZiyGUpjC=
+nM5f3v-9zU5uGxnbEiAcXrYwhBh_O8NDEEfCD2VGuUcifhKO6F_HwoqiDzDFDhoQ8KAiRaqbsH1=
+o0RCxvwmEBA%3D%3D&co=3DUS&hl=3Den&tmtk=3D1fvnhs1s520j6003&subId=3D5f5332c72=
+7083b1a2dabc6f5&rgtk=3D1fvnhs2ucn6um801&from=3Dja=0A=0AMANAGE MY SUBSCRIPTI=
+ONS https://subscriptions.indeed.com=3Ftoken=3DCkBeuEgAJ77T8Wvhistvc_B2jC9S=
+crRHim-drgQuNDrzO9gJDp--EFjJr50T9OwUZiyGUpjCnM5f3v-9zU5uGxnbEiAcXrYwhBh_O8N=
+DEEfCD2VGuUcifhKO6F_HwoqiDzDFDhoQ8KAiRaqbsH1o0RCxvwmEBA%3D%3D&co=3DUS&hl=3D=
+en&tmtk=3D1fvnhs1s520j6003&from=3Dja=0A=0A=C2=A9 2022 Indeed, Inc.=0A=0A643=
+3 Champion Grandview Way, Building 1, Austin, TX 78750
+--_----s1BhtH1R4apfR9u/NpAK2Q===_6B/C2-13434-88089426
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/html; charset="UTF-8"
+
+<!DOCTYPE html><html lang=3D"en" xmlns=3D"http://www.w3.org/1999/xhtml" xml=
+ns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:schemas-microsoft-com=
+:office:office"><head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Dutf-8"><t=
+itle>Indeed Job Alerts Email</title>  <meta name=3D"viewport" content=3D"wi=
+dth=3Ddevice-width, initial-scale=3D1"> <meta http-equiv=3D"X-UA-Compatible=
+" content=3D"IE=3Dedge"> <style type=3D"text/css"> /* CLIENT-SPECIFIC STYLE=
+S */ body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adj=
+ust: 100%;} table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; } img=
+ { -ms-interpolation-mode: bicubic; } /* RESET STYLES */ img { border: 0; h=
+eight: auto; line-height: 100%; outline: none; text-decoration: none; } tab=
+le { border-collapse: collapse !important; } body { height: 100% !important=
+; margin: 0 !important; padding: 0 !important; width: 100% !important; } ta=
+ble, td, .notice, .downshift-link { font-family:'Noto Sans', Helvetica, Ari=
+al, sans-serif !important; } .terms-link { color: #2557A7 !important; font-=
+size: 12px !important; } .footer-box a { font-size:12px !important; } .cta =
+a { width:298px !important; } @media only screen and (max-width:530px) { .i=
+ndeed-logo .jecl-Icon-img {width:84px !important;} .j-9 { line-height:26px!=
+important; font-size:20px!important; } .j-0 { display: block !important; pa=
+dding: 0 !important; margin: 0px 0 0 !important; } .j-1, .j-2, .j-3, .j-4 {=
+ display: block !important; padding: 0 !important; margin: 32px 0 0 !import=
+ant; } .j-5 { display: none !important; } .j-6 br { display: none !importan=
+t; } .j-a { padding:24px 0 0!important; } .j-b { padding:0 16px 32px!import=
+ant; } .j-c { padding:24px 16px 16px!important; } .j-d { padding: 0px 0px 2=
+4px !important; } .j-e { font-size: 16px !important; } } @media only screen=
+ and (max-width:530px) { #responsive_css_ping { background-image: url(https=
+://subscriptions.indeed.com/imgping?aluidhash=3Da16c341c8d30d0c9b6c0b55b29e=
+8458a&alert=3D5f5332c727083b1a2dabc6f5&tk=3D1fvnhs1s520j6003&type=3Djarespo=
+nsive); } .outer-box { padding:0 8px !important; } .content-box { padding:3=
+2px 16px 0 !important; } .has-downshift-content-box { padding:16px 16px 0px=
+ !important; } .cta a, .prominent-promo a { width:100% !important; box-sizi=
+ng:border-box !important; } .show-when-mobile { display: block!important; m=
+ax-height:none !important; } .prominent-promo-container { padding-bottom: 0=
+ !important; } .prominent-promo { display: block !important; width: 100% !i=
+mportant; padding: 0 0 16px !important; } .prominent-promo a { display: blo=
+ck !important; } /* Targeting Gmail/Inbox */ u + #body a { color: inherit; =
+text-decoration: none; } } @media only screen and (max-width: 414px) { u ~ =
+div .main { min-width: 100vw; } } </style> <!--[if gte mso 9]><xml> <o:Offi=
+ceDocumentSettings> <o:AllowPNG/> <o:PixelsPerInch>96</o:PixelsPerInch> </o=
+:OfficeDocumentSettings> </xml><![endif]--> <!--[if !mso]> <!----> <style t=
+ype=3D"text/css"> @import url('https://fonts.googleapis.com/css2?family=3DN=
+oto+Sans:wght@400;700&display=3Dswap'); </style> <!-- <![endif]--> </head> =
+<body id=3D"body" class=3D"body" style=3D"background-color:#F3F2F1;margin:0=
+; padding:0"> <div style=3D"display: none; max-height: 0px; overflow: hidde=
+n;"> EY and Live Building Systems have opportunities for you! </div> <div s=
+tyle=3D"display: none; max-height: 0px; overflow: hidden;"> &nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C &nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=
+=E2=80=8C&nbsp;=E2=80=8C&nbsp; =E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp=
+;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp=
+;=E2=80=8C&nbsp; &nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C &nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;&nbsp=
+;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp; =E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbs=
+p;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp; &nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C &nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=
+=80=8C&nbsp;=E2=80=8C&nbsp;&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nb=
+sp;=E2=80=8C&nbsp; =E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&n=
+bsp; =E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&=
+nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp; =E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C=
+&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp; =E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp;=E2=80=
+=8C&nbsp;=E2=80=8C&nbsp;=E2=80=8C&nbsp; </div> <div id=3D"responsive_css_pi=
+ng"></div> <div class=3D"full-wrap" style=3D"font-family:'Noto Sans', Helve=
+tica, Arial, sans-serif;direction:ltr"> <img alt=3D"" src=3D"https://subscr=
+iptions.indeed.com/imgping?type=3Dja&amp;tk=3D1fvnhs1s520j6003&amp;aluidhas=
+h=3D5f5332c727083b1a2dabc6f5" height=3D"1" width=3D"1"> <table class=3D"mai=
+n" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" bgcolor=
+=3D"#F3F2F1"> <tr> <td class=3D"outer-box" bgcolor=3D"#F3F2F1" align=3D"cen=
+ter" style=3D"padding:0 8px"> <!--[if (gte mso 9)|(IE)]> <table width=3D"60=
+0" border=3D"0" cellspacing=3D"0" cellpadding=3D"0"> <tr> <td> <![endif]-->=
+ <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" sty=
+le=3D"max-width:600px; padding: 0 0 15px 0"> <tr> <td align=3D"left" class=
+=3D"indeed-logo-left jecl-Icon-wrapper" style=3D"padding:0 0 13px 0"> <a hr=
+ef=3D"https://clk.indeed.com/hp?co=3DUS&amp;utm_campaign=3Djob_alerts&amp;u=
+tm_medium=3Demail&amp;utm_source=3Djobseeker_emails&amp;from=3Dja&amp;tk=3D=
+1fvnhs1s520j6003"> <img class=3D"jecl-Icon-img" src=3D"https://subscription=
+s.indeed.com/static/images/logos/indeed_retina@2x.png" alt=3D"indeed-logo" =
+width=3D"100" style=3D"display:block;" border=3D"0"> </a> </td> <td class=
+=3D"j-f" width=3D"44"> <a href=3D"https://clk.indeed.com/messages?tk=3D1fvn=
+hs1s520j6003&amp;co=3DUS&amp;hl=3Den"> <img alt=3D"Messages" src=3D"https:/=
+/subscriptions.indeed.com/static/images/ja/icon-messages-aurora-updated.png=
+" width=3D"44"> </a> </td> <td class=3D"j-g" style=3D"padding:0 0 0 10px;" =
+width=3D"44"> <a href=3D"https://clk.indeed.com/notifications?from=3Dja&amp=
+;tk=3D1fvnhs1s520j6003&amp;co=3DUS&amp;hl=3Den"> <img alt=3D"Notifications"=
+ src=3D"https://subscriptions.indeed.com/static/images/ja/icon-notification=
+-aurora.png" width=3D"44"> </a> </td> </tr> </table> <table class=3D"width-=
+600" style=3D"max-width:600px;" width=3D"100%" bgcolor=3D"#FFFFFF" cellpadd=
+ing=3D"0" cellspacing=3D"0" border=3D"0"> <tr> <td class=3D"content-box " s=
+tyle=3D"padding:50px 50px 0;"> <table width=3D"100%" cellpadding=3D"0" cell=
+spacing=3D"0" border=3D"0"> <tr> <td> <table class=3D"job-alerts" width=3D"=
+100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0"> <tr> <td class=3D"s=
+ection-header"> <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" b=
+order=3D"0"> <tr> <td> <table width=3D"100%" cellpadding=3D"0" cellspacing=
+=3D"0" border=3D"0"> <tr><td> <h1 class=3D"j-9" align=3D"center" style=3D"f=
+ont-size:28px;line-height:36px;font-weight:bold;color:#2D2D2D;Margin:0;">2 =
+new Javascript Developer jobs in Mandalay, NJ</h1> </td> </tr> <tr><td styl=
+e=3D"padding:16px 0 24px;"> <p class=3D"j-h" align=3D"center" style=3D"font=
+-size:14px;line-height:20px;color:#767676;Margin:0;"> These job ads match y=
+our saved job alert * </p> </td> </tr> <tr><td style=3D"font-size:1px;Margi=
+n:0;border-bottom:1px solid #E4E2E0;"> &nbsp; </td> </tr> </table> </td> </=
+tr> </table> </td> </tr> </table> </td> </tr> </table> </td> </tr> <tr><td =
+class=3D"j-c" style=3D"padding:24px 50px 16px;"> <table width=3D"100%" cell=
+padding=3D"0" cellspacing=3D"0" border=3D"0"> <tr> <td class=3D"j-d" style=
+=3D"padding:0px 0px 32px;"> <a href=3D"https://www.indeed.com/pagead/clk/dl=
+?mo=3Dr&amp;ad=3D-6NYlbfkN0C3MHUb_2M1oHg4DmXCTYoxTVDy7dMx7O_VacMhJt1hYD7j5F=
+nHIWQAS-sRyYrNbaX_bfo5ZLpaJcoKlD1WsC_3pHSB-EV5ps9j8R-XNsc0Yep8SO6LnErfcA0hD=
+jJkpSTD2uwPAv22rNO3IqAVBbYv-Y8CxL6DgaBFdgC9zesrnUu2ZAIOzjZQRHkarAoGfYa8tcUL=
+w7LJY2BWFQ4jEVZSd84R8yNmK6IEUwRq7fGvYVGnhAKWnB8eJt4nNMu8Tlrrm66tTT1iys9lC2M=
+JwM7tjgMCfqGVncVSsnjVCplNuRjcd9avnZR5Y_0TP79Ek-Hp7bX3vDxBzk-95090xTafKYNT3_=
+uzp3wN2XExoeLlT0oGRP3eieZYj0JMsARgRrGPMPpY-BVhbGfkYWG015eHem9r5jmPo64j3kGa3=
+zDCspP1Z0sJi59LKaEiXDl0xDFeKDUDnxi3py3AeiFwMpnjZzXdI_r0ATzUBOvg8imUM-d_nxRN=
+9YpghnxyUKyrfwUohsmS39HD8w%3D%3D&amp;p=3D0&amp;jsa=3D8099&amp;rjs=3D1&amp;t=
+mtk=3D1fvnhs1s520j6003&amp;gdfvj=3D1&amp;alid=3D5f5332c727083b1a2dabc6f5&am=
+p;fvj=3D1" style=3D"display:block; text-decoration:none;"> <table width=3D"=
+100%" cellpadding=3D"0" cellspacing=3D"0" style=3D""> <tr> <td class=3D"j-e=
+" style=3D"padding:0 0 4px"> <a href=3D"https://www.indeed.com/pagead/clk/d=
+l?mo=3Dr&amp;ad=3D-6NYlbfkN0C3MHUb_2M1oHg4DmXCTYoxTVDy7dMx7O_VacMhJt1hYD7j5=
+FnHIWQAS-sRyYrNbaX_bfo5ZLpaJcoKlD1WsC_3pHSB-EV5ps9j8R-XNsc0Yep8SO6LnErfcA0h=
+DjJkpSTD2uwPAv22rNO3IqAVBbYv-Y8CxL6DgaBFdgC9zesrnUu2ZAIOzjZQRHkarAoGfYa8tcU=
+Lw7LJY2BWFQ4jEVZSd84R8yNmK6IEUwRq7fGvYVGnhAKWnB8eJt4nNMu8Tlrrm66tTT1iys9lC2=
+MJwM7tjgMCfqGVncVSsnjVCplNuRjcd9avnZR5Y_0TP79Ek-Hp7bX3vDxBzk-95090xTafKYNT3=
+_uzp3wN2XExoeLlT0oGRP3eieZYj0JMsARgRrGPMPpY-BVhbGfkYWG015eHem9r5jmPo64j3kGa=
+3zDCspP1Z0sJi59LKaEiXDl0xDFeKDUDnxi3py3AeiFwMpnjZzXdI_r0ATzUBOvg8imUM-d_nxR=
+N9YpghnxyUKyrfwUohsmS39HD8w%3D%3D&amp;p=3D0&amp;jsa=3D8099&amp;rjs=3D1&amp;=
+tmtk=3D1fvnhs1s520j6003&amp;gdfvj=3D1&amp;alid=3D5f5332c727083b1a2dabc6f5&a=
+mp;fvj=3D1" style=3D"display:block;text-decoration:underline;font-size:16px=
+;line-height:20px;font-weight:bold;color:#2D2D2D;"> Junior Software Develop=
+er </a> </td> </tr> <tr> <td class=3D"j-i" style=3D"font:14px/20px;font-wei=
+ght:400;color:#2D2D2D;padding:0 0 4px"> <span class=3D"j-j" style=3D"font-s=
+ize:14px;line-height:20px;font-weight:700;color:#2D2D2D">Live Building Syst=
+ems</span> <span class=3D"j-k" style=3D"color:#767676;font-size:14px">- Uni=
+ted States</span> </td> </tr> <tr> <td class=3D"j-l" style=3D"color:#2D2D2D=
+;font-size:14px;line-height:20px;padding:0 0 4px"> $49,374 - $108,223 a yea=
+r </td> </tr> <tr> <td style=3D"font-size:14px;line-height:20px;color:#2D2D=
+2D;padding:0 0 4px;"> <img style=3D"vertical-align:middle;padding:0 4px 2px=
+ 0;" src=3D"https://subscriptions.indeed.com/static/images/ja/icon-easily-a=
+pply.png" alt=3D"" width=3D"20"> Easily apply </td> </tr> <tr> <td style=3D=
+"font-size:14px;line-height:20px;color:#2D2D2D;padding:0 0 4px;"> <img styl=
+e=3D"vertical-align:middle;padding:0 4px 0 0;" src=3D"https://subscriptions=
+.indeed.com/static/images/ja/icon-responsive-emp-aurora.png" alt=3D"" width=
+=3D"14"> Responsive employer </td> </tr> <tr> <td class=3D"j-m" style=3D"fo=
+nt-size:14px;line-height:20px;color:#595959;padding:0 0 4px;"> This is an e=
+xcellent opportunity for a motivated and inquisitive junior level developer=
+ or analyst who is looking to not just maintain existing software, but=E2=
+=80=A6 </td> </tr> <tr> <td class=3D"j-n" style=3D"color:#767676;font-size:=
+14px;line-height:20px;padding:0 4px 0 0"> 1 day ago </td> </tr> </table> </=
+a> </td> </tr> <tr> <td class=3D"j-d" style=3D"padding:0px 0px 32px;"> <a h=
+ref=3D"https://www.indeed.com/pagead/clk/dl?mo=3Dr&amp;ad=3D-6NYlbfkN0DY0o1=
+vBkDF7ijZdphmN8ZpJjzNfoJ8hIIfocg_Q3_4rrU9MZaBYUA84jeQrwLirkgmTDCf4FaV3gplpq=
+sdqqVd8MoH_dUQAAmSBi6PxVf3n4D4NI-3Pz8rCoLfuB5ocg-j_-HN62eEj4hqB_lklL78tadaO=
+Gx9XGBID7oDMFIpXJmbHWkOpjlVWjcz2-MrqED7-zVw0K8Di5ygFcMnu_kPJq-Z90wiVRoZzzNu=
+ah7LVuc5GHYezizUAjgXZ0jvG6ao44ojnbNR7pyB1japnO7DeJlDcdhUg7YdNnCQKWM1K77ujFS=
+frLPBO8A9LWBb0CmbtH0MSnsfguHzGCpgsCK4PhseaKsUR1pdA603Eug6nzi_PPrSY9S9fTDvwB=
+pJou8PqDSIwhYAlPdolTJ3JSxYk_S7MMTgegZahrcctMDQyKiSwypq-6HfHEgBm6zEeQhhxiIYq=
+RustiQazWbj-tazsQSuXYTOnbVs0m-cR0MgZ4khB0LXEqIFef1RbRIb73H7wQwF7RulwZkCdbi2=
+wXwbuemOmOB218kJzGp64jBnWFkwPmaImzyJ9s952nicRnO2lRdNq_FwxT1XKo45HcnB20tuHaB=
+tP2h5n-OrPnYUPJQaTTAqnHfgGEXaDJsg681UPyHWiYC44ae1HlACDpoe&amp;p=3D0&amp;jsa=
+=3D8099&amp;rjs=3D1&amp;tmtk=3D1fvnhs1s520j6003&amp;gdfvj=3D1&amp;alid=3D5f=
+5332c727083b1a2dabc6f5&amp;fvj=3D1" style=3D"display:block; text-decoration=
+:none;"> <table width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" style=3D=
+""> <tr> <td class=3D"j-e" style=3D"padding:0 0 4px"> <a href=3D"https://ww=
+w.indeed.com/pagead/clk/dl?mo=3Dr&amp;ad=3D-6NYlbfkN0DY0o1vBkDF7ijZdphmN8Zp=
+JjzNfoJ8hIIfocg_Q3_4rrU9MZaBYUA84jeQrwLirkgmTDCf4FaV3gplpqsdqqVd8MoH_dUQAAm=
+SBi6PxVf3n4D4NI-3Pz8rCoLfuB5ocg-j_-HN62eEj4hqB_lklL78tadaOGx9XGBID7oDMFIpXJ=
+mbHWkOpjlVWjcz2-MrqED7-zVw0K8Di5ygFcMnu_kPJq-Z90wiVRoZzzNuah7LVuc5GHYezizUA=
+jgXZ0jvG6ao44ojnbNR7pyB1japnO7DeJlDcdhUg7YdNnCQKWM1K77ujFSfrLPBO8A9LWBb0Cmb=
+tH0MSnsfguHzGCpgsCK4PhseaKsUR1pdA603Eug6nzi_PPrSY9S9fTDvwBpJou8PqDSIwhYAlPd=
+olTJ3JSxYk_S7MMTgegZahrcctMDQyKiSwypq-6HfHEgBm6zEeQhhxiIYqRustiQazWbj-tazsQ=
+SuXYTOnbVs0m-cR0MgZ4khB0LXEqIFef1RbRIb73H7wQwF7RulwZkCdbi2wXwbuemOmOB218kJz=
+Gp64jBnWFkwPmaImzyJ9s952nicRnO2lRdNq_FwxT1XKo45HcnB20tuHaBtP2h5n-OrPnYUPJQa=
+TTAqnHfgGEXaDJsg681UPyHWiYC44ae1HlACDpoe&amp;p=3D0&amp;jsa=3D8099&amp;rjs=
+=3D1&amp;tmtk=3D1fvnhs1s520j6003&amp;gdfvj=3D1&amp;alid=3D5f5332c727083b1a2=
+dabc6f5&amp;fvj=3D1" style=3D"display:block;text-decoration:underline;font-=
+size:16px;line-height:20px;font-weight:bold;color:#2D2D2D;"> Developer/Prog=
+rammer Augmented Reality - Contractor </a> </td> </tr> <tr> <td class=3D"j-=
+i" style=3D"font:14px/20px;font-weight:400;color:#2D2D2D;padding:0 0 4px"> =
+<span class=3D"j-j" style=3D"font-size:14px;line-height:20px;font-weight:70=
+0;color:#2D2D2D">EY</span> <span class=3D"j-o" style=3D"white-space: nowrap=
+;color:#2D2D2D;font-size:14px;line-height:16px;">4</span> <span><img class=
+=3D"j-p" src=3D"https://subscriptions.indeed.com/static/images/ja/star_auro=
+ra_grey.png" width=3D"14" border=3D"0" alt=3D"4/5 rating"></span> <span cla=
+ss=3D"j-k" style=3D"color:#767676;font-size:14px">- United States</span> </=
+td> </tr> <tr> <td class=3D"j-m" style=3D"font-size:14px;line-height:20px;c=
+olor:#595959;padding:0 0 4px;"> Support team in development of AR experienc=
+es. Advise on technical capabilities and solutions. Collaborate with design=
+ers and stakeholders. </td> </tr> <tr> <td class=3D"j-n" style=3D"color:#76=
+7676;font-size:14px;line-height:20px;padding:0 4px 0 0"> 4 days ago </td> <=
+/tr> </table> </a> </td> </tr> </table> </td> </tr> <tr><td class=3D"j-b" s=
+tyle=3D"padding:0 50px 32px;"><table width=3D"100%" cellpadding=3D"0" cells=
+pacing=3D"0" border=3D"0"><tr><td class=3D"j-q" style=3D"padding:0px 64px 2=
+4px;"> <p align=3D"center" style=3D"font-size:14px;font-weight:bold;color:#=
+2D2D2D;Margin:0;"> 2 new jobs found </p> </td> </tr> <tr><td> <div align=3D=
+"center"> <!--[if mso]> <v:roundrect xmlns:v=3D"urn:schemas-microsoft-com:v=
+ml" xmlns:w=3D"urn:schemas-microsoft-com:office:word" href=3D"https://www.i=
+ndeed.com/jobs?q=3DJavascript+Developer&hl=3Den&from=3Dja&l=3DMandalay%2C+N=
+J&radius=3D25&alid=3D5f5332c727083b1a2dabc6f5&tmtk=3D1fvnhs1s520j6003&utm_c=
+ampaign=3Djob_alerts&utm_medium=3Demail&utm_source=3Djobseeker_emails&of=3D=
+1&fr=3Dt" title=3D"link to view all jobs" style=3D"height:48px;width:304px;=
+v-text-anchor:middle;" arcsize=3D"228%" strokecolor=3D"#FFFFFF" strokeweigh=
+t=3D"1.5pt" fillcolor=3D"#2557A7"> <w:anchorlock/> <center style=3D"color:#=
+FFFFFF;font-family:'Noto Sans', Helvetica, Arial, sans-serif;font-size:16px=
+;font-weight:bold;">See more jobs</center> </v:roundrect> <![endif]--> <a h=
+ref=3D"https://www.indeed.com/jobs?q=3DJavascript+Developer&amp;hl=3Den&amp=
+;from=3Dja&amp;l=3DMandalay%2C+NJ&amp;radius=3D25&amp;alid=3D5f5332c727083b=
+1a2dabc6f5&amp;tmtk=3D1fvnhs1s520j6003&amp;utm_campaign=3Djob_alerts&amp;ut=
+m_medium=3Demail&amp;utm_source=3Djobseeker_emails&amp;of=3D1&amp;fr=3Dt" s=
+tyle=3D"background-color:#2557A7;border:#FFFFFF solid 2px;border-radius:8px=
+;color:#FFFFFF;display:inline-block;font-family:'Noto Sans', Helvetica, Ari=
+al, sans-serif;font-size:16px;font-weight:bold;line-height:48px;text-align:=
+center;text-decoration:none;width:304px;height:48px;-webkit-text-size-adjus=
+t:none;mso-hide:all;">See more jobs</a> </div> </td> </tr> <tr><td class=3D=
+"j-a" style=3D"padding:24px 48px 0;"> <p align=3D"center" style=3D"font-siz=
+e:14px;color:#2D2D2D;Margin:0;"> View jobs: <a href=3D"https://www.indeed.c=
+om/jobs?q=3DJavascript+Developer&amp;hl=3Den&amp;from=3Dja&amp;l=3DMandalay=
+%2C+NJ&amp;radius=3D25&amp;alid=3D5f5332c727083b1a2dabc6f5&amp;tmtk=3D1fvnh=
+s1s520j6003&amp;utm_campaign=3Djob_alerts&amp;utm_medium=3Demail&amp;utm_so=
+urce=3Djobseeker_emails&amp;of=3D1&amp;fr=3Db&amp;fromage=3D1" style=3D"fon=
+t-size:14px;font-weight:normal;color:#2557A7;text-decoration:underline;"> s=
+ince yesterday </a> - <a href=3D"https://www.indeed.com/jobs?q=3DJavascript=
++Developer&amp;hl=3Den&amp;from=3Dja&amp;l=3DMandalay%2C+NJ&amp;radius=3D25=
+&amp;alid=3D5f5332c727083b1a2dabc6f5&amp;tmtk=3D1fvnhs1s520j6003&amp;utm_ca=
+mpaign=3Djob_alerts&amp;utm_medium=3Demail&amp;utm_source=3Djobseeker_email=
+s&amp;of=3D1&amp;fr=3Db&amp;fromage=3D7" style=3D"font-size:14px;font-weigh=
+t:normal;color:#2557A7;text-decoration:underline;"> for last 7 days </a> </=
+p> </td> </tr> </table> </td> </tr> </table> <table class=3D"width-550" sty=
+le=3D"max-width:550px" width=3D"100%" bgcolor=3D"#F2F2F2" cellpadding=3D"0"=
+ cellspacing=3D"0" border=3D"0"> <tr> <td class=3D"footer-box" style=3D"pad=
+ding:24px 4px"> <table align=3D"center" cellpadding=3D"0" cellspacing=3D"0"=
+ border=3D"0" style=3D"max-width: 424px;"> <tr><td align=3D"center"> <a hre=
+f=3D"https://subscriptions.indeed.com/update/5f5332c727083b1a2dabc6f5?token=
+=3DCkBeuEgAJ77T8Wvhistvc_B2jC9ScrRHim-drgQuNDrzO9gJDp--EFjJr50T9OwUZiyGUpjC=
+nM5f3v-9zU5uGxnbEiAcXrYwhBh_O8NDEEfCD2VGuUcifhKO6F_HwoqiDzDFDhoQ8KAiRaqbsH1=
+o0RCxvwmEBA%3D%3D&amp;co=3DUS&amp;hl=3Den&amp;tmtk=3D1fvnhs1s520j6003&amp;f=
+rom=3DjaEditAlert" align=3D"CENTER" style=3D"font-family:'Noto Sans', Helve=
+tica, Arial, sans-serif;font-size:12px;line-height:36px;font-weight:normal;=
+color:#2557A7;letter-spacing:-0.12px;text-decoration:underline;">Edit this =
+job alert</a> </td> </tr> <tr class=3D"jecl-salary-disclaimer"> <td class=
+=3D"j-r" align=3D"center" style=3D"font-size:12px;line-height:16px;color:#4=
+24242;padding:32px 0 0;Margin:0 auto;"> Salaries estimated if unavailable. =
+When a job posting doesn't include a salary, we estimate it by looking at s=
+imilar jobs. Estimated salaries are not endorsed by the companies offering =
+those positions and may vary from actual salaries. </td> </tr> <tr class=3D=
+"jecl-jobAd-disclaimer"> <td class=3D"j-r" align=3D"center" style=3D"font-s=
+ize:12px;line-height:16px;color:#424242;padding:48px 0;Margin:0 auto;"> *Di=
+splayed here are Job Ads that match the job alert query you saved. Indeed m=
+ay be compensated by these employers, helping keep Indeed free for jobseeke=
+rs. Indeed ranks Job Ads based on a combination of employer bids and releva=
+nce, such as your search terms and other activity on Indeed. For more infor=
+mation, see the <a style=3D"text-decoration:underline;color:#085FF7;" class=
+=3D"terms-link" href=3D"https://www.indeed.com/legal?hl=3Den">Indeed Terms =
+of Service</a> </td> </tr> </table> <table class=3D"jecl-Footer" align=3D"c=
+enter" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" border=3D"0" styl=
+e=3D"font-size:12px;color:#424242;line-height:22px;Margin:0 auto;"> <tr> <t=
+d class=3D"j-7" lang=3D"en" align=3D"center" style=3D"padding:0 0px 0px;"> =
+=C2=A9 2022 Indeed, Inc. </td> </tr> <tr> <td class=3D"j-8" lang=3D"en" ali=
+gn=3D"center" style=3D"padding:0px;"> 6433 Champion Grandview Way, Building=
+ 1, Austin, TX 78750 </td> </tr> <tr> <td class=3D"j-6" align=3D"center" st=
+yle=3D"padding:48px 0px 64px;"> <a class=3D"j-0" href=3D"https://www.indeed=
+.com/legal?hl=3Den#privacy" style=3D"text-decoration:underline;color:#2557A=
+7;">Privacy Policy</a> <span class=3D"j-5">|</span> <a class=3D"j-1" href=
+=3D"https://www.indeed.com/legal?hl=3Den" style=3D"text-decoration:underlin=
+e;color:#2557A7;">Terms</a> <span class=3D"j-5">|</span> <a class=3D"j-2" h=
+ref=3D"https://support.indeed.com/hc/en-us" style=3D"text-decoration:underl=
+ine;color:#2557A7;">Help Center</a> <br> <a class=3D"j-3" href=3D"https://s=
+ubscriptions.indeed.com?token=3DCkBeuEgAJ77T8Wvhistvc_B2jC9ScrRHim-drgQuNDr=
+zO9gJDp--EFjJr50T9OwUZiyGUpjCnM5f3v-9zU5uGxnbEiAcXrYwhBh_O8NDEEfCD2VGuUcifh=
+KO6F_HwoqiDzDFDhoQ8KAiRaqbsH1o0RCxvwmEBA%3D%3D&amp;co=3DUS&amp;hl=3Den&amp;=
+tmtk=3D1fvnhs1s520j6003&amp;from=3Dja" style=3D"text-decoration:underline;c=
+olor:#2557A7;">Manage subscriptions</a> <span class=3D"j-5">|</span> <a cla=
+ss=3D"j-4" href=3D"https://subscriptions.indeed.com/alerts/cancel?token=3DC=
+kBeuEgAJ77T8Wvhistvc_B2jC9ScrRHim-drgQuNDrzO9gJDp--EFjJr50T9OwUZiyGUpjCnM5f=
+3v-9zU5uGxnbEiAcXrYwhBh_O8NDEEfCD2VGuUcifhKO6F_HwoqiDzDFDhoQ8KAiRaqbsH1o0RC=
+xvwmEBA%3D%3D&amp;co=3DUS&amp;hl=3Den&amp;tmtk=3D1fvnhs1s520j6003&amp;subId=
+=3D5f5332c727083b1a2dabc6f5&amp;rgtk=3D1fvnhs2ucn6um801&amp;from=3Djatop" s=
+tyle=3D"text-decoration:underline;color:#2557A7;">Unsubscribe from this ema=
+il</a> </td> </tr> </table> </td> </tr> </table> <!--[if (gte mso 9)|(IE)]>=
+ </td> </tr> </table> <![endif]--> </td> </tr> </table> <img alt=3D"" src=
+=3D"https://subscriptions.indeed.com/imgping?type=3Djafull&amp;tk=3D1fvnhs1=
+s520j6003&amp;aluidhash=3D5f5332c727083b1a2dabc6f5&amp;clipped=3Dfalse" hei=
+ght=3D"1" width=3D"1"> </div> </body> </html>=
+
+--_----s1BhtH1R4apfR9u/NpAK2Q===_6B/C2-13434-88089426--

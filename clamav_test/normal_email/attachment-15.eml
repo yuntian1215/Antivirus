@@ -1,0 +1,403 @@
+Return-Path: <bounce-mc.us13_57219141.1963110-8a716934dc@mail34.atl281.mcsv.net>
+Received: from 10.118.0.96 (LHLO mta96.sjtu.edu.cn) (10.118.0.96) by
+ mstore111.sjtu.edu.cn with LMTP; Thu, 23 Jun 2022 23:48:20 +0800 (CST)
+Received: from mx02.sjtu.edu.cn (mx02.sjtu.edu.cn [202.120.0.8])
+	by mta96.sjtu.edu.cn (Postfix) with ESMTP id E630C2FD019
+	for <zyuxin719@sjtu.edu.cn>; Thu, 23 Jun 2022 23:48:19 +0800 (CST)
+Received: from localhost (localhost [127.0.0.1])
+	by mx02.sjtu.edu.cn (Postfix) with ESMTP id DB8412B558B
+	for <zyuxin719@sjtu.edu.cn>; Thu, 23 Jun 2022 23:48:19 +0800 (CST)
+X-Virus-Scanned: Debian amavisd-new at sjtu.edu.cn
+X-Spam-Flag: NO
+X-Spam-Score: 1.213
+X-Spam-Level: *
+X-Spam-Status: No, score=1.213 tagged_above=-10 required=10
+	tests=[DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+	HEADER_FROM_DIFFERENT_DOMAINS=1, HTML_MESSAGE=0.001,
+	LOTS_OF_MONEY=0.001, MIME_QP_LONG_LINE=0.001,
+	RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_IADB_DK=-0.223,
+	RCVD_IN_IADB_LISTED=-0.38, RCVD_IN_IADB_RDNS=-0.167,
+	RCVD_IN_IADB_SENDERID=-0.001, RCVD_IN_IADB_SPF=-0.001,
+	SPF_HELO_PASS=-0.001, SPF_PASS=-0.001, URIBL_GREY=1.084]
+	autolearn=disabled
+Received: from mx02.sjtu.edu.cn ([127.0.0.1])
+	by localhost (mx02.sjtu.edu.cn [127.0.0.1]) (amavisd-new, port 10024)
+	with ESMTP id BEFjZ22Q2g0o for <zyuxin719@sjtu.edu.cn>;
+	Thu, 23 Jun 2022 23:48:18 +0800 (CST)
+Received-SPF: Pass (mailfrom) identity=mailfrom; client-ip=198.2.143.34; helo=mail34.atl281.mcsv.net; envelope-from=bounce-mc.us13_57219141.1963110-8a716934dc@mail34.atl281.mcsv.net; receiver=<UNKNOWN> 
+Received: from mail34.atl281.mcsv.net (mail34.atl281.mcsv.net [198.2.143.34])
+	by mx02.sjtu.edu.cn (Postfix) with ESMTP id 421B42B558D
+	for <zyuxin719@sjtu.edu.cn>; Thu, 23 Jun 2022 23:48:17 +0800 (CST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=flourish.studio;
+	s=k1; t=1655999175; x=1656301575; i=hello@flourish.studio;
+	bh=1rIohAyhuifl0K5+Ld00lZkoDNmu2BV81ZUqqLL/kmg=;
+	h=Subject:From:Reply-To:To:Date:Message-ID:X-MC-User:Feedback-ID:
+	 List-ID:List-Unsubscribe:List-Unsubscribe-Post:Content-Type:
+	 MIME-Version:CC:Date:Subject:From;
+	b=H2oN+HDCIUr7zwBSp5167AQPf5UqwrZr8Y0jfd2S4P79HTcYNlN/viUx6Mi9HcUm7
+	 IaEJKGzkEcftvCo95XErW1Vm7R/Qq4hgFN+o/VSjl2AzvVeXMMhDeoiQ0H8uekspVw
+	 O8Co4HfquHZn9oZ8eJreQASN9T7vDXBdoPyq+oVA=
+Received: from localhost (localhost [127.0.0.1])
+	by mail34.atl281.mcsv.net (Mailchimp) with ESMTP id 4LTPjz49FWz2SVKM
+	for <zyuxin719@sjtu.edu.cn>; Thu, 23 Jun 2022 15:46:15 +0000 (GMT)
+Subject: =?utf-8?Q?New=20spike=20maps=20and=20the=20UK=20housing=20crisis=20visualized?=
+From: =?utf-8?Q?Luisa=20Bider?= <hello@flourish.studio>
+Reply-To: =?utf-8?Q?Luisa=20Bider?= <hello@flourish.studio>
+To: <zyuxin719@sjtu.edu.cn>
+Date: Thu, 23 Jun 2022 15:46:07 +0000
+Message-ID: <a41ac2fe0fc0d1ab52f5df1b9.8a716934dc.20220623154549.28d1d772c1.b5204bcd@mail34.atl281.mcsv.net>
+X-Mailer: Mailchimp Mailer - **CID28d1d772c18a716934dc**
+X-Campaign: mailchimpa41ac2fe0fc0d1ab52f5df1b9.28d1d772c1
+X-campaignid: mailchimpa41ac2fe0fc0d1ab52f5df1b9.28d1d772c1
+X-Report-Abuse: Please report abuse for this campaign here: https://mailchimp.com/contact/abuse/?u=a41ac2fe0fc0d1ab52f5df1b9&id=28d1d772c1&e=8a716934dc
+X-MC-User: a41ac2fe0fc0d1ab52f5df1b9
+Feedback-ID: 57219141:57219141.1963110:us13:mc
+List-ID: a41ac2fe0fc0d1ab52f5df1b9mc list <a41ac2fe0fc0d1ab52f5df1b9.150389.list-id.mcsv.net>
+X-Accounttype: pd
+List-Unsubscribe: <https://studio.us13.list-manage.com/unsubscribe?u=a41ac2fe0fc0d1ab52f5df1b9&id=190848d56d&e=8a716934dc&c=28d1d772c1>, <mailto:unsubscribe-mc.us13_a41ac2fe0fc0d1ab52f5df1b9.28d1d772c1-8a716934dc@unsubscribe.mailchimpapp.net?subject=unsubscribe>
+List-Unsubscribe-Post: List-Unsubscribe=One-Click
+Content-Type: multipart/alternative; boundary="_----------=_MCPart_1223427303"
+MIME-Version: 1.0
+
+This is a multi-part message in MIME format
+
+--_----------=_MCPart_1223427303
+Content-Type: text/plain; charset="utf-8"; format="fixed"
+Content-Transfer-Encoding: quoted-printable
+
+#[1]Flourish
+
+Hi everyone=2C
+
+June has been busy and we can=E2=80=99t wait to get you up to speed on som=
+e fresh new features and content!
+
+Welcome spike maps!
+Our =E2=80=9CProjection map=E2=80=9D template just got more powerful. The=
+ new spike map mode gives you the option to plot your points data (https:/=
+/help.flourish.studio/article/512-how-to-customize-the-points-in-your-proj=
+ection-map?utm_source=3DFlourish&utm_campaign=3D28d1d772c1-EMAIL_CAMPAIGN_=
+2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0_190848d56d-28d1d7=
+72c1-231011582) as spikes rather than circles. Spikes reduce overlap=
+s on busy maps =E2=80=93 and unlike circles they allow you plot negative v=
+alues. They look super cool too!
+
+=E2=80=A2 Check out our blog post to learn more (https://flourish.studio/b=
+log/introducing-spike-maps/?utm_source=3DFlourish&utm_campaign=3D28d1d772c=
+1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0_=
+190848d56d-28d1d772c1-231011582)
+
+https://flourish.studio/blog/introducing-spike-maps/?utm_source=3DFlourish=
+&utm_campaign=3D28d1d772c1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_02&utm_med=
+ium=3Demail&utm_term=3D0_190848d56d-28d1d772c1-231011582
+
+Visualizing the UK housing crisis
+Home ownership is out of reach for many people in the UK. Data shows that=
+ average house prices have increased by over =C2=A347=2C000 since the 2020=
+ lockdown. As our visual exploration shows=2C other factors such as popula=
+tion increases and cost of living also contribute to this issue.
+
+=E2=80=A2 Read the full story in our blog (https://flourish.studio/blog/uk=
+-housing-crisis/?utm_source=3DFlourish&utm_campaign=3D28d1d772c1-EMAIL_CAM=
+PAIGN_2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0_190848d56d-=
+28d1d772c1-231011582)
+
+https://flourish.studio/blog/uk-housing-crisis/?utm_source=3DFlourish&utm_=
+campaign=3D28d1d772c1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_02&utm_medium=
+=3Demail&utm_term=3D0_190848d56d-28d1d772c1-231011582
+
+Unpacking Asia=E2=80=99s complex dynamics with data storytelling
+We chatted to the creators of Kontinentalist=2C a digital newsroom focused=
+ on Southeast Asian affairs=2C to learn how they use Flourish in their dai=
+ly tasks. From brainstorming and experimenting to advanced interactive scr=
+ollytelling=2C Flourish has helped them tell better stories.
+
+=E2=80=A2 Read more in our blog (https://flourish.studio/blog/kontinentali=
+st-customer-story/?utm_source=3DFlourish&utm_campaign=3D28d1d772c1-EMAIL_C=
+AMPAIGN_2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0_190848d56=
+d-28d1d772c1-231011582)
+
+https://flourish.studio/blog/kontinentalist-customer-story/?utm_source=3DF=
+lourish&utm_campaign=3D28d1d772c1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_02&=
+utm_medium=3Demail&utm_term=3D0_190848d56d-28d1d772c1-231011582
+
+How visualization can empower students in a data-driven world
+Data visualization is a key skill in today=E2=80=99s data-driven world and=
+ it is never too early to start learning! Together with the Canva for Educ=
+ation (https://www.canva.com/education/?utm_source=3DFlourish&utm_campaign=
+=3D28d1d772c1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_02&utm_medium=3Demail&u=
+tm_term=3D0_190848d56d-28d1d772c1-231011582) team=2C we wrote a guid=
+e to help parents and teachers introduce data visualization concepts to yo=
+unger generations=2C including five practical exercises.
+
+=E2=80=A2 Read the guide (https://www.canva.com/learn/data-visualisation-f=
+or-students/?utm_source=3DFlourish&utm_campaign=3D28d1d772c1-EMAIL_CAMPAIG=
+N_2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0_190848d56d-28d1=
+d772c1-231011582)
+
+https://www.canva.com/learn/data-visualisation-for-students/?utm_source=3D=
+Flourish&utm_campaign=3D28d1d772c1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_02=
+&utm_medium=3Demail&utm_term=3D0_190848d56d-28d1d772c1-231011582
+
+=E2=80=9CTea Break=E2=80=9D webinars are on holiday!
+We=E2=80=99re taking a short break from our =E2=80=9CTea Break=E2=80=9D we=
+binars. But don=E2=80=99t worry=2C you can view any of our previous webina=
+rs on our YouTube channel (https://www.youtube.com/channel/UCWTf4OgEH_MiDv=
+fmjPdkTxg?utm_source=3DFlourish&utm_campaign=3D28d1d772c1-EMAIL_CAMPAIGN_2=
+018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0_190848d56d-28d1d77=
+2c1-231011582) and you can or visit our Help page (https://help.flou=
+rish.studio/?utm_source=3DFlourish&utm_campaign=3D28d1d772c1-EMAIL_CAMPAIG=
+N_2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0_190848d56d-28d1=
+d772c1-231011582) to access hundreds of short articles showing you h=
+ow to use Flourish. We=E2=80=99ll be back by the end of the summer with mo=
+re sessions and brand new content. We=E2=80=99ll share more information so=
+on!
+
+=E2=80=A2 Visit our =E2=80=9CTea Break=E2=80=9D webinars page (https://flo=
+urish.studio/resources/webinar/?utm_source=3DFlourish&utm_campaign=3D28d1d=
+772c1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=
+=3D0_190848d56d-28d1d772c1-231011582)
+
+https://flourish.studio/resources/webinar/?utm_source=3DFlourish&utm_campa=
+ign=3D28d1d772c1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_02&utm_medium=3Demai=
+l&utm_term=3D0_190848d56d-28d1d772c1-231011582
+
+Other updates
+=E2=80=A2 Learn how to add multiple custom prefixes and suffixes to your c=
+harts (https://help.flourish.studio/article/511-how-to-add-custom-prefixes=
+-and-suffixes-per-series?utm_source=3DFlourish&utm_campaign=3D28d1d772c1-E=
+MAIL_CAMPAIGN_2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0_190=
+848d56d-28d1d772c1-231011582) using custom popups and a little bit o=
+f CSS
+=E2=80=A2 To commemorate the Queen=E2=80=99s Platinum Jubilee=2C we mapped=
+ out (https://twitter.com/f_l_o_u_r_i_s_h/status/1532006553699631105?s=3D2=
+0&t=3Dkn8QhAUaW4uczhGMSLp0Yw&utm_source=3DFlourish&utm_campaign=3D28d1d772=
+c1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0=
+_190848d56d-28d1d772c1-231011582) the family tree of Her Majesty=E2=
+=80=99s beloved corgis (and dorgis) using a Sankey diagram. Follow us for=
+ more data-driven content!
+
+We=E2=80=99re hiring!
+The Flourish and Canva teams (https://flourish.studio/company?utm_source=
+=3DFlourish&utm_campaign=3D28d1d772c1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY=
+_02&utm_medium=3Demail&utm_term=3D0_190848d56d-28d1d772c1-231011582)=
+ are growing. We have great opportunities across several teams=2C includin=
+g senior backend and visualization engineers and a lead product designer t=
+o work in our London-based team.
+
+=E2=80=A2 Apply now or spread the word! (https://www.canva.com/careers/job=
+s/?location=3DLondon%2C%20England%2C%20United%20Kingdom&utm_source=3DFlour=
+ish&utm_campaign=3D28d1d772c1-EMAIL_CAMPAIGN_2018_07_25_03_49_COPY_02&utm_=
+medium=3Demail&utm_term=3D0_190848d56d-28d1d772c1-231011582)
+
+https://www.canva.com/careers/jobs/?location=3DLondon%2C%20England%2C%20Un=
+ited%20Kingdom&utm_source=3DFlourish&utm_campaign=3D28d1d772c1-EMAIL_CAMPA=
+IGN_2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0_190848d56d-28=
+d1d772c1-231011582
+
+We=E2=80=99ll be back in a few weeks with more updates. Until then=2C as a=
+lways=2C just hit reply with any ideas=2C questions or feedback =E2=80=93=
+ and keep an eye on the changelog (https://flourish.studio/whats-new/?utm_=
+source=3DFlourish&utm_campaign=3D28d1d772c1-EMAIL_CAMPAIGN_2018_07_25_03_4=
+9_COPY_02&utm_medium=3Demail&utm_term=3D0_190848d56d-28d1d772c1-231011582) for more updates!
+
+Best wishes=2C
+Luisa and the Flourish team
+
+Did someone forward this message to you? Join the list! (https://flourish.=
+studio/newsletter/?utm_source=3DFlourish&utm_campaign=3D28d1d772c1-EMAIL_C=
+AMPAIGN_2018_07_25_03_49_COPY_02&utm_medium=3Demail&utm_term=3D0_190848d56=
+d-28d1d772c1-231011582)
+
+Flourish=2C part of the Canva family
+
+300 Curtain House=2C 134=E2=80=93146 Curtain Rd
+
+London EC2A 3AR
+
+Unsubscribe (https://studio.us13.list-manage.com/unsubscribe?u=3Da41ac2fe0=
+fc0d1ab52f5df1b9&id=3D190848d56d&e=3D8a716934dc&c=3D28d1d772c1)
+
+References
+
+1. file://localhost/atom.xml
+--_----------=_MCPart_1223427303
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www=
+=2Ew3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.w3.org/1999/xhtml">
+<head><meta name=3D"twitter:image:src" content=3D"https://flourish.studio/=
+images/newsletters/projection-map-labels.png"><meta name=3D"twitter:descri=
+ption" content=3D"Flourish newsletter #36"><meta name=3D"twitter:title" co=
+ntent=3D"Map labels=2C charting air pollution and how to visualize survey=
+ data"><meta name=3D"twitter:card" content=3D"summary_large_image"><meta p=
+roperty=3D"og:type" content=3D"article"><meta property=3D"og:description"=
+ content=3D"Flourish newsletter #36"><meta property=3D"og:image" content=
+=3D"https://flourish.studio/images/newsletters/projection-map-labels.png">=
+<meta property=3D"og:title" content=3D"Map labels=2C charting air pollutio=
+n and how to visualize survey data"><meta property=3D"og:url" content=3D"h=
+ttp://eepurl.com/h46Dbn">
+=09<meta name=3D"viewport" content=3D"width=3Ddevice-width">
+=09<meta http-equiv=3D"x-ua-compatible" content=3D"IE=3Dedge">
+=09<meta http-equiv=3D"content-type" content=3D"text/html; charset=3DUTF-8=
+">
+=09<title>New spike maps and the UK housing crisis visualized</title>
+=09<style type=3D"text/css">
+=09=09body { font-family: sans-serif; }
+=09=09p { margin: 0 0 1em; }
+=09=09p img { width: 100%; }
+=09=09img { max-width: 500px; margin: 0.25em 0 0.75em; box-shadow: 0 0 4px=
+ rgba(0=2C0=2C0=2C0.2); }
+=09=09.small { color: #aaa; font-size: 0.8em; margin: 0;}
+=09=09.no-shadow { box-shadow: none !important;}
+=09</style>
+<meta name=3D"generator" content=3D"Hexo 4.2.0"><link rel=3D"alternate" hr=
+ef=3D"/atom.xml" title=3D"Flourish" type=3D"application/atom+xml">
+<base href=3D"https://flourish.studio/newsletters/38/"></head>
+<body style=3D"font-family: sans-serif;"><div itemscope=3D"" itemtype=3D"h=
+ttp://schema.org/EmailMessage"><div itemprop=3D"publisher" itemscope=3D""=
+ itemtype=3D"http://schema.org/Organization"><meta itemprop=3D"name" conte=
+nt=3D"Flourish"><link itemprop=3D"url" content=3D"https://flourish.studio/=
+"></div><div itemprop=3D"about" itemscope=3D"" itemtype=3D"http://schema.o=
+rg/Offer"><link itemprop=3D"image" href=3D"https://flourish.studio/images/=
+newsletters/projection-map-labels.png"></div></div>
+=09<p style=3D"margin: 0 0 1em;">Hi everyone=2C</p>
+<p style=3D"margin: 0 0 1em;">June has been busy and we can=E2=80=99t wait=
+ to get you up to speed on some fresh new features and content!</p>
+<p style=3D"margin: 0 0 1em;"><strong>Welcome spike maps!</strong><br>
+Our =E2=80=9CProjection map=E2=80=9D template just got more powerful. The=
+ new spike map mode gives you the option to plot your <a href=3D"https://s=
+tudio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D=
+b1d108782a&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener">points data=
+</a> as spikes rather than circles. Spikes reduce overlaps on busy maps=
+ =E2=80=93 and unlike circles they allow you plot negative values. They lo=
+ok super cool too!</p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D05b18e4d43&e=
+=3D8a716934dc">Check out our blog post to learn more</a></p>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D5c64bec352&e=3D8a716934dc"><img src=3D"https://flourish.studio/images/newsletters/spikes-2.gif" a=
+lt=3D"Spike maps blog post" style=3D"max-width: 500px;margin: 0.25em 0 0.7=
+5em;box-shadow: 0 0 4px rgba(0=2C0=2C0=2C0.2);width: 100%;"></a></p>
+<p style=3D"margin: 0 0 1em;"><strong>Visualizing the UK housing crisis</s=
+trong><br>
+Home ownership is out of reach for many people in the UK. Data shows that=
+ average house prices have increased by over =C2=A347=2C000 since the 2020=
+ lockdown. As our visual exploration shows=2C other factors such as popula=
+tion increases and cost of living also contribute to this issue.</p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Dbdb8500ddb&e=
+=3D8a716934dc">Read the full story in our blog</a></p>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Dae2734903b&e=3D8a716934dc"><img src=3D"https://flourish.studio/images/newsletters/housing-crisis-=
+chart.png" alt=3D"UK housing crisis blog" style=3D"max-width: 500px;margin=
+: 0.25em 0 0.75em;box-shadow: 0 0 4px rgba(0=2C0=2C0=2C0.2);width: 100%;">=
+</a></p>
+<p style=3D"margin: 0 0 1em;"><strong>Unpacking Asia=E2=80=99s complex dyn=
+amics with data storytelling</strong><br>
+We chatted to the creators of <strong>Kontinentalist</strong>=2C a digital=
+ newsroom focused on Southeast Asian affairs=2C to learn how they use Flou=
+rish in their daily tasks. From brainstorming and experimenting to advance=
+d interactive scrollytelling=2C Flourish has helped them tell better stori=
+es.</p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D795ff5c31a&e=
+=3D8a716934dc">Read more in our blog</a></p>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D179a9894b0&e=3D8a716934dc"><img src=3D"https://flourish.studio/images/newsletters/konti-img.gif"=
+ alt=3D"Kontinentalist customer story" style=3D"max-width: 500px;margin: 0=
+=2E25em 0 0.75em;box-shadow: 0 0 4px rgba(0=2C0=2C0=2C0.2);width: 100%;"></a=
+></p>
+<p style=3D"margin: 0 0 1em;"><strong>How visualization can empower studen=
+ts in a data-driven world</strong><br>
+Data visualization is a key skill in today=E2=80=99s data-driven world and=
+ it is never too early to start learning! Together with the <a href=3D"htt=
+ps://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9=
+&id=3D8f2c606594&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener">Canva=
+ for Education</a> team=2C we wrote a guide to help parents and teachers i=
+ntroduce data visualization concepts to younger generations=2C including f=
+ive practical exercises.</p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Dcc6394ec9d&e=
+=3D8a716934dc" target=3D"_blank" rel=3D"noopener">Read the guide</a></p>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D80333430a0&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener"><img src=3D"https://flourish.studio=
+/images/newsletters/canva-for-education.png" alt=3D"Introduce data visuali=
+zation in the classroom blog" style=3D"max-width: 500px;margin: 0.25em 0 0=
+=2E75em;box-shadow: 0 0 4px rgba(0=2C0=2C0=2C0.2);width: 100%;"></a></p>
+<p style=3D"margin: 0 0 1em;"><strong>=E2=80=9CTea Break=E2=80=9D webinars=
+ are on holiday!</strong><br>
+We=E2=80=99re taking a short break from our =E2=80=9CTea Break=E2=80=9D we=
+binars. But don=E2=80=99t worry=2C you can view any of our previous webina=
+rs on <a href=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac=
+2fe0fc0d1ab52f5df1b9&id=3D123a9f123b&e=3D8a716934dc" target=3D"_blank" re=
+l=3D"noopener">our YouTube channel</a> and you can or visit our <a href=3D=
+"https://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5d=
+f1b9&id=3D0d4031fcaa&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener">H=
+elp page</a> to access hundreds of short articles showing you how to use F=
+lourish. We=E2=80=99ll be back by the end of the summer with more sessions=
+ and brand new content. We=E2=80=99ll share more information soon! </p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Dbc4b1b099c&e=
+=3D8a716934dc">Visit our =E2=80=9CTea Break=E2=80=9D webinars page</a></p=
+>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Dccdc999296&e=3D8a716934dc"><img src=3D"https://flourish.studio/images/newsletters/webinar-june.pn=
+g" alt=3D"Sign up for our Flourish Tea break webinars" style=3D"max-width:=
+ 500px;margin: 0.25em 0 0.75em;box-shadow: 0 0 4px rgba(0=2C0=2C0=2C0.2);w=
+idth: 100%;"></a></p>
+<p style=3D"margin: 0 0 1em;"><strong>Other updates</strong><br>
+=E2=80=A2 Learn how to add multiple <a href=3D"https://studio.us13.list-ma=
+nage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D78da8cbfd8&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener">custom prefixes and suffixes=
+ to your charts</a> using custom popups and a little bit of CSS<br>
+=E2=80=A2 To commemorate the Queen=E2=80=99s Platinum Jubilee=2C <a href=
+=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52=
+f5df1b9&id=3Db2d67b6aac&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener=
+">we mapped out</a> the family tree of Her Majesty=E2=80=99s beloved corgi=
+s (and dorgis) using a Sankey diagram. Follow us for more data-driven cont=
+ent! </p>
+<p style=3D"margin: 0 0 1em;"><strong>We=E2=80=99re hiring!</strong><br>
+The <a href=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac2f=
+e0fc0d1ab52f5df1b9&id=3D0ab880e4ce&e=3D8a716934dc">Flourish and Canva tea=
+ms</a> are growing. We have great opportunities across several teams=2C in=
+cluding senior backend and visualization engineers and a lead product desi=
+gner to work in our London-based team.</p>
+<p style=3D"margin: 0 0 1em;">=E2=80=A2 <a href=3D"https://studio.us13.lis=
+t-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Dc645af350c&e=
+=3D8a716934dc" target=3D"_blank" rel=3D"noopener">Apply now or spread the=
+ word!</a></p>
+<p style=3D"margin: 0 0 1em;"><a href=3D"https://studio.us13.list-manage.c=
+om/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Da5bf292b4f&e=3D8a716934dc" target=3D"_blank" rel=3D"noopener"><img src=3D"https://flourish.studio=
+/images/flourish-office-montage.jpg" alt=3D"Join the Flourish team" style=
+=3D"max-width: 500px;margin: 0.25em 0 0.75em;box-shadow: 0 0 4px rgba(0=2C=
+0=2C0=2C0.2);width: 100%;"></a></p>
+<p style=3D"margin: 0 0 1em;">We=E2=80=99ll be back in a few weeks with mo=
+re updates. Until then=2C as always=2C just hit reply with any ideas=2C qu=
+estions or feedback =E2=80=93 and keep an eye on the <a href=3D"https://st=
+udio.us13.list-manage.com/track/click?u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3Dc=
+b264768e0&e=3D8a716934dc">changelog</a> for more updates!</p>
+<p style=3D"margin: 0 0 1em;">Best wishes=2C<br>
+Luisa and the Flourish team<br></p>
+<p style=3D"margin: 0 0 1em;"><em>Did someone forward this message to you?=
+ <a href=3D"https://studio.us13.list-manage.com/track/click?u=3Da41ac2fe0f=
+c0d1ab52f5df1b9&id=3D4281e3c3f4&e=3D8a716934dc">Join the list!</a></em></=
+p>
+<!-- Update webinar image with upcoming webinars -->
+
+=09<p class=3D"small" style=3D"margin: 0;color: #aaa;font-size: 0.8em;">Fl=
+ourish=2C part of the Canva family
+=09</p><p class=3D"small" style=3D"margin: 0;color: #aaa;font-size: 0.8em;=
+">300 Curtain House=2C 134=E2=80=93146 Curtain Rd
+=09</p><p class=3D"small" style=3D"margin: 0;color: #aaa;font-size: 0.8em;=
+">London EC2A 3AR
+=09</p><p class=3D"small" style=3D"margin: 0;color: #aaa;font-size: 0.8em;=
+"><a id=3D"unsub" href=3D"https://studio.us13.list-manage.com/unsubscribe?=
+u=3Da41ac2fe0fc0d1ab52f5df1b9&id=3D190848d56d&e=3D8a716934dc&c=3D28d1d772c1"=
+>Unsubscribe</a>
+</p><img src=3D"https://studio.us13.list-manage.com/track/open.php?u=3Da41=
+ac2fe0fc0d1ab52f5df1b9&id=3D28d1d772c1&e=3D8a716934dc" height=3D"1" width=
+=3D"1" alt=3D""></body>
+</html>
+--_----------=_MCPart_1223427303--
