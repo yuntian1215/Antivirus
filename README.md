@@ -1,21 +1,27 @@
 # 交大金课（项目管理）课程设计
 
 
-## 前端界面运行方法：
-前端运行所需的python环境保存在虚拟环境VirEnv里面，运行时只需进入虚拟环境即可
-1. 打开终端(Terminal)
-2. 进入Security_Project/VirEnv/Scripts目录下：
-   cd VirEnv/Scripts
-3. 进入虚拟环境： 
-   activate
-   
-进入后如图所示:![img.png](img.png) 
+## 前端界面运行方法
+### 环境配置
+OpenEuler环境
+>1. 在虚拟机中克隆项目地址：git clone https://github.com/riacd/Security_Project.git
+>2. 更新pip版本：python -m pip install --upgrade pip
+>3. 安装所需Python包：pip3 install -r requirements.txt  
 
-4. 使用streamlit指令运行前端界面：
-    streamlit run web/主页.py
-   
-运行如图所示:![img_1.png](img_1.png)  
-   此时用浏览器打开终端提示的网址即可看到对应页面
+windows环境：
+前端运行所需的python环境保存在虚拟环境VirEnv里面，运行时只需进入虚拟环境即可
+>1. 打开终端(Terminal)
+>2. 进入Security_Project/VirEnv/Scripts目录下：
+>   cd VirEnv/Scripts
+>3. 进入虚拟环境： 
+>   activate  
+> 进入后如图所示:![img.png](img.png)
+
+### 加载前端界面
+4. 使用streamlit指令运行前端界面（注意当前所处目录应该在Security_Project/目录下）：
+    streamlit run web/主页.py  
+   运行如图所示:![img_1.png](img_1.png)  
+5. 此时用浏览器打开终端提示的网址即可看到对应页面
 
 
 ## 项目结构
