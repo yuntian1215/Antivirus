@@ -8,8 +8,10 @@ import numpy as np
 
 st.sidebar.write('配置')
 
+Dir_openfile=st.text_input(label='选择扫描路径(若空着即扫描当前路径)')
+st.button("启动扫描", on_click=API.scan, args=[Dir_openfile])
 
-st.button("启动扫描", on_click=API.scan)
+
 dic = {'白名单文件路径': API.white_list}
 df = pd.DataFrame(dic)
 st.dataframe(df, width=700)  # Same as st.write(df)
