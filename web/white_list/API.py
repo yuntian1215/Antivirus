@@ -29,3 +29,4 @@ def scan(dir: str):
 	f = d.read()
 	print(f)
 	print("扫描完成!\n")
+	return f
