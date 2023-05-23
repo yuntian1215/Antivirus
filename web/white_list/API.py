@@ -36,11 +36,10 @@ def scan(*args):
 	#print(a)
 	print("开始扫描!\n请稍等...\n")
 	d = os.popen(a)
+	global f
 	f = d.read()
 	print(f)
 	print("扫描完成!\n")
-	text_output.append("扫描完成!")
-	return f
 
 # #模拟扫描程序
 # def scan(*args):
@@ -56,5 +55,7 @@ def call_scan(dir: str):
 	print(dir)
 	t = threading.Thread(target=scan, args=dir)
 	t.start()
-	print("开始扫描!  请稍等...")
-	text_output.append("开始扫描!  请稍等...")
+	st.write("开始扫描!  请稍等...")
+	t.join()
+	text_output.append(f)
+

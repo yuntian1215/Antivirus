@@ -13,10 +13,10 @@ with st.container():
 
 if button_clicked:
 	on_click=API.call_scan(Dir_openfile)
-	st.write(on_click)
+	#st.write(on_click)
 
 
-check1 = st.checkbox("扫描潜在不受欢迎程序", value=False)
+check1 = st.checkbox("扫描潜在不受欢迎程序(PUA)", value=False)
 if check1:
 	API.sec[0]=1
 else:
