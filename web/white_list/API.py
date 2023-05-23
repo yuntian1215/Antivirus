@@ -24,9 +24,14 @@ def scan(*args):
 	a="clamscan"
 	#openfile_name="/mnt/hgfs/share/Security_Project/web"
 	openfile_name = dir
-	#print(len(white_list))
 	for i in range(len(white_list)):
 		a = a + " " + "--exclude=" + white_list[i]
+	if sec[0]==1:
+		a = a + " " +"--detect-pua"
+	if sec[1]==1:
+		a = a + " " +"--max-filesize=20M"
+	if sec[2]==1:
+		a = a + " " +"--recursive"
 	a=a+" "+openfile_name
 	#print(a)
 	print("开始扫描!\n请稍等...\n")

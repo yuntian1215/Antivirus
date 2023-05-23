@@ -16,7 +16,7 @@ if button_clicked:
 	st.write(on_click)
 
 
-check1 = st.checkbox("扫描以.(*)开头的文件", value=False)
+check1 = st.checkbox("扫描潜在不受欢迎程序", value=False)
 if check1:
 	API.sec[0]=1
 else:
