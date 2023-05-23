@@ -9,6 +9,7 @@ import time
 
 white_list = ['/VirEnv','/img.png','/global_API.py']
 text_output = []
+sec=[0,0,0]
 
 def add_Dir(dir: str):
     white_list.append(dir)
