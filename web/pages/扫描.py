@@ -3,6 +3,7 @@ from white_list import API
 import numpy as np
 import pandas as pd
 
+sec=[0,0,0]
 Dir_openfile=st.text_input(label='选择扫描路径(若空着即扫描当前路径)')
 #st.button("启动扫描", on_click=API.scan, args=[Dir_openfile])
 button_clicked = st.button("启动扫描")
@@ -14,3 +15,21 @@ with st.container():
 if button_clicked:
 	on_click=API.call_scan(Dir_openfile)
 	st.write(on_click)
+
+
+check1 = st.checkbox("扫描以.(*)开头的文件", value=False)
+if check1:
+	sec[0]=1
+else:
+	sec[0]=0
+check2= st.checkbox("扫描超过20M的文件", value=False)
+if check2:
+	sec[1]=1
+else:
+	sec[1]=0
+check3 = st.checkbox("递归扫描文件夹", value=False)
+if check3:
+	sec[2]=1
+else:
+	sec[2]=0
+
