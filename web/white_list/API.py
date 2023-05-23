@@ -17,7 +17,8 @@ def del_Dir(dir: str):
     white_list.remove(dir)
     print('del_Dir:', white_list)
 
-def scan(dir: str):
+def scan(*args):
+	dir = ''.join(args)
 	a="clamscan"
 	#openfile_name="/mnt/hgfs/share/Security_Project/web"
 	openfile_name = dir
@@ -37,6 +38,8 @@ def scan(dir: str):
 # #模拟扫描程序
 # def scan(*args):
 # 	print(args)
+# 	dir = ''.join(args)
+# 	print(dir)
 # 	time.sleep(10)
 # 	text_output.append("扫描完成!")
 # 	print("扫描完成")
@@ -44,7 +47,7 @@ def scan(dir: str):
 
 def call_scan(dir: str):
 	print(dir)
-	t = threading.Thread(target=scan, args=str(dir))
+	t = threading.Thread(target=scan, args=dir)
 	t.start()
 	print("开始扫描!  请稍等...")
 	text_output.append("开始扫描!  请稍等...")
