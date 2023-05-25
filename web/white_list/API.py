@@ -7,22 +7,24 @@ import sys
 import time
 
 
-white_list = ['/VirEnv','/img.png','/global_API.py']
+white_list = ['/VirEnv','/img.png','/global_API.py'] #white_list数组用于维护白名单
 text_output = []
-sec=[0,0,0]
+sec=[0,0,0] #sec数组记录三个设置的值
 
+#在白名单数组添加新地址
 def add_Dir(dir: str):
     white_list.append(dir)
     print('add_Dir:', white_list)
 
+#在原有的白名单数组选择一个地址并删除
 def del_Dir(dir: str):
     white_list.remove(dir)
     print('del_Dir:', white_list)
 
+#扫描函数，利用os库中的popen函数执行命令行指令，并用read函数重定向到前端界面。通过sec数组内的值选择是否添加额外的条件
 def scan(*args):
 	dir = ''.join(args)
 	a="clamscan"
-	#openfile_name="/mnt/hgfs/share/Security_Project/web"
 	openfile_name = dir
 	for i in range(len(white_list)):
 		a = a + " " + "--exclude=" + white_list[i]
@@ -41,16 +43,8 @@ def scan(*args):
 	print(f)
 	print("扫描完成!\n")
 
-# #模拟扫描程序
-# def scan(*args):
-# 	print(args)
-# 	dir = ''.join(args)
-# 	print(dir)
-# 	time.sleep(10)
-# 	text_output.append("扫描完成!")
-# 	print("扫描完成")
 
-
+#扫描线程函数，防止阻塞主进程使网页卡死
 def call_scan(dir: str):
 	print(dir)
 	t = threading.Thread(target=scan, args=dir)

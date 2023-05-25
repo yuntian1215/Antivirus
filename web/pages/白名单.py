@@ -4,8 +4,6 @@ import pandas as pd
 import numpy as np
 
 
-
-
 st.sidebar.write('配置')
 
 dic = {'白名单文件路径': API.white_list}

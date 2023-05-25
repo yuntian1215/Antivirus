@@ -15,7 +15,7 @@ if button_clicked:
 	on_click=API.call_scan(Dir_openfile)
 	#st.write(on_click)
 
-
+#check1-3为三个设置选择框，并维护API.py中的sec数组
 check1 = st.checkbox("扫描潜在不受欢迎程序(PUA)", value=False)
 if check1:
 	API.sec[0]=1
