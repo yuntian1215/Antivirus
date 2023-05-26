@@ -1,14 +1,30 @@
 import streamlit as st
 from virus_database import API
+import global_API
+import time
 
 scan_tab, fresh_tab = st.tabs(['病毒库扫描', '病毒库更新'])
 with scan_tab:
     scan_Dir = st.text_input(label='扫描路径', value='/mnt/hgfs/share/clamav_test/attach_virus_eml')
-    st.button("启动扫描", on_click=API.call_scan, args=[scan_Dir])
-    if API.scan_output != '':
+    scan_button_clicked = st.button("启动扫描", on_click=API.call_scan, args=[scan_Dir])
+
+    progress_name = 'progress_counter'
+    progress_text = "正在扫描，请稍后......"
+
+    if scan_button_clicked:
+        progress_counter = global_API.create_progress(progress_name)
+        progress_counter.start()
+    if progress_name in global_API.progress_list:
+        progress_counter = global_API.create_progress(progress_name)
+        my_bar = st.progress(0, text=progress_text)
+        my_bar.progress(progress_counter.value, text=progress_text)
+        if API.scan_output != '':
+            global_API.clear_progress(progress_name)
+            my_bar.progress(100, text='扫描完成')
+
         st.write(API.scan_output)
 
 with fresh_tab:
-    st.button("更新", on_click=API.call_scan, args=[scan_Dir])
+    st.button("更新", on_click=API.call_fresh)
 
 

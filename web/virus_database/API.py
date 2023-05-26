@@ -1,3 +1,4 @@
+import time
 from threading import Thread
 import os
 
@@ -12,6 +13,14 @@ def scan(dir: str):
     f = os.popen("clamscan "+str(dir))
     global scan_output
     scan_output = f.read()
+
+# 模拟扫描
+def simu_scan(dir: str):
+    print(dir)
+    time.sleep(9)
+    global scan_output
+    scan_output = 'scan_finished!'
+
     
 def call_fresh():
     t = Thread(target=fresh)
