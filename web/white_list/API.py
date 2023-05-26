@@ -13,8 +13,11 @@ sec=[0,0,0] #sec数组记录三个设置的值
 
 #在白名单数组添加新地址
 def add_Dir(dir: str):
-    white_list.append(dir)
-    print('add_Dir:', white_list)
+	if dir !='' :
+		white_list.append(dir)
+		print('add_Dir:', white_list)
+	else:
+		st.write('白名单路径不得为空！')
 
 #在原有的白名单数组选择一个地址并删除
 def del_Dir(dir: str):
