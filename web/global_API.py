@@ -29,3 +29,23 @@ def create_progress(name):
 
 def clear_progress(name):
     del progress_list[name]
+
+class key_gen:
+    def __init__(self, init=1):
+        self.__value = init
+    def value(self):
+        self.__value += 1
+        return self.__value-1
+
+key_value = key_gen()
+
+def refresh_by_button(render_func):
+    refresh_button = st.sidebar.button('页面更新')
+    content = st.empty()
+    global key_value
+    with content:
+        render_func(key_value)
+    if refresh_button:
+        with content:
+            render_func(key_value)
+
