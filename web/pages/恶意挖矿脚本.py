@@ -12,6 +12,7 @@ with function_tab:
         st.dataframe(pd.DataFrame({'输出信息': API.output_text}), width = 700)
     else:
         st.write(API.failure_warning)
+
 with settings_tab:
     settings_file = st.file_uploader("Choose setting file")
     API.setting_text = st.text_area(label='setting_text', value=API.update_text, on_change=API.change_update_text, args=[API.setting_text])

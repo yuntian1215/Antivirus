@@ -1,4 +1,7 @@
 from threading import Thread
+import joblib
+import pandas as pd
+
 print('setting_text create')
 http_str = ''
 coin_hive = ''
@@ -9,10 +12,17 @@ flag = True
 update_text = 'agfsdgdasf'
 setting_text = 'setting'
 advice_text = 'advice_text'
-
+test=pd.read_csv("./web/crypto_jacking/test.csv")
+X_test=test.drop(["Label","URL"],axis=1)
+X_test=X_test.drop(X_test.columns[0],axis=1)
 
 def scan(url: str):
-    pass
+    model=joblib.load("./web/crypto_jacking/model.pkl")
+    y_pred=model.predict([[31, 1, 0,0, 0, 1]])
+    if y_pred[0]:
+        output_text.update([("conclusion","bad")])
+    else:
+        output_text.update([("conclusion","good")])
 
 def call_scan(url: str):
     t = Thread(target=scan, args=[url])
