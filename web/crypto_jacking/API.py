@@ -126,7 +126,7 @@ def scan(url: str):
         html = GetHtml(url)
         keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit = AnalysisHtml(html)
         print(keywordappeartimes)
-        character = [urllength, isornothttps, keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit]
+        character = [isornothttps, keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit]
 
         output_text.update([("message", "")])
 
@@ -172,7 +172,7 @@ def call_update():
 
 def GetHtml(url):
     chrome_options = Options()
-    # chrome_options.add_argument("--headless")  # 无界面模式，可以在后台运行
+    chrome_options.add_argument("--headless")  # 无界面模式，可以在后台运行
     chrome_options.add_argument('--ignore-certificate-errors')
     
     driver = webdriver.Chrome(options=chrome_options)

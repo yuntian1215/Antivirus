@@ -1,6 +1,5 @@
 import streamlit as st
 from crypto_jacking import API
-import pandas as pd
 import global_API
 import streamlit as st
 import pandas as pd
