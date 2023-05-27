@@ -7,13 +7,6 @@ import re
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-import asyncio
-import websockets
-import json
-import time
-
-
-
 print('setting_text create')
 keywords = ['cryptonight.wasm', 'deepMiner.js', 'deepMiner.min.js', 'proxy=wss', 'proxy=ws', 'coinhive.min.js', 
             'monero-miner.js', 'wasmminer.wasm', 'wasmminer.js', 'cn-asmjs.min.js', 'plugins/aj-cryptominer', 
@@ -105,10 +98,11 @@ script = ''
 conclusion = ''
 message = ''
 output_text = {'http': http_str, 'script': script, 'conclusion': conclusion, 'message' : message}
+output_text2 = {'http': http_str, 'script': script, 'conclusion': conclusion, 'message' : message}
 flag = True
-update_text = 'agfsdgdasf'
-setting_text = 'setting'
-advice_text = 'advice_text'
+update_text = ''
+setting_text = ''
+advice_text = 'Succeesfully update'
 test=pd.read_csv("./web/crypto_jacking/test.csv")
 X_test=test.drop(["Label","URL"],axis=1)
 X_test=X_test.drop(X_test.columns[0],axis=1)
@@ -116,7 +110,7 @@ X_test=X_test.drop(X_test.columns[0],axis=1)
 failure_warning = "This is a warning msg\n It means that our crawler meet some problems\n You may solve it by the following advice:\n First: Maybe your network is down. Check your Internet Links.  Second: May be the dynamic js needs too long to responding, we suggest you crawl the web source page in a virtual environment and send it to the next button\n "
 
 def scan(url: str):
-    if url:
+    if url == "":
         model=joblib.load("./web/crypto_jacking/model.pkl")
 
         # 提取特征
@@ -151,24 +145,58 @@ def scan(url: str):
     else:
         output_text.update([("http", ""), ("script", ""), ("conclusion", ""), ("message", "Please input a non-null URL")])
 
+def scan_html(url: str, html: str):
+        model=joblib.load("./web/crypto_jacking/model.pkl")
+
+        # 提取特征
+        urllength = calculate_url_length(url)
+        isornothttps = judge_url_isornothttps(url)
+        html = html
+        keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit = AnalysisHtml(html)
+        character = [urllength, isornothttps, keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit]
+
+        output_text2.update([("message", "")])
+
+        if isornothttps:
+            output_text2.update([("http", "该链接使用Https协议")])
+        else:
+            output_text2.update([("http", "该链接使用Http协议, 或许有一定风险")])
+        
+        if keywordappeartimes:
+            output_text2.update([("script", "该链接包含了恶意脚本关键词")])
+        else:
+            output_text2.update([("script", "该链接没有包含常见恶意脚本关键词")])
+
+        y_pred = model.predict([character])
+        if y_pred[0]:
+            output_text2.update([("conclusion", "经判断, 该链接较为安全")])
+        else:
+            output_text2.update([("conclusion", "经判断, 该链接很有可能包含恶意挖矿脚本")])
+        
+
+
 
 def call_scan(url: str):
     t = Thread(target = scan, args = [url])
     t.start()
 
-def change_update_text(text: str):
-    global update_text
-    update_text = text
+def call_html_scan(url: str, html: str):
+    t = Thread(target = scan_html, args = [url, html])
+    t.start()
+
+# def change_update_text(text: str):
+#     global update_text
+#     update_text = text
 
 def update(text: str):
     # 可能传过来是['a', 'b', 'c']，要重新链接，可能text = text.join()可以连接起来，建议查百度
-    pass
+    keywords_list = text.splitlines()
+    write_list_to_file(keywords_list, "web\crypto_jacking\keywords.txt")
+    
 
-def call_update():
-    global setting_text
-    t = Thread(target = scan, args = [setting_text])
+def call_update(text: str):
+    t = Thread(target = update, args = [text])
     t.start()
-    setting_text = update_text = ''
 
 def GetHtml(url):
     chrome_options = Options()
@@ -194,6 +222,16 @@ def GetHtml(url):
 
 def AnalysisHtml(html):
     global keywords
+
+    update_keywords = read_file_lines("web\crypto_jacking\keywords.txt")
+    # 过滤空字符和重复字词
+    update_keywords = {element.strip() for element in update_keywords if element.strip()}
+    update_keywords_set = set(update_keywords)
+    updated_keywords = list(update_keywords_set)
+
+    print(updated_keywords)
+
+    keywords.extend(updated_keywords)
 
     pattern = r"\b(?:{})\b".format("|".join(map(re.escape, keywords)))
     html_contains_keywords = re.findall(pattern, html, re.IGNORECASE)
@@ -241,3 +279,13 @@ def judge_url_isornothttps(url):
     if url.startswith('https'):
         return 1
     return 0
+
+def write_list_to_file(lst, file_path):
+    with open(file_path, "a") as file:
+        for item in lst:
+            file.write(str(item) + "\n")
+
+def read_file_lines(file_path):
+    with open(file_path, "r") as file:
+        lines = file.read().splitlines()
+    return lines
