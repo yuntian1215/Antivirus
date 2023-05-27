@@ -1,4 +1,4 @@
-# 交大金课（项目管理）课程设计
+# 项目管理课程设计
 
 
 ## 前端界面运行方法
@@ -44,4 +44,3 @@ streamlit比Django简单很多，如果想要看可以直接百度搜，学起�
 其它教程https://zhuanlan.zhihu.com/p/448853407  
 
 ## TODO
-上传/clamav_test（我的openeuler配了半天没法桥接联网，而且VMwareTools也没法和主机传文件。要是谁能在openEuler里面正常使用GIT，麻烦把杀毒软件的源代码传上来一下）
