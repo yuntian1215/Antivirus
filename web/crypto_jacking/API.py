@@ -265,7 +265,7 @@ def AnalysisHtml(html):
     pattern = r"\b(?:{})\b".format("|".join(map(re.escape, cpulimits)))
     html_contains_cpulimits = re.findall(pattern, html, re.IGNORECASE)
 
-    if html_contains_dynamicfuncs:
+    if html_contains_cpulimits:
         ifcpulimit = 1
     else:
         ifcpulimit = 0
