@@ -27,13 +27,9 @@ def add_Dir(dir: str):
 #在原有的白名单数组选择一个地址并删除
 def del_Dir(dir: str):
 	white_list.remove(dir)
-	lines = []
-	with open(filepath, 'r') as file:
-		lines = file.readlines()
 	with open(filepath, 'w') as file:
-		for line in lines:
-			if line.strip() != dir:
-				file.write(line)
+		for i in range(len(white_list)):
+			file.write(white_list[i])
 	print('del_Dir:', white_list)
 
 #扫描函数，利用os库中的popen函数执行命令行指令，并用read函数重定向到前端界面。通过sec数组内的值选择是否添加额外的条件
