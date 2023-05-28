@@ -32,19 +32,26 @@ def page_render(key_value):
 
     with settings_tab:
         settings_file = st.file_uploader("Choose a img file")
-        
+
         text = "Please input the latest keywords in lines"
         # 利用OCR提取图片文字
         if settings_file is not None:
-            image = Image.open(settings_file)
-            text = pytesseract.image_to_string(image)
-            update_text = st.text_area(label='setting_text', value=text)
+            (shotname, extension) = os.path.splitext(settings_file.name)  # 提取文件名和后缀
+            if extension == ".png" or extension == ".jpg":
+                image = Image.open(settings_file)
+                text = pytesseract.image_to_string(image)
+                update_text = st.text_area(label='setting_text', value=text)
+            else:
+                st.info("上传的文件类型不是图片类型的")
+                update_text = st.text_area(label='setting_text', value=text)
         else:
             update_text = st.text_area(label='setting_text', value=text)
        
         st.write("你要更新的关键词有", update_text)
+
         update_button_clicked = st.button(label="更新", on_click=API.call_update, args=[update_text])
-        
+        delete_button_clicked = st.button(label="删除关键字", on_click=API.call_update, args=[update_text])
+
         if update_button_clicked:
             st.write(API.advice_text)
 
@@ -67,6 +74,6 @@ def page_render(key_value):
 
     with model_update:
         st.write("当前模型版本为：1.0")
-        st.button("下载模型", on_click=API.download_model)
+        st.button("更新模型", on_click=API.download_model)
 
 global_API.refresh_by_button(page_render)
