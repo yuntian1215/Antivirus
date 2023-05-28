@@ -8,6 +8,7 @@ import re
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+# 为保证观感，请折叠它
 keywords = ['cryptonight.wasm', 'deepMiner.js', 'deepMiner.min.js', 'proxy=wss', 'proxy=ws', 'coinhive.min.js', 
             'monero-miner.js', 'wasmminer.wasm', 'wasmminer.js', 'cn-asmjs.min.js', 'plugins/aj-cryptominer', 
             'plugins/ajcryptominer', 'plugins/wp-monero-miner-pro', 'lib/crlt.js', 'pool/direct.js', 'n.2.1.js', 
@@ -93,10 +94,22 @@ keywords = ['cryptonight.wasm', 'deepMiner.js', 'deepMiner.min.js', 'proxy=wss',
             'kireevairina959.bitbucket.io', 'd3al52d8cojds7.cloudfront.net', 'jscoinminer.com/js', 'tercabilis.info', 'hostingcloud.racing', 
             'gxbrowser.net', 'new CoinHive.Anonymous', 'new CryptoLoot.Anonymous', 'lib/miner.min.js', 'new deep.Miner.Anonymous', 
             'new CRLT.Anonymous', 'new CoinImp.Anonymous', 'new CoinPirate.Anonymous', 'ppoi.org/lib/projectpoi.min.js', 'new ProjectPoi.Anonymous']
+
 def read_file_lines(file_path):
     with open(file_path, "r") as file:
         lines = file.read().splitlines()
+    lines = [line for line in lines if line.strip()]
     return lines
+
+def write_list_to_file(lst, file_path):
+    with open(file_path, "a") as file:
+        for item in lst:
+            file.write(str(item) + "\n")
+
+def rewrite_list_to_file(lst, file_path):
+    with open(file_path, "w") as file:
+        for item in lst:
+            file.write(str(item) + "\n")
 
 keywords_update_list = read_file_lines("web\crypto_jacking\keywords.txt")
 http_str = http_str2 = ''
@@ -119,7 +132,7 @@ X_test=X_test.drop(X_test.columns[0],axis=1)
 def download_model():
     pass
 
-def scan(url: str):
+def scan(url: str, option):
     global Infoflag
     
     if url.strip() != "":
@@ -128,7 +141,7 @@ def scan(url: str):
         # 提取特征
         urllength = calculate_url_length(url)
         isornothttps = judge_url_isornothttps(url)
-        html = GetHtml(url)
+        html = GetHtml(url, option)
         keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit = AnalysisHtml(html)
         character = [isornothttps, keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit]
 
@@ -147,9 +160,9 @@ def scan(url: str):
         #y_pred=model.predict([[31, 1, 0, 0, 0, 1]])
         y_pred = model.predict([character])
         if y_pred[0]:
-            output_text.update([("conclusion", "经过模型的判断，该链接较为安全。")])
+            output_text.update([("conclusion", "经过模型的判断，<span style='color:green; font-size: 24px;'>该链接较为安全。</span>")])
         else:
-            output_text.update([("conclusion", "经过模型的判断，该链接很有可能包含恶意挖矿脚本。")])
+            output_text.update([("conclusion", "经过模型的判断，<span style='color:green; font-size: 24px;'>该链接很有可能包含恶意挖矿脚本。</span>")])
         
     
     else:
@@ -174,28 +187,28 @@ def scan_html(url: str, html: str):
         Infoflag2 = 1
 
         if isornothttps:
-            output_text2.update([("http", "该链接使用Https协议")])
+            output_text2.update([("http", "协议情况: 该链接使用Https协议, 安全性有一定保障")])
         else:
             output_text2.update([("http", "该链接使用Http协议, 或许有一定风险")])
         
         if keywordappeartimes:
-            output_text2.update([("script", "该链接包含了恶意脚本关键词")])
+            output_text2.update([("script", "恶意服务器关键词包含情况：该链接包含了恶意脚本关键词，有很大风险")])
         else:
-            output_text2.update([("script", "该链接没有包含常见恶意脚本关键词")])
+            output_text2.update([("script", "恶意服务器关键词包含情况：该链接没有包含常见恶意脚本关键词，安全性有一定保障")])
 
         y_pred = model.predict([character])
         if y_pred[0]:
-            output_text2.update([("conclusion", "经判断, 该链接较为安全")])
+            output_text2.update([("conclusion", "经过模型的判断，<span style='color:green; font-size: 24px;'>该链接较为安全。</span>")])
         else:
-            output_text2.update([("conclusion", "经判断, 该链接很有可能包含恶意挖矿脚本")])
+            output_text2.update([("conclusion", "经过模型的判断，<span style='color:green; font-size: 24px;'>该链接很有可能包含恶意挖矿脚本。</span>")])
 
         if url.strip() == "" and html: Infoflag2 = 0
         
 
 
 
-def call_scan(url: str):
-    t = Thread(target = scan, args = [url])
+def call_scan(url: str, option):
+    t = Thread(target = scan, args = [url, option])
     t.start()
 
 def call_html_scan(url: str, html: str):
@@ -221,12 +234,16 @@ def call_update(text: str):
     t = Thread(target = update, args = [text])
     t.start()
 
-def GetHtml(url):
-    chrome_options = Options()
-    #chrome_options.add_argument("--headless")  # 无界面模式，可以在后台运行
-    chrome_options.add_argument('--ignore-certificate-errors')
+def GetHtml(url, option):
+    firefox_options = chrome_options = Options()
+    # firefox_options = chrome_options.add_argument("--headless")  # 无界面模式，可以在后台运行
+    firefox_options = chrome_options.add_argument('--ignore-certificate-errors')
     
-    driver = webdriver.Chrome(options=chrome_options)
+    if option == "Chrome":
+        driver = webdriver.Chrome(options=chrome_options)
+    
+    elif option == "Firefox":
+        driver = webdriver.Firefox(options=firefox_options)
     driver.set_page_load_timeout(10)
 
     global flag, Infoflag
@@ -301,13 +318,3 @@ def judge_url_isornothttps(url):
     if url.startswith('https'):
         return 1
     return 0
-
-def write_list_to_file(lst, file_path):
-    with open(file_path, "a") as file:
-        for item in lst:
-            file.write(str(item) + "\n")
-
-def rewrite_list_to_file(lst, file_path):
-    with open(file_path, "w") as file:
-        for item in lst:
-            file.write(str(item) + "\n")
