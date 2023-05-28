@@ -14,7 +14,18 @@ def page_render(key_value):
     with function_tab:
         URL_search = st.text_input(label = "输入待检测的URL 👇")
         st.write("You entered URL is: ", URL_search)
-        st.button("开始筛查", on_click=API.call_scan, args=[URL_search])
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            options = ["Chrome", "Firefox", "Safari"]
+            option = st.radio(
+            "Please choose the Web Driver 👉",
+            key = "driver",
+            options = ["Chrome", "Firefox"],
+            )
+        
+        with col3:
+            st.button("开始筛查", on_click=API.call_scan, args=[URL_search, option])
         
         if API.flag:
           
@@ -43,7 +54,7 @@ def page_render(key_value):
                 # st.experimental_rerun()
              
         else:
-            message = "<span style='color:red; font-size: 32px;'> Waring Message! </span> You may solve it by the following infos:"
+            message = "<span style='color:red; font-size: 32px;'> Warning Message! </span> You may solve it by the following infos:"
             st.markdown(message, unsafe_allow_html=True)
 
             message = """<div style='background-color: #f5f5f5; padding: 10px; box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);'>
@@ -56,6 +67,13 @@ def page_render(key_value):
             </ul></div>"""
 
             st.markdown(message, unsafe_allow_html=True)
+        
+        st.radio("Untapped Driver, Hold on!", key = "disabled", options = ["Safari"], disabled = True)
+
+
+
+        
+
 
     with settings_tab:
         settings_file = st.file_uploader("Choose a img file")
@@ -67,27 +85,36 @@ def page_render(key_value):
             if extension == ".png" or extension == ".jpg":
                 image = Image.open(settings_file)
                 text = pytesseract.image_to_string(image)
-                update_text = st.text_area(label='setting_text', value=text)
+                update_text = st.text_area(label='Keywords', value=text)
             else:
                 st.info("上传的文件类型不是图片类型的")
-                update_text = st.text_area(label='setting_text', value=text)
+                update_text = st.text_area(label='Keywords', value=text)
+                
+            st.info("你要更新的关键词有" + update_text)
         else:
-            update_text = st.text_area(label='setting_text', value=text)
+            update_text = st.text_area(label='Keywords', value=text)
        
-        st.write("你要更新的关键词有", update_text)
+            st.info("你要更新的关键词有")
 
-        update_button_clicked = st.button(label="更新", on_click=API.call_update, args=[update_text])
+        col1, col2, col3, col4, col5, col6, col7, col8 = st.columns(8)
+        with col8:
+            update_button_clicked = st.button(label="更新", on_click=API.call_update, args=[update_text])
 
         if update_button_clicked:
-            st.write(API.advice_text)
+            st.write("Succeesfully update")
 
         Keywords_deleted = st.selectbox("删除关键词", options=API.keywords_update_list)
-        delete_button_clicked = st.button("删除关键词", on_click=API.del_Keywords, args=[Keywords_deleted])
+
+        col1, col2, col3, col4, col5, col6= st.columns(6)
+        with col6:
+            delete_button_clicked = st.button("删除路径", on_click=API.del_Keywords, args=[Keywords_deleted])
+        
+
         if delete_button_clicked:
             st.write(API.advice_text)
 
     with file_upload_tab:
-        URL_search = st.text_input(label = '输入待检测的URL ~')
+        URL_search = st.text_input(label = '输入待检测的URL')
         uploaded_file = st.file_uploader("Choose a html file")
         # (filepath, tempfilename) = os.path.split(self.path)
         # (shotname, extension) = os.path.splitext(tempfilename)
@@ -101,7 +128,7 @@ def page_render(key_value):
 
 
                 if API.Infoflag2 == 0:
-                    st.info("Please Input a Non-null URL with a Non-null HTML")
+                    st.info("Please Input a Non-Null URL with a Non-null HTML")
             
                 elif API.Infoflag2 == 1:
                     message = "<span style='color:green; font-size: 32px;'> Successfully finished! </span> The following are some criteria we provided:"

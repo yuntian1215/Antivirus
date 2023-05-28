@@ -1,2 +1,4 @@
 new.CoinHive.Anonymous
 coinhive.com/lib/coinhive.min.js
+new.ProjectPoi.Anonymous
+
