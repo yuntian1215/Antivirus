@@ -99,12 +99,14 @@ def read_file_lines(file_path):
     return lines
 
 keywords_update_list = read_file_lines("web\crypto_jacking\keywords.txt")
-http_str = ''
-script = ''
-conclusion = ''
-output_text = output_text2 = {'http': http_str, 'script': script, 'conclusion': conclusion}
+http_str = http_str2 = ''
+script = script2 = ''
+conclusion = conclusion2 = ''
+output_text = {'http': http_str, 'script': script, 'conclusion': conclusion}
+output_text2 = {'http': http_str2, 'script': script2, 'conclusion': conclusion2}
+
 flag = True
-Infoflag = False
+Infoflag = Infoflag2 = 0
 update_text = ''
 setting_text = ''
 advice_text = 'Succeesfully update'
@@ -112,7 +114,7 @@ test=pd.read_csv("./web/crypto_jacking/test.csv")
 X_test=test.drop(["Label","URL"],axis=1)
 X_test=X_test.drop(X_test.columns[0],axis=1)
 
-failure_warning = "This is a warning msg\n It means that our crawler meet some problems\n You may solve it by the following advice:\n First: Maybe your network is down. Check your Internet Links.  Second: May be the dynamic js needs too long to responding, we suggest you crawl the web source page in a virtual environment and send it to the next button\n"
+
 
 def download_model():
     pass
@@ -120,8 +122,7 @@ def download_model():
 def scan(url: str):
     global Infoflag
     
-    if url:
-        Infoflag = False
+    if url.strip() != "":
         model=joblib.load("./web/crypto_jacking/model.pkl")
 
         # 提取特征
@@ -134,28 +135,32 @@ def scan(url: str):
         output_text.update([("message", "")])
 
         if isornothttps:
-            output_text.update([("http", "该链接使用Https协议")])
+            output_text.update([("http", "协议情况: 该链接使用Https协议, 安全性有一定保障")])
         else:
-            output_text.update([("http", "该链接使用Http协议, 或许有一定风险")])
+            output_text.update([("http", "协议情况: 该链接使用Http协议, 或许有一定风险")])
         
         if keywordappeartimes:
-            output_text.update([("script", "该链接包含了恶意脚本关键词")])
+            output_text.update([("script", "恶意服务器关键词包含情况：该链接包含了恶意脚本关键词，有很大风险")])
         else:
-            output_text.update([("script", "该链接没有包含常见恶意脚本关键词")])
+            output_text.update([("script", "恶意服务器关键词包含情况：该链接没有包含常见恶意脚本关键词，安全性有一定保障")])
 
         #y_pred=model.predict([[31, 1, 0, 0, 0, 1]])
         y_pred = model.predict([character])
         if y_pred[0]:
-            output_text.update([("conclusion", "经判断, 该链接较为安全")])
+            output_text.update([("conclusion", "经过模型的判断，该链接较为安全。")])
         else:
-            output_text.update([("conclusion", "经判断, 该链接很有可能包含恶意挖矿脚本")])
+            output_text.update([("conclusion", "经过模型的判断，该链接很有可能包含恶意挖矿脚本。")])
         
     
     else:
-        Infoflag = True
+        Infoflag = 2
+        flag = True
         output_text.update([("http", ""), ("script", ""), ("conclusion", "")])
 
 def scan_html(url: str, html: str):
+        
+        global Infoflag2
+
         model=joblib.load("./web/crypto_jacking/model.pkl")
 
         # 提取特征
@@ -166,6 +171,7 @@ def scan_html(url: str, html: str):
         character = [isornothttps, keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit]
 
         output_text2.update([("message", "")])
+        Infoflag2 = 1
 
         if isornothttps:
             output_text2.update([("http", "该链接使用Https协议")])
@@ -182,6 +188,8 @@ def scan_html(url: str, html: str):
             output_text2.update([("conclusion", "经判断, 该链接较为安全")])
         else:
             output_text2.update([("conclusion", "经判断, 该链接很有可能包含恶意挖矿脚本")])
+
+        if url.strip() == "" and html: Infoflag2 = 0
         
 
 
@@ -221,12 +229,13 @@ def GetHtml(url):
     driver = webdriver.Chrome(options=chrome_options)
     driver.set_page_load_timeout(10)
 
-    global flag
+    global flag, Infoflag
     # 创建Chrome浏览器实例
     try:   
         driver.get(url)
         html = driver.page_source
         flag = True
+        Infoflag = 1
     except:
         html = " "
         flag = False

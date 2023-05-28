@@ -17,18 +17,45 @@ def page_render(key_value):
         st.button("开始筛查", on_click=API.call_scan, args=[URL_search])
         
         if API.flag:
-            st.dataframe(pd.DataFrame({"输出信息": API.output_text}), width=700)
-
-            if API.Infoflag:
+          
+            if API.Infoflag == 2:
                 st.info("Please Input a Non-null URL")
+            
+            elif API.Infoflag == 1:
+                message = "<span style='color:green; font-size: 32px;'> Successfully finished! </span> The following are some criteria we provided:"
+                st.markdown(message, unsafe_allow_html=True)
 
-            # time.sleep(5)
-            # st.experimental_rerun()
+                message = f"""<div style='background-color: #f5f5f5; padding: 10px; box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);'>
+                {API.output_text.get("conclusion")}
+                <br><br>
+                <ul style='list-style-type: disc; padding-left: 20px;'>
+                <li>{API.output_text.get("http")}</li>
+                <li>{API.output_text.get("script")}</li>
+                </ul></div>"""
+                st.markdown(message, unsafe_allow_html=True)
+            
+            else:
+                pass    
+
+
+
+                # time.sleep(5)
+                # st.experimental_rerun()
              
         else:
-            failure_warning = "This is a warning msg\n It means that our crawler meet some problems\n You may solve it by the following advice:\n First: Maybe your network is down. Check your Internet Links.  Second: May be the dynamic js needs too long to responding, we suggest you crawl the web source page in a virtual environment and send it to the next button\n"
+            message = "<span style='color:red; font-size: 32px;'> Waring Message! </span> You may solve it by the following infos:"
+            st.markdown(message, unsafe_allow_html=True)
 
-            st.info("failure_warning")
+            message = """<div style='background-color: #f5f5f5; padding: 10px; box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);'>
+            This is a warning msg. It means that our crawler meet some problems. You may solve it by the following advice:
+            <br><br>
+            <ul style='list-style-type: disc; padding-left: 20px;'>
+            <li>Maybe the web link you gave is wrong. Please check it again.</li>
+            <li>Maybe your network is down. Check your Network.</li>
+            <li>May be the dynamic js needs too long to responding, we suggest you crawl the web source page in a virtual environment and send it to the next button.</li>
+            </ul></div>"""
+
+            st.markdown(message, unsafe_allow_html=True)
 
     with settings_tab:
         settings_file = st.file_uploader("Choose a img file")
@@ -66,15 +93,33 @@ def page_render(key_value):
         # (shotname, extension) = os.path.splitext(tempfilename)
         if uploaded_file is not None:
             (shotname, extension) = os.path.splitext(uploaded_file.name) #提取文件名和后缀
-            print(shotname)
+            
             if extension == ".html":
                 bytes_data = uploaded_file.read()
                 html = bytes_data.decode("utf-8")  # 将文件内容转换为字符串
                 st.button("开始筛查", on_click=API.call_html_scan, args=[URL_search, html], key=key_value.value())
 
-                st.dataframe(pd.DataFrame({'输出信息': API.output_text2}), width=700)
+
+                if API.Infoflag2 == 0:
+                    st.info("Please Input a Non-null URL with a Non-null HTML")
+            
+                elif API.Infoflag2 == 1:
+                    message = "<span style='color:green; font-size: 32px;'> Successfully finished! </span> The following are some criteria we provided:"
+                    st.markdown(message, unsafe_allow_html=True)
+
+                    message = f"""<div style='background-color: #f5f5f5; padding: 10px; box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);'>
+                    {API.output_text2.get("conclusion")}
+                    <br><br>
+                    <ul style='list-style-type: disc; padding-left: 20px;'>
+                    <li>{API.output_text2.get("http")}</li>
+                    <li>{API.output_text2.get("script")}</li>
+                    </ul></div>"""
+                    st.markdown(message, unsafe_allow_html=True)
+
             else:
-                st.info("上传的文件类型不是HTML类型的")
+                st.info("Please Input a Html File")
+            
+
 
 
     with model_update:
