@@ -2,6 +2,7 @@ import streamlit as st
 from threading import Thread
 import joblib
 import pandas as pd
+import os
 
 import re
 from selenium import webdriver
@@ -92,6 +93,12 @@ keywords = ['cryptonight.wasm', 'deepMiner.js', 'deepMiner.min.js', 'proxy=wss',
             'kireevairina959.bitbucket.io', 'd3al52d8cojds7.cloudfront.net', 'jscoinminer.com/js', 'tercabilis.info', 'hostingcloud.racing', 
             'gxbrowser.net', 'new CoinHive.Anonymous', 'new CryptoLoot.Anonymous', 'lib/miner.min.js', 'new deep.Miner.Anonymous', 
             'new CRLT.Anonymous', 'new CoinImp.Anonymous', 'new CoinPirate.Anonymous', 'ppoi.org/lib/projectpoi.min.js', 'new ProjectPoi.Anonymous']
+def read_file_lines(file_path):
+    with open(file_path, "r") as file:
+        lines = file.read().splitlines()
+    return lines
+
+keywords_update_list = read_file_lines("web\crypto_jacking\keywords.txt")
 http_str = ''
 script = ''
 conclusion = ''
@@ -195,7 +202,12 @@ def update(text: str):
     # 可能传过来是['a', 'b', 'c']，要重新链接，可能text = text.join()可以连接起来，建议查百度
     keywords_list = text.splitlines()
     write_list_to_file(keywords_list, "web\crypto_jacking\keywords.txt")
+    keywords_update_list = read_file_lines("web\crypto_jacking\keywords.txt")
     
+def del_Keywords(text:str):
+    keywords_update_list.remove(text)
+    os.remove("web\crypto_jacking\keywords.txt")
+    rewrite_list_to_file(keywords_update_list,"web\crypto_jacking\keywords.txt")
 
 def call_update(text: str):
     t = Thread(target = update, args = [text])
@@ -286,7 +298,7 @@ def write_list_to_file(lst, file_path):
         for item in lst:
             file.write(str(item) + "\n")
 
-def read_file_lines(file_path):
-    with open(file_path, "r") as file:
-        lines = file.read().splitlines()
-    return lines
+def rewrite_list_to_file(lst, file_path):
+    with open(file_path, "w") as file:
+        for item in lst:
+            file.write(str(item) + "\n")

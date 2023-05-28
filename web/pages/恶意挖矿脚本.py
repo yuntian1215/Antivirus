@@ -50,9 +50,13 @@ def page_render(key_value):
         st.write("你要更新的关键词有", update_text)
 
         update_button_clicked = st.button(label="更新", on_click=API.call_update, args=[update_text])
-        delete_button_clicked = st.button(label="删除关键字", on_click=API.call_update, args=[update_text])
 
         if update_button_clicked:
+            st.write(API.advice_text)
+
+        Keywords_deleted = st.selectbox("删除关键词", options=API.keywords_update_list)
+        delete_button_clicked = st.button("删除路径", on_click=API.del_Keywords, args=[Keywords_deleted])
+        if delete_button_clicked:
             st.write(API.advice_text)
 
     with file_upload_tab:
@@ -71,6 +75,7 @@ def page_render(key_value):
                 st.dataframe(pd.DataFrame({'输出信息': API.output_text2}), width=700)
             else:
                 st.info("上传的文件类型不是HTML类型的")
+
 
     with model_update:
         st.write("当前模型版本为：1.0")
