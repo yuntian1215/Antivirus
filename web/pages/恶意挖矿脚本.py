@@ -104,10 +104,12 @@ def page_render(key_value):
             st.write("Succeesfully update")
 
         Keywords_deleted = st.selectbox("删除关键词", options=API.keywords_update_list)
+
         col1, col2, col3, col4, col5, col6= st.columns(6)
         with col6:
             delete_button_clicked = st.button("删除路径", on_click=API.del_Keywords, args=[Keywords_deleted])
         
+
         if delete_button_clicked:
             st.write(API.advice_text)
 
@@ -143,12 +145,9 @@ def page_render(key_value):
 
             else:
                 st.info("Please Input a Html File")
-            
-
-
 
     with model_update:
-        st.write("当前模型版本为: 1.0")
+        st.write("按以下按钮获取最新的模型：")
         st.button("更新模型", on_click=API.download_model)
 
 global_API.refresh_by_button(page_render)

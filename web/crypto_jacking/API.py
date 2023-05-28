@@ -3,6 +3,7 @@ from threading import Thread
 import joblib
 import pandas as pd
 import os
+import wget
 
 import re
 from selenium import webdriver
@@ -130,7 +131,8 @@ X_test=X_test.drop(X_test.columns[0],axis=1)
 
 
 def download_model():
-    pass
+    url="https://jbox.sjtu.edu.cn/l/L1dokr" #模型更新链接
+    wget.download(url,"./web/crypto_jacking/model.pkl") #下载模型
 
 def scan(url: str, option):
     global Infoflag
