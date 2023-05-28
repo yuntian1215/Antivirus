@@ -9,6 +9,22 @@ import re
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
+def read_file_lines(file_path):
+    with open(file_path, "r") as file:
+        lines = file.read().splitlines()
+    lines = [line for line in lines if line.strip()]
+    return lines
+
+def write_list_to_file(lst, file_path):
+    with open(file_path, "a") as file:
+        for item in lst:
+            file.write(str(item) + "\n")
+
+def rewrite_list_to_file(lst, file_path):
+    with open(file_path, "w") as file:
+        for item in lst:
+            file.write(str(item) + "\n")
+
 # 为保证观感，请折叠它
 keywords = ['cryptonight.wasm', 'deepMiner.js', 'deepMiner.min.js', 'proxy=wss', 'proxy=ws', 'coinhive.min.js', 
             'monero-miner.js', 'wasmminer.wasm', 'wasmminer.js', 'cn-asmjs.min.js', 'plugins/aj-cryptominer', 
@@ -96,22 +112,6 @@ keywords = ['cryptonight.wasm', 'deepMiner.js', 'deepMiner.min.js', 'proxy=wss',
             'gxbrowser.net', 'new CoinHive.Anonymous', 'new CryptoLoot.Anonymous', 'lib/miner.min.js', 'new deep.Miner.Anonymous', 
             'new CRLT.Anonymous', 'new CoinImp.Anonymous', 'new CoinPirate.Anonymous', 'ppoi.org/lib/projectpoi.min.js', 'new ProjectPoi.Anonymous']
 
-def read_file_lines(file_path):
-    with open(file_path, "r") as file:
-        lines = file.read().splitlines()
-    lines = [line for line in lines if line.strip()]
-    return lines
-
-def write_list_to_file(lst, file_path):
-    with open(file_path, "a") as file:
-        for item in lst:
-            file.write(str(item) + "\n")
-
-def rewrite_list_to_file(lst, file_path):
-    with open(file_path, "w") as file:
-        for item in lst:
-            file.write(str(item) + "\n")
-
 keywords_update_list = read_file_lines("web\crypto_jacking\keywords.txt")
 http_str = http_str2 = ''
 script = script2 = ''
@@ -128,11 +128,14 @@ test=pd.read_csv("./web/crypto_jacking/test.csv")
 X_test=test.drop(["Label","URL"],axis=1)
 X_test=X_test.drop(X_test.columns[0],axis=1)
 
-
+scan_flag = False
 
 def download_model():
     url="https://jbox.sjtu.edu.cn/l/H1B7KY" #模型更新链接
     wget.download(url,"./web/crypto_jacking/model.pkl") #下载模型
+    
+    global scan_flag
+    scan_flag = True
 
 def scan(url: str, option):
     global Infoflag
@@ -164,7 +167,7 @@ def scan(url: str, option):
         if y_pred[0]:
             output_text.update([("conclusion", "经过模型的判断，<span style='color:green; font-size: 24px;'>该链接较为安全。</span>")])
         else:
-            output_text.update([("conclusion", "经过模型的判断，<span style='color:green; font-size: 24px;'>该链接很有可能包含恶意挖矿脚本。</span>")])
+            output_text.update([("conclusion", "经过模型的判断，<span style='color:red; font-size: 24px;'>该链接很有可能包含恶意挖矿脚本。</span>")])
         
     
     else:
@@ -202,7 +205,7 @@ def scan_html(url: str, html: str):
         if y_pred[0]:
             output_text2.update([("conclusion", "经过模型的判断，<span style='color:green; font-size: 24px;'>该链接较为安全。</span>")])
         else:
-            output_text2.update([("conclusion", "经过模型的判断，<span style='color:green; font-size: 24px;'>该链接很有可能包含恶意挖矿脚本。</span>")])
+            output_text2.update([("conclusion", "经过模型的判断，<span style='color:red; font-size: 24px;'>该链接很有可能包含恶意挖矿脚本。</span>")])
 
         if url.strip() == "" and html: Infoflag2 = 0
         

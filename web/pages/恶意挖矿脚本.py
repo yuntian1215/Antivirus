@@ -148,6 +148,23 @@ def page_render(key_value):
 
     with model_update:
         st.write("按以下按钮获取最新的模型：")
-        st.button("更新模型", on_click=API.download_model)
+        update_button_clicked = st.button("更新模型", on_click=API.download_model)
+
+        progress_name = 'progress'
+        progress_text = "正在扫描，请稍后"
+
+        if update_button_clicked:
+            progress_counter = global_API.create_progress(progress_name)
+            progress_counter.start()
+        
+        if progress_name in global_API.progress_list:
+            print(API.scan_flag)
+            progress_counter = global_API.create_progress(progress_name)
+            my_bar = st.progress(0, text=progress_text)
+            my_bar.progress(progress_counter.value, text=progress_text)
+            if API.scan_flag:
+                global_API.clear_progress(progress_name)
+                my_bar.progress(100, text='更新完成')
+
 
 global_API.refresh_by_button(page_render)
