@@ -120,7 +120,7 @@ def page_render(key_value):
                 st.info("Please Input a Html File")
 
     with model_update:
-        # st.write("当前模型版本为：1.0")
+        st.write("按以下按钮获取最新的模型：")
         st.button("更新模型", on_click=API.download_model)
 
 global_API.refresh_by_button(page_render)
