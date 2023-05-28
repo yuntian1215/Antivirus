@@ -107,6 +107,9 @@ X_test=X_test.drop(X_test.columns[0],axis=1)
 
 failure_warning = "This is a warning msg\n It means that our crawler meet some problems\n You may solve it by the following advice:\n First: Maybe your network is down. Check your Internet Links.  Second: May be the dynamic js needs too long to responding, we suggest you crawl the web source page in a virtual environment and send it to the next button\n"
 
+def download_model():
+    pass
+
 def scan(url: str):
     global Infoflag
     

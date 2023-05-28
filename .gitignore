@@ -3,4 +3,6 @@
 /clamav_test/.vs/
 /clamav_test/clamav-0.103.5/.vs/
 /clamav_test/clamav-0.103.5/out/
-web/white_list/__pycache__
+/web/white_list/__pycache__
+/web/crypto_jacking/__pycache__/API.cpython-39.pyc
+**/__pycache__
