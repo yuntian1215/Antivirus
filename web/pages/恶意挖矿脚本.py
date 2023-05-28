@@ -43,7 +43,7 @@ def page_render(key_value):
                 # st.experimental_rerun()
              
         else:
-            message = "<span style='color:red; font-size: 32px;'> Waring Message! </span> You may solve it by the following infos:"
+            message = "<span style='color:red; font-size: 32px;'> Warning Message! </span> You may solve it by the following infos:"
             st.markdown(message, unsafe_allow_html=True)
 
             message = """<div style='background-color: #f5f5f5; padding: 10px; box-shadow: 2px 2px 5px 0px rgba(0, 0, 0, 0.3);'>
@@ -74,13 +74,13 @@ def page_render(key_value):
         else:
             update_text = st.text_area(label='setting_text', value=text)
        
-        st.write("你要更新的关键词有", update_text)
+        st.info("你要更新的关键词有" + update_text)
 
         update_button_clicked = st.button(label="更新", on_click=API.call_update, args=[update_text])
         delete_button_clicked = st.button(label="删除关键字", on_click=API.call_update, args=[update_text])
 
         if update_button_clicked:
-            st.write(API.advice_text)
+            st.write("Succeesfully update")
 
     with file_upload_tab:
         URL_search = st.text_input(label = '输入待检测的URL ~')
