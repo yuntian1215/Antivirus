@@ -7,7 +7,6 @@ import re
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
-print('setting_text create')
 keywords = ['cryptonight.wasm', 'deepMiner.js', 'deepMiner.min.js', 'proxy=wss', 'proxy=ws', 'coinhive.min.js', 
             'monero-miner.js', 'wasmminer.wasm', 'wasmminer.js', 'cn-asmjs.min.js', 'plugins/aj-cryptominer', 
             'plugins/ajcryptominer', 'plugins/wp-monero-miner-pro', 'lib/crlt.js', 'pool/direct.js', 'n.2.1.js', 
@@ -96,10 +95,9 @@ keywords = ['cryptonight.wasm', 'deepMiner.js', 'deepMiner.min.js', 'proxy=wss',
 http_str = ''
 script = ''
 conclusion = ''
-message = ''
-output_text = {'http': http_str, 'script': script, 'conclusion': conclusion, 'message' : message}
-output_text2 = {'http': http_str, 'script': script, 'conclusion': conclusion, 'message' : message}
+output_text = output_text2 = {'http': http_str, 'script': script, 'conclusion': conclusion}
 flag = True
+Infoflag = False
 update_text = ''
 setting_text = ''
 advice_text = 'Succeesfully update'
@@ -107,19 +105,20 @@ test=pd.read_csv("./web/crypto_jacking/test.csv")
 X_test=test.drop(["Label","URL"],axis=1)
 X_test=X_test.drop(X_test.columns[0],axis=1)
 
-failure_warning = "This is a warning msg\n It means that our crawler meet some problems\n You may solve it by the following advice:\n First: Maybe your network is down. Check your Internet Links.  Second: May be the dynamic js needs too long to responding, we suggest you crawl the web source page in a virtual environment and send it to the next button\n "
+failure_warning = "This is a warning msg\n It means that our crawler meet some problems\n You may solve it by the following advice:\n First: Maybe your network is down. Check your Internet Links.  Second: May be the dynamic js needs too long to responding, we suggest you crawl the web source page in a virtual environment and send it to the next button\n"
 
 def scan(url: str):
-    if url == "":
+    global Infoflag
+    
+    if url:
+        Infoflag = False
         model=joblib.load("./web/crypto_jacking/model.pkl")
 
         # 提取特征
         urllength = calculate_url_length(url)
         isornothttps = judge_url_isornothttps(url)
-        print(urllength)
         html = GetHtml(url)
         keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit = AnalysisHtml(html)
-        print(keywordappeartimes)
         character = [isornothttps, keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit]
 
         output_text.update([("message", "")])
@@ -143,7 +142,8 @@ def scan(url: str):
         
     
     else:
-        output_text.update([("http", ""), ("script", ""), ("conclusion", ""), ("message", "Please input a non-null URL")])
+        Infoflag = True
+        output_text.update([("http", ""), ("script", ""), ("conclusion", "")])
 
 def scan_html(url: str, html: str):
         model=joblib.load("./web/crypto_jacking/model.pkl")
@@ -153,7 +153,7 @@ def scan_html(url: str, html: str):
         isornothttps = judge_url_isornothttps(url)
         html = html
         keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit = AnalysisHtml(html)
-        character = [urllength, isornothttps, keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit]
+        character = [isornothttps, keywordappeartimes, cryptfunctionappeartimes, dynamicfunctionappeartimes, ifcpulimit]
 
         output_text2.update([("message", "")])
 
@@ -200,7 +200,7 @@ def call_update(text: str):
 
 def GetHtml(url):
     chrome_options = Options()
-    chrome_options.add_argument("--headless")  # 无界面模式，可以在后台运行
+    #chrome_options.add_argument("--headless")  # 无界面模式，可以在后台运行
     chrome_options.add_argument('--ignore-certificate-errors')
     
     driver = webdriver.Chrome(options=chrome_options)
@@ -228,8 +228,6 @@ def AnalysisHtml(html):
     update_keywords = {element.strip() for element in update_keywords if element.strip()}
     update_keywords_set = set(update_keywords)
     updated_keywords = list(update_keywords_set)
-
-    print(updated_keywords)
 
     keywords.extend(updated_keywords)
 

@@ -11,20 +11,23 @@ def page_render(key_value):
     function_tab, file_upload_tab, settings_tab,  = st.tabs(["挖矿脚本筛查", "HTML文件上传", "实时更新"])
 
     with function_tab:
-        URL_search = st.text_input(label = '输入待检测的URL 👇')
-        print(URL_search)
+        URL_search = st.text_input(label = "输入待检测的URL 👇")
         st.write("You entered URL is: ", URL_search)
         st.button("开始筛查", on_click=API.call_scan, args=[URL_search])
         
         if API.flag:
-            st.dataframe(pd.DataFrame({'输出信息': API.output_text}), width=700)
+            st.dataframe(pd.DataFrame({"输出信息": API.output_text}), width=700)
 
-            # time.sleep(15)
+            if API.Infoflag:
+                st.info("Please Input a Non-null URL")
+
+            # time.sleep(5)
             # st.experimental_rerun()
-        
              
         else:
-            st.write(API.failure_warning)
+            failure_warning = "This is a warning msg\n It means that our crawler meet some problems\n You may solve it by the following advice:\n First: Maybe your network is down. Check your Internet Links.  Second: May be the dynamic js needs too long to responding, we suggest you crawl the web source page in a virtual environment and send it to the next button\n"
+
+            st.info("failure_warning")
 
     with settings_tab:
         settings_file = st.file_uploader("Choose a img file")
