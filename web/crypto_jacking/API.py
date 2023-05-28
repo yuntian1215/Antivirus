@@ -118,7 +118,7 @@ X_test=X_test.drop(X_test.columns[0],axis=1)
 
 
 def download_model():
-    url="https://jbox.sjtu.edu.cn/l/L1dokr" #模型更新链接
+    url="https://jbox.sjtu.edu.cn/l/H1B7KY" #模型更新链接
     wget.download(url,"./web/crypto_jacking/model.pkl") #下载模型
 
 def scan(url: str):
