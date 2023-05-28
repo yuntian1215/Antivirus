@@ -3,7 +3,7 @@ from threading import Thread
 import os
 
 scan_output = ''
-
+fresh_output = ''
 def call_scan(dir: str):
     t = Thread(target=scan, args=[dir])
     t.start()
@@ -28,3 +28,6 @@ def call_fresh():
 
 def fresh():
     f = os.popen("freshclam")
+    global fresh_output
+    fresh_output = f.read()
+

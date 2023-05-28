@@ -31,7 +31,8 @@ with content:
             st.write(API.scan_output)
 
     with fresh_tab:
-            st.button("更新", on_click=API.call_fresh, key=key_value.value())
+        st.button("更新", on_click=API.call_fresh, key=key_value.value())
+        st.write(API.fresh_output)
 if refresh_button:
     with content:
         scan_tab, fresh_tab = st.tabs(['病毒库扫描', '病毒库更新'])
@@ -59,6 +60,4 @@ if refresh_button:
 
         with fresh_tab:
             st.button("更新", on_click=API.call_fresh, key=key_value.value())
-
-
-
+            st.write(API.fresh_output)
