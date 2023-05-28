@@ -6,8 +6,11 @@ import os
 import sys
 import time
 
+white_list = [] #white_list数组用于维护白名单
+filepath='web/white_list/white_list.txt' #白名单信息存放在该txt文件中，重启后不会丢失
+with open(filepath, 'r') as file:
+	white_list= file.readlines()
 
-white_list = ['/VirEnv','/img.png','/global_API.py'] #white_list数组用于维护白名单
 text_output = []
 sec=[0,0,0] #sec数组记录三个设置的值
 
@@ -15,14 +18,23 @@ sec=[0,0,0] #sec数组记录三个设置的值
 def add_Dir(dir: str):
 	if dir !='' :
 		white_list.append(dir)
+		with open(filepath, 'a') as file:
+			file.write(dir+'\n')
 		print('add_Dir:', white_list)
 	else:
 		st.write('白名单路径不得为空！')
 
 #在原有的白名单数组选择一个地址并删除
 def del_Dir(dir: str):
-    white_list.remove(dir)
-    print('del_Dir:', white_list)
+	white_list.remove(dir)
+	lines = []
+	with open(filepath, 'r') as file:
+		lines = file.readlines()
+	with open(filepath, 'w') as file:
+		for line in lines:
+			if line.strip() != dir:
+				file.write(line)
+	print('del_Dir:', white_list)
 
 #扫描函数，利用os库中的popen函数执行命令行指令，并用read函数重定向到前端界面。通过sec数组内的值选择是否添加额外的条件
 def scan(*args):
@@ -45,7 +57,6 @@ def scan(*args):
 	f = d.read()
 	print(f)
 	print("扫描完成!\n")
-
 
 #扫描线程函数，防止阻塞主进程使网页卡死
 def call_scan(dir: str):

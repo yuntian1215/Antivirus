@@ -77,10 +77,14 @@ def page_render(key_value):
         st.info("你要更新的关键词有" + update_text)
 
         update_button_clicked = st.button(label="更新", on_click=API.call_update, args=[update_text])
-        delete_button_clicked = st.button(label="删除关键字", on_click=API.call_update, args=[update_text])
 
         if update_button_clicked:
             st.write("Succeesfully update")
+
+        Keywords_deleted = st.selectbox("删除关键词", options=API.keywords_update_list)
+        delete_button_clicked = st.button("删除路径", on_click=API.del_Keywords, args=[Keywords_deleted])
+        if delete_button_clicked:
+            st.write(API.advice_text)
 
     with file_upload_tab:
         URL_search = st.text_input(label = '输入待检测的URL ~')
@@ -115,6 +119,7 @@ def page_render(key_value):
             else:
                 st.info("Please Input a Html File")
             
+
 
 
     with model_update:
