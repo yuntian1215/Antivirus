@@ -106,6 +106,11 @@ test=pd.read_csv("./web/crypto_jacking/test.csv")
 X_test=test.drop(["Label","URL"],axis=1)
 X_test=X_test.drop(X_test.columns[0],axis=1)
 
+
+
+def download_model():
+    pass
+
 def scan(url: str):
     global Infoflag
     
@@ -159,7 +164,6 @@ def scan_html(url: str, html: str):
 
         output_text2.update([("message", "")])
         Infoflag2 = 1
-        print("1")
 
         if isornothttps:
             output_text2.update([("http", "该链接使用Https协议")])
