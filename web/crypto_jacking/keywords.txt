@@ -1,2 +1,2 @@
-coinhive.com/lib/coinhive.min.js
 coinhive.com/lib/coinhive
+coinhive.com/lib/coinhive.min.js
