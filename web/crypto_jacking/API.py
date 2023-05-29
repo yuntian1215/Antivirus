@@ -258,8 +258,9 @@ def call_update(text: str):
 
 def GetHtml(url, option):
     firefox_options = chrome_options = Options()
-    # firefox_options = chrome_options.add_argument("--headless")  # 无界面模式，可以在后台运行
+    firefox_options = chrome_options.add_argument("--headless")  # 无界面模式，可以在后台运行
     firefox_options = chrome_options.add_argument('--ignore-certificate-errors')
+    firefox_options = chrome_options.add_argument('--no-sandbox')
     
     if option == "Chrome":
         driver = webdriver.Chrome(options=chrome_options)
