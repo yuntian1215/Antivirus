@@ -135,7 +135,7 @@ scan_flag = False
 wget_warning = ""
 
 def download_model():
-    url="https://jbox.sjtu.edu.cn/l/H1B7KY" #模型更新链接
+    url="https://jbox.sjtu.edu.cn:10081/v2%2Fdelivery%2Fdata%2F5690b40ddc9b4821ae3ad71c59237f32%2F?" #模型更新链接
     if os.path.exists("./web/crypto_jacking/modelplus.pkl"):
         os.remove("./web/crypto_jacking/modelplus.pkl")
     
@@ -155,7 +155,7 @@ def scan(url: str, option):
     
     if url.strip() != "":
         if os.path.exists("./web/crypto_jacking/modelplus.pkl"):
-            model=joblib.load("./web/crypto_jacking/model.pkl")
+            model=joblib.load("./web/crypto_jacking/modelplus.pkl")
         else:
             model=joblib.load("./web/crypto_jacking/model.pkl")
 
