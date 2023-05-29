@@ -14,16 +14,16 @@ OpenEuler(或者其他Linux)环境
 >2. 更新pip版本：python -m pip install --upgrade pip
 >3. 安装所需Python包：pip3 install streamlit
 
-[comment]: <> (>3. 安装所需Python包：pip3 install -r requirements.txt  )
+[comment]: <> ">3. 安装所需Python包：pip3 install -r requirements.txt  "
 
 windows环境：
 前端运行所需的python环境保存在虚拟环境VirEnv里面，运行时只需进入虚拟环境即可
 >1. 打开终端(Terminal)
 >2. 进入Security_Project/VirEnv/Scripts目录下：
->   cd VirEnv/Scripts
+>     cd VirEnv/Scripts
 >3. 进入虚拟环境： 
->   activate  
-> 进入后如图所示:![img.png](img.png)
+>     activate  
+>     进入后如图所示:![img.png](img.png)
 
 ### 加载前端界面
 4. 使用streamlit指令运行前端界面（注意当前所处目录应该在Security_Project/目录下）：
@@ -49,3 +49,20 @@ streamlit比Django简单很多，如果想要看可以直接百度搜，学起�
 官网https://docs.streamlit.io/  
 其它教程https://zhuanlan.zhihu.com/p/448853407  
 
+## 使用Dockerfile
+
+Dockerfile build之后， docker run -p 8501:8501 -it myimage:v1 /bin/bash（映射端口，位为myimage下，tag为v1）
+
+命令行输入以下命令：
+
+```sh
+freshclam
+service clamav-daemon start &
+
+cd Security_Project
+streamlit run web/主页.py
+```
+
+在外部主机localhost:8051即可运行。
+
+友情提示：docker无图形化界面无法正常使用爬虫，所以我们的爬虫会给出warning信息，并只支持Chrome版本！！！
