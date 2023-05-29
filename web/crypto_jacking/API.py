@@ -13,7 +13,9 @@ from selenium.webdriver.chrome.options import Options
 def read_file_lines(file_path):
     with open(file_path, "r") as file:
         lines = file.read().splitlines()
+    lines = list(set(lines))
     lines = [line for line in lines if line.strip()]
+    # lines = [line for line in lines if line != " "]
     return lines
 
 def write_list_to_file(lst, file_path):
@@ -153,7 +155,7 @@ def scan(url: str, option):
     
     if url.strip() != "":
         if os.path.exists("./web/crypto_jacking/modelplus.pkl"):
-            model=joblib.load("./web/crypto_jacking/modelplus.pkl")
+            model=joblib.load("./web/crypto_jacking/model.pkl")
         else:
             model=joblib.load("./web/crypto_jacking/model.pkl")
 
@@ -242,6 +244,7 @@ def update(text: str):
     # 可能传过来是['a', 'b', 'c']，要重新链接，可能text = text.join()可以连接起来，建议查百度
     keywords_list = text.splitlines()
     write_list_to_file(keywords_list, "./web/crypto_jacking/keywords.txt")
+    global keywords_update_list
     keywords_update_list = read_file_lines("./web/crypto_jacking/keywords.txt")
     
 def del_Keywords(text:str):
