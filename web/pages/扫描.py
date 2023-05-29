@@ -13,7 +13,10 @@ with st.container():
 	st.dataframe(output_df, width=700)
 
 if button_clicked:
+	print(1)
+	print(Dir_openfile)
 	on_click=API.call_scan(Dir_openfile)
+
 	#st.write(on_click)
 
 #check1-3为三个设置选择框，并维护API.py中的sec数组

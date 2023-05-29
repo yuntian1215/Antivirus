@@ -113,7 +113,7 @@ keywords = ['cryptonight.wasm', 'deepMiner.js', 'deepMiner.min.js', 'proxy=wss',
             'gxbrowser.net', 'new CoinHive.Anonymous', 'new CryptoLoot.Anonymous', 'lib/miner.min.js', 'new deep.Miner.Anonymous', 
             'new CRLT.Anonymous', 'new CoinImp.Anonymous', 'new CoinPirate.Anonymous', 'ppoi.org/lib/projectpoi.min.js', 'new ProjectPoi.Anonymous']
 
-keywords_update_list = read_file_lines("web\crypto_jacking\keywords.txt")
+keywords_update_list = read_file_lines("./web/crypto_jacking/keywords.txt")
 http_str = http_str2 = ''
 script = script2 = ''
 conclusion = conclusion2 = ''
@@ -130,10 +130,20 @@ X_test=test.drop(["Label","URL"],axis=1)
 X_test=X_test.drop(X_test.columns[0],axis=1)
 
 scan_flag = False
+wget_warning = ""
 
 def download_model():
     url="https://jbox.sjtu.edu.cn/l/H1B7KY" #模型更新链接
-    wget.download(url,"./web/crypto_jacking/model.pkl") #下载模型
+    if os.path.exists("./web/crypto_jacking/modelplus.pkl"):
+        os.remove("./web/crypto_jacking/modelplus.pkl")
+    
+    global wget_warning
+
+    try:
+        wget.download(url, "./web/crypto_jacking/modelplus.pkl")
+        wget_warning = ""
+    except Exception as e:
+       wget_warning = str(e)
     
     global scan_flag
     scan_flag = True
@@ -142,7 +152,10 @@ def scan(url: str, option):
     global Infoflag
     
     if url.strip() != "":
-        model=joblib.load("./web/crypto_jacking/model.pkl")
+        if os.path.exists("./web/crypto_jacking/modelplus.pkl"):
+            model=joblib.load("./web/crypto_jacking/modelplus.pkl")
+        else:
+            model=joblib.load("./web/crypto_jacking/model.pkl")
 
         # 提取特征
         urllength = calculate_url_length(url)
@@ -228,13 +241,13 @@ def call_html_scan(url: str, html: str):
 def update(text: str):
     # 可能传过来是['a', 'b', 'c']，要重新链接，可能text = text.join()可以连接起来，建议查百度
     keywords_list = text.splitlines()
-    write_list_to_file(keywords_list, "web\crypto_jacking\keywords.txt")
-    keywords_update_list = read_file_lines("web\crypto_jacking\keywords.txt")
+    write_list_to_file(keywords_list, "./web/crypto_jacking/keywords.txt")
+    keywords_update_list = read_file_lines("./web/crypto_jacking/keywords.txt")
     
 def del_Keywords(text:str):
     keywords_update_list.remove(text)
-    os.remove("web\crypto_jacking\keywords.txt")
-    rewrite_list_to_file(keywords_update_list,"web\crypto_jacking\keywords.txt")
+    os.remove("./web/crypto_jacking/keywords.txt")
+    rewrite_list_to_file(keywords_update_list,"./web/crypto_jacking/keywords.txt")
 
 def call_update(text: str):
     t = Thread(target = update, args = [text])
@@ -270,7 +283,7 @@ def GetHtml(url, option):
 def AnalysisHtml(html):
     global keywords
 
-    update_keywords = read_file_lines("web\crypto_jacking\keywords.txt")
+    update_keywords = read_file_lines("./web/crypto_jacking/keywords.txt")
     # 过滤空字符和重复字词
     update_keywords = {element.strip() for element in update_keywords if element.strip()}
     update_keywords_set = set(update_keywords)
