@@ -10,7 +10,7 @@ key_value = global_API.key_gen()
 with content:
     scan_tab, fresh_tab = st.tabs(['邮件扫描', '病毒库更新'])
     with scan_tab:
-        scan_Dir = st.text_input(label='扫描路径', value='/mnt/hgfs/share/clamav_test/attach_virus_eml', key=key_value.value())
+        scan_Dir = st.text_input(label='扫描路径', value='/Security_Project/clamav_test', key=key_value.value())
         scan_button_clicked = st.button("启动扫描", on_click=API.call_scan, args=[scan_Dir], key=key_value.value())
 
         progress_name = 'progress_counter'
