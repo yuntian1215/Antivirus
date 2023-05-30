@@ -60,10 +60,17 @@ docker run -p 8501:8501 -it myimage:v1 /bin/bash #（映射端口，位为myimag
 
 ```sh
 freshclam
-service clamav-daemon start &
+service clamav-daemon start & #必须后台启动守护进程
 
 cd Security_Project
+# Important message
+# 有可能streamlit与docker端口映射会出现问题
+# fix problem:
+# https://github.com/streamlit/streamlit/issues/554
 streamlit run web/主页.py
+
+# 映射失败选择以下命令，并通过http://0.0.0.0:8501外部访问
+streamlit run web/主页.py --browser.serverAddress "0.0.0.0"
 ```
 
 在外部主机localhost:8051即可运行。
@@ -74,13 +81,19 @@ streamlit run web/主页.py
 
 ```sh
 docker run -p 8501:8501 -it myimage:v2 /bin/bash
-git clone https://github.com/riacd/Security_Project.git # 配置镜像时，忽略了docker的一些特性，所以需要重新更新文档
+git pull # 配置镜像时，忽略了docker的一些特性，所以需要重新更新文档
 
 freshclam
 service clamav-daemon start & #必须后台启动守护进程
 
-cd Security_Project
+# Important message
+# 有可能streamlit与docker端口映射会出现问题
+# fix problem:
+# https://github.com/streamlit/streamlit/issues/554
 streamlit run web/主页.py
+
+# 映射失败选择以下命令，并通过http://0.0.0.0:8501外部访问
+streamlit run web/主页.py --browser.serverAddress "0.0.0.0"
 ```
 在外部主机localhost:8051即可运行。
 
